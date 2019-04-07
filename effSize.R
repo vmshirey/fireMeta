@@ -49,4 +49,32 @@ mes(29.25, 22.44, 151, 101.96, 10, 10)
 mes(8.25, 2.98, 1.25, .43, 6, 6)
 mes(25, 7.39, 13.5, 3.77, 6, 6)
 
+######################
+## Fernandez et al. ##
+######################
 
+#####################
+## Data in Table 1 ##
+#####################
+
+wf.abd <- c(193, 87, 18)
+wf.rch <- c(10, 6, 3)
+  
+control.abd <- c(69, 20, 6)
+control.rch <- c(8, 6, 3)
+
+print(paste("Control Rch Mean: ", mean(control.rch), " | Control Rch SE: ", sd(control.rch)/sqrt(length(control.rch))))
+print(paste("Control Abd Mean: ", mean(control.abd), " | Control Abd SE: ", sd(control.abd)/sqrt(length(control.abd))))
+
+print(paste("WF Rch Mean: ", mean(wf.rch), " | WF Abd SE: ", sd(wf.rch)/sqrt(length(wf.rch))))
+print(paste("WF Abd Mean: ", mean(wf.abd), " | WF Abd SE: ", sd(wf.abd)/sqrt(length(wf.abd))))
+
+# Submitting to the MES function:
+mes(mean(wf.rch), # average fire richness
+    mean(control.rch), # average control richness
+    sd(wf.rch), # standard deviation of fire richness
+    sd(control.rch), # standard deviation of control richness
+    length(wf.rch), # number of samples in fire sites
+    length(control.rch)) # number of samples control sites
+
+mes(mean(wf.abd), mean(control.abd), sd(wf.abd), sd(control.abd), length(wf.abd), length(control.abd))
