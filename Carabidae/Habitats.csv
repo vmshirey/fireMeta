@@ -1,0 +1,35 @@
+paperKey,Author,Habitat_Standard,Details,,FireType,Fire_Standard,Quantified?,Notes
+1,Barber et al.,Grassland,Grasslands,,Prescribed Burn,Low,No,
+5,Bess et al.,Riparian Forest,"cottonwood, saltcedar, and russian olive",,Wildfire,Mid,Desciptive,"""Severe"" but ""considerable numbers of dead leaves remained unburned on the upper branches"""
+8,Castillo and Wagner,Pine Forest,ponsderosa pine,,Wildfire,High,No,
+10,Cobb et al.,Mixedwood Forest,"white and black spruce, aspen, poplar, jack pine",,Wildfire,High,Desciptive,"""severe crown fire...and little to no remaining duff layer in many areas"""
+11,Cook and Holt,Grassland,tallgrass praire,,Prescribed Burn,Low,No,
+14,Elia et al.,Oak Forest,Quercus pubescens covered by herbs,,Wildfire,High,Desciptive,"""crown fire"""
+16,Fernandez and Costas,Pine Forest,Pinus pinaster,,Wildfire,Mid,Desciptive,"""the fire was not to much intense but destroyed all the trees and soil vegetation"""
+17,Gandi et al.,Pine Forest,lodgepole pinestands in unburned mature forest,,Wildfire,High,Desciptive,"""crown fire"""
+19,Gongalsky et al.,Spruce Forest,norway spruce forest,,Prescribed Burn,Low,No,
+20,Hammond et al.,Mixedwood Forest,"aspen, spruce, poplar",,Wildfire,High,No,
+22,Hyvarinen et al.,Pine Forest,scots pine (72%) and norway spruce (22%),,Prescribed Burn,Mid,Desciptive,Described in Hyvarinen et al. 2005
+25,Jacobs et al.,Deciduous Forest,"dominated by aspen and popular, and alder",,Prescribed Burn,Low,Desciptive,"""low intensity"""
+26,Kaynas,Pine Forest,Pinus brutia,,Prescribed Burn,High,Desciptive,"""crown fires formerly caused the complete destruction of the vegetation and above ground layer."" Assuming this is a prescribed fire, they always just said ""fire."""
+28,Koivula et al.,Spruce Forest,"white spruce, black spruce, and lodgepole pine",,Prescribed Burn,Low,Yes,"right under prescribed burn section, cant miss it"
+28,Koivula et al.,Spruce Forest,"white spruce, black spruce, and lodgepole pine",,Prescribed Burn,High,Yes,"right under prescribed burn section, cant miss it"
+30,Kwon et al.,Pine Forest,pine forests,,Wildfire,High,No,
+33,Martikainen et al.,Mixedwood Forest,"pinus, picea, two species of betula",,Prescribed Burn,Mid,Desciptive,Described in Hyvarinen et al. 2005
+35,Montero et al.,N/A,N/A,N/A,N/A,N/A,N/A,Not in English
+36,Mordkovich et al.,Pine Forest,pine forest,,Wildfire,High,Desciptive,"""strong fire"" no indication if wild or controlled burn"
+36,Mordkovich et al.,Mixedwood Forest,park pine-birch,,Wildfire,High,No,no indication if wild or controlled burn
+37,Moretti et al.,Deciduous Forest,sweet chestnut,,Wildfire,Low,Desciptive,"""Surface fires"""
+38,Niwa and Peck,Conifer Forest,white fir and douglas fir,,Prescribed Burn,Low,No,
+39,Nunes et al.,Pine Forest,pinus pinaster,,Prescribed Burn,Low,No,
+39,Nunes et al.,Shrubland,erica spp.,,Prescribed Burn,Low,No,
+40,Oliver et al.,Eucalyptus forest,E. spp.,,Prescribed Burn,Low,Yes,"Doesn't say if controlled or wildfire, but ""management"" implies prescribed"
+40,Oliver et al.,Eucalyptus forest,E. spp.,,Prescribed Burn,Mid,Yes,"Doesn't say if controlled or wildfire, but ""management"" implies prescribed"
+40,Oliver et al.,Eucalyptus forest,E. spp.,,Prescribed Burn,High,Yes,"Doesn't say if controlled or wildfire, but ""management"" implies prescribed"
+41,Paquin,Spruce Forest,black spruce,,Wildfire,High,No,
+42,Parmenter et al.,Grassland,desert grassland,,Wildfire,High,No,Does compare it to a prescribed fire under similar abiotic conditions though
+45,Saint-Germain et al.,Spruce Forest,black spruce,,Wildfire,High,No,
+46,Santalla et al.,Pine Forest,Pinus pinaster,,Wildfire,High,No,Forestfire in abstract
+46,Santalla et al.,Pine Forest,Pinus pinaster,,Wildfire,High,No,Forestfire in abstract
+47,Samu et al.,Grassland,sand grassland,,Wildfire,High,No,Extensive
+51,Toivanen et al.,Spruce Forest,Norway spruce,,Prescribed Burn,Low,Desciptive,ground fires with occasional jumps to the canopy
