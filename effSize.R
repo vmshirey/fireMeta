@@ -217,7 +217,44 @@ mes(11, 12, 2, 1, 20, 20) # 2011 richness
 mes(38, 31, 1, 5, 20, 20) # 2012 abundance
 mes(13, 12, 2, 1, 20, 20) # 2012 richness
 
-#####################
-## Lopresti et al. ##
-#####################
+## LoPresti et al. 2018 ##
 
+controlsN <-c(5.76, 3.86, 3.33, 2.60, 2.40, 2.25, 2.11, 2.00, 2.00, 1.47)
+controlsSD <-c(5.83, 6.55, 2.08, 1.14, 1.34, 1.91, 1.47, 0.0, 1.41, 1.06)
+
+PreburnN <-c(5.36, 2.00, 1.18, 1.61, 1.89, 2.00, 1.58, 1.52, 1.00, 1.00, 1.00)
+PreburnSD <-c(4.62, 0.0, 0.53, 1.02, 1.41, 1.67, 0.99, 0.85, 0.0, 0.0, 0.0)
+
+controlsM<-cbind(controlsN, controlsSD)
+PreburnM<-cbind(PreburnN, PreburnSD)
+
+controlsPSD<-sqrt(
+  ((controlsM[1,1] - 1)*controlsM[1,2]^2 + 
+     (controlsM[2,1] - 1)*controlsM[2,2]^2 +
+     (controlsM[3,1] - 1)*controlsM[3,2]^2 +
+     (controlsM[4,1] - 1)*controlsM[4,2]^2 +
+     (controlsM[5,1] - 1)*controlsM[5,2]^2 +
+     (controlsM[6,1] - 1)*controlsM[6,2]^2 +
+     (controlsM[7,1] - 1)*controlsM[7,2]^2 +
+     (controlsM[8,1] - 1)*controlsM[8,2]^2 +
+     (controlsM[9,1] - 1)*controlsM[9,2]^2 +
+     (controlsM[10,1] - 1)*controlsM[10,2]^2)/
+    (sum(controlsM[,1])-nrow(controlsM))
+)
+                  
+PreburnPSD<-sqrt(
+  abs(((PreburnM[1,1] - 1)*PreburnM[1,2]^2 + 
+         (PreburnM[2,1] - 1)*PreburnM[2,2]^2 +
+         (PreburnM[3,1] - 1)*PreburnM[3,2]^2 +
+         (PreburnM[4,1] - 1)*PreburnM[4,2]^2 +
+         (PreburnM[5,1] - 1)*PreburnM[5,2]^2 +
+         (PreburnM[6,1] - 1)*PreburnM[6,2]^2 +
+         (PreburnM[7,1] - 1)*PreburnM[7,2]^2 +
+         (PreburnM[8,1] - 1)*PreburnM[8,2]^2 +
+         (PreburnM[9,1] - 1)*PreburnM[9,2]^2 +
+         (PreburnM[10,1] - 1)*PreburnM[10,2]^2 +
+         (PreburnM[11,1] - 1)*PreburnM[11,2]^2)/
+        (sum(PreburnM[,1])-nrow(PreburnM)))
+)
+
+mes(sum(controlsM[,1]), sum(PreburnM[,1]), controlsPSD*sqrt(10), PreburnPSD*sqrt(11), 10, 11)
