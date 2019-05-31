@@ -19,7 +19,7 @@ m.abundance.hksj <- metagen(EffectSize, # effect sizes
                   studlab = paste(PaperID), # paper ID for random effect
                   comb.fixed = FALSE, # not doing fixed effects
                   comb.random = TRUE, # doing random effects
-                  method.tau = "SJ", # Sidik-Jonkman estimator for variance
+                  method.tau = "ML", # Sidik-Jonkman estimator for variance
                   hakn = TRUE, # HKSJ Method
                   prediction = TRUE, # predict an interval
                   sm="SMD") # mean difference effect size
@@ -30,7 +30,7 @@ m.richness.hksj <- metagen(EffectSize, # effect sizes
                             studlab = paste(PaperID), # paper ID for random effect
                             comb.fixed = FALSE, # not doing fixed effects
                             comb.random = TRUE, # doing random effects
-                            method.tau = "SJ", # Sidik-Jonkman estimator for variance
+                            method.tau = "ML", # Sidik-Jonkman estimator for variance
                             hakn = TRUE, # HKSJ Method
                             prediction = TRUE, # predict an interval
                             sm="SMD") # mean difference effect size
