@@ -57,8 +57,8 @@ mes(25, 7.39, 13.5, 3.77, 6, 6)
 ## Data in Figure 5 ##
 ######################
 
-mes(7.5, 19, 8.5, 7, 12, 18)
-mes(20, 16, 8, 8, 12, 12)
+mes(7.5, 19, 8.5, 7, 12, 18) #abundance
+mes(20, 16, 8, 8, 12, 12) #abundance
 
 ######################
 ## Fernandez et al. ##
@@ -98,8 +98,8 @@ mes(mean(wf.abd), mean(control.abd), sd(wf.abd), sd(control.abd), length(wf.abd)
 ## Data in Fig 2 ##
 ###################
 
-mes(8, 8, 0.55*sqrt(24), 0.5*sqrt(24), 24, 24)
-mes(90, 95, 30*sqrt(24), 15*sqrt(24), 24, 24)
+mes(8, 8, 0.55*sqrt(24), 0.5*sqrt(24), 24, 24) # richness
+mes(90, 95, 30*sqrt(24), 15*sqrt(24), 24, 24) # abundance
 
 ####################
 ## Nunes et al.   ##
@@ -191,6 +191,8 @@ mes(sum(burnedM[,1]), sum(controlsM[,1]), burnedPSD*sqrt(17), controlsPSD*sqrt(1
 mes(103.6, 32, 38.89*sqrt(20), 14.58*sqrt(20), 20, 20)
 mes(9.8, 8.4, 1.69*sqrt(20), 2.55*sqrt(20), 20, 20)
 
+## BEES ##
+
 #####################
 ## Campbell et al. ##
 #####################
@@ -258,3 +260,22 @@ PreburnPSD<-sqrt(
 )
 
 mes(sum(controlsM[,1]), sum(PreburnM[,1]), controlsPSD*sqrt(10), PreburnPSD*sqrt(11), 10, 11)
+
+#############################
+## DISSERTATION: Simanonok ##
+#############################
+
+########################
+## Data in Appendix 1 ##
+########################
+
+hiAbun <- c(472, 1314, 818, 607)
+miAbun <- c(598, 1235, 777, 334)
+unAbun <- 75
+
+mes(mean(hiAbun), unAbun, sd(hiAbun), 0.00001, 4, 1)
+mes(mean(miAbun), unAbun, sd(miAbun), 0.00001, 4, 1)
+
+hiRich <- c()
+miRich <- c()
+unRich <- c()
