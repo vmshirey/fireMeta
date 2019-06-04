@@ -81,6 +81,9 @@ carabidData <- read.csv("Carabidae/carabidData.csv", header=TRUE)
 beeData <- NA
 butterflyData <- NA
 
+# filter data to only include 0-1 years post fire sampling
+carabidData <- carabidData[carabidData$YearSinceFire < 2,]
+
 ##########
 ## BEES ##
 ##########
@@ -119,13 +122,10 @@ spot.outliers.random(data=m.abundance.hksj)
 spot.outliers.random(data=m.richness.hksj)
 
 m.abundance.hksj <- update.meta(m.abundance.hksj,
-                                subset = PaperID %!in% c("Castillo and Wagner (2 years post)",
-                                                      "Castillo and Wagner (4 years post)"))
+                                subset = PaperID %!in% c("Samu et al."))
 
 m.richness.hksj <- update.meta(m.richness.hksj,
-                               subset = PaperID %!in% c("Castillo and Wagner (2 years post)",
-                                                     "Castillo and Wagner (4 years post)",
-                                                     "Castillo and Wagner (3 years post)"))
+                               subset = PaperID %!in% c("Barber et al. (2)"))
 
 # forest plots #
 
@@ -133,61 +133,62 @@ forest(m.abundance.hksj, digits.sd = 2, digits.se = 2)
 forest(m.richness.hksj, digits.sd = 2, digits.se = 2)
 
 # subgroup analysis
+
+# abundance
 intensity.abundance.subgroup <- update.meta(m.abundance.hksj,
                                   byvar = Intensity,
                                   comb.random = TRUE,
                                   comb.fixed = FALSE)
-
-forest(intensity.abundance.subgroup)
-
 habitat.abundance.subgroup <- update.meta(m.abundance.hksj,
                                byvar = HabitatType,
                                comb.random = TRUE,
                                comb.fixed = FALSE)
-
-forest(habitat.abundance.subgroup)
-
 firetype.abundance.subgroup <- update.meta(m.abundance.hksj,
                                           byvar = FireType,
                                           comb.random = TRUE,
                                           comb.fixed = FALSE)
-
-forest(firetype.abundance.subgroup)
-
 region.abundance.subgroup <- update.meta(m.abundance.hksj,
                                          byvar = Region,
                                          comb.random = TRUE,
                                          comb.fixed = FALSE)
+biome.abundance.subgroup <- update.meta(m.abundance.hksj,
+                                         byvar = Biome,
+                                         comb.random = TRUE,
+                                         comb.fixed = FALSE)
 
-forest(region.abundance.subgroup)
+forest(intensity.abundance.subgroup, layout = "subgroup", digits.sd = 2, digits.se = 2)
+forest(habitat.abundance.subgroup, layout = "subgroup", digits.sd = 2, digits.se = 2)
+forest(firetype.abundance.subgroup, layout = "subgroup", digits.sd = 2, digits.se = 2)
+forest(region.abundance.subgroup, layout = "subgroup", digits.sd = 2, digits.se = 2)
+forest(biome.abundance.subgroup, layout = "subgroup", digits.sd = 2, digits.se = 2)
 
+# richness
 intensity.richness.subgroup <- update.meta(m.richness.hksj,
                                             byvar = Intensity,
                                             comb.random = TRUE,
                                             comb.fixed = FALSE)
-
-forest(intensity.richness.subgroup)
-
 habitat.richness.subgroup <- update.meta(m.richness.hksj,
                                           byvar = HabitatType,
                                           comb.random = TRUE,
                                           comb.fixed = FALSE)
-
-forest(habitat.richness.subgroup)
-
 firetype.richness.subgroup <- update.meta(m.richness.hksj,
                                            byvar = FireType,
                                            comb.random = TRUE,
                                            comb.fixed = FALSE)
-
-forest(firetype.richness.subgroup)
-
 region.richness.subgroup <- update.meta(m.richness.hksj,
                                          byvar = Region,
                                          comb.random = TRUE,
                                          comb.fixed = FALSE)
+biome.richness.subgroup <- update.meta(m.richness.hksj,
+                                        byvar = Biome,
+                                        comb.random = TRUE,
+                                        comb.fixed = FALSE)
 
-forest(region.richness.subgroup)
+forest(intensity.richness.subgroup, layout = "subgroup", digits.sd = 2, digits.se = 2)
+forest(habitat.richness.subgroup, layout = "subgroup", digits.sd = 2, digits.se = 2)
+forest(firetype.richness.subgroup, layout = "subgroup", digits.sd = 2, digits.se = 2)
+forest(region.richness.subgroup, layout = "subgroup", digits.sd = 2, digits.se = 2)
+forest(biome.richness.subgroup, layout = "subgroup", digits.sd = 2, digits.se = 2)
 
 # Funnel Plots
 
@@ -196,7 +197,7 @@ funnel(m.abundance.hksj,
        xlab="Hedges' g",
        contour = c(0.95, 0.975, 0.99),
        col.contour = c("grey25", "grey31", "grey61"))
-legend(1, 0, c("p < 0.05", "p<0.025", "< 0.01"),bty = "n",
+legend(0.25, 0, c("p < 0.05", "p<0.025", "< 0.01"),bty = "n",
        fill=c("grey25", "grey31", "grey61"))
 
 #richness
@@ -204,7 +205,7 @@ funnel(m.richness.hksj,
        xlab="Hedges' g",
        contour = c(0.95, 0.975, 0.99),
        col.contour = c("grey25", "grey31", "grey61"))
-legend(1, 0, c("p < 0.05", "p < 0.025", "p < 0.01"),bty = "n",
+legend(0.25, 0, c("p < 0.05", "p < 0.025", "p < 0.01"),bty = "n",
        fill=c("grey25", "grey31", "grey61"))
 
 #################
