@@ -1,18 +1,96 @@
-## Analysis code for pyroentomology meta-analysis
-## Vaughn Shirey, 2019
+####################################################
+## Analysis code for pyroentomology meta-analysis ##
+## Vaughn Shirey, 2019                            ##
+####################################################
 
 # load libraries
+library(dplyr)
 library(meta)
 library(metafor)
+library(metaviz)
 
-# read in data
-carabidData <- read.csv("carabidData.csv", header=TRUE)
+# additional functions
+spot.outliers.random<-function(data){
+  data<-data
+  Author<-data$studlab
+  lowerci<-data$lower
+  upperci<-data$upper
+  m.outliers<-data.frame(Author,lowerci,upperci)
+  te.lower<-data$lower.random
+  te.upper<-data$upper.random
+  dplyr::filter(m.outliers,upperci < te.lower)
+  dplyr::filter(m.outliers,lowerci > te.upper)
+}
 
+'%!in%' <- function(x,y)!('%in%'(x,y))
+
+influence.analysis<-function(data,method.tau,hakn){
+  
+  influence.data<-data
+  TE<-data$TE
+  seTE<-data$seTE
+  method.tau<-method.tau
+  hakn<-hakn
+  
+  if(hakn == TRUE){
+    res <- rma(yi=TE, sei=seTE, measure="ZCOR", 
+               data=influence.data, 
+               method = paste(method.tau),
+               test="knha")
+    res
+    inf <- influence(res)
+    influence.data<-metainf(data)
+    influence.data$I2<-format(round(influence.data$I2,2),nsmall=2)
+    plot(inf)
+    baujat(data)
+    forest(influence.data,
+           sortvar=I2,
+           rightcols = c("TE","ci","I2"),
+           smlab = "Sorted by I-squared")
+    forest(influence.data,
+           sortvar=TE,
+           rightcols = c("TE","ci","I2"),
+           smlab = "Sorted by Effect size")
+    
+  } else {
+    
+    res <- rma(yi=TE, sei=seTE, measure="ZCOR", 
+               data=influence.data, 
+               method = paste(method.tau))
+    res
+    inf <- influence(res)
+    influence.data<-metainf(data)
+    influence.data$I2<-format(round(influence.data$I2,2),nsmall=2)
+    plot(inf)
+    baujat(data)
+    forest(influence.data,
+           sortvar=I2,
+           rightcols = c("TE","ci","I2"),
+           smlab = "Sorted by I-squared")
+    forest(influence.data,
+           sortvar=TE,
+           rightcols = c("TE","ci","I2"),
+           smlab = "Sorted by Effect size")
+  }} 
+
+##################################
+## Read in data from .csv files ##
+##################################
+
+carabidData <- read.csv("Carabidae/carabidData.csv", header=TRUE)
+beeData <- NA
+butterflyData <- NA
+
+##########
 ## BEES ##
+##########
 
+##############
 ## CARABIDS ##
+##############
 
-# pooled effect size using Hartung-Knapp-Sidik-Jonkman Method
+# pooled effect size using Hartung-Knapp-Sidik-Jonkman Method #
+# abundance
 m.abundance.hksj <- metagen(EffectSize, # effect sizes
                   EffectSizeStandardError, # effect size standard errors
                   data = carabidData[carabidData$Metric=="Abundance",], # data
@@ -24,6 +102,7 @@ m.abundance.hksj <- metagen(EffectSize, # effect sizes
                   prediction = TRUE, # predict an interval
                   sm="SMD") # mean difference effect size
 
+# richness
 m.richness.hksj <- metagen(EffectSize, # effect sizes
                             EffectSizeStandardError, # effect size standard errors
                             data = carabidData[carabidData$Metric=="Richness",], # data
@@ -35,10 +114,23 @@ m.richness.hksj <- metagen(EffectSize, # effect sizes
                             prediction = TRUE, # predict an interval
                             sm="SMD") # mean difference effect size
 
-# forest plots
+# search for outliers and influence #
+spot.outliers.random(data=m.abundance.hksj)
+spot.outliers.random(data=m.richness.hksj)
+
+m.abundance.hksj <- update.meta(m.abundance.hksj,
+                                subset = PaperID %!in% c("Castillo and Wagner (2 years post)",
+                                                      "Castillo and Wagner (4 years post)"))
+
+m.richness.hksj <- update.meta(m.richness.hksj,
+                               subset = PaperID %!in% c("Castillo and Wagner (2 years post)",
+                                                     "Castillo and Wagner (4 years post)",
+                                                     "Castillo and Wagner (3 years post)"))
+
+# forest plots #
+
 forest(m.abundance.hksj, digits.sd = 2, digits.se = 2)
 forest(m.richness.hksj, digits.sd = 2, digits.se = 2)
-
 
 # subgroup analysis
 intensity.abundance.subgroup <- update.meta(m.abundance.hksj,
@@ -97,4 +189,28 @@ region.richness.subgroup <- update.meta(m.richness.hksj,
 
 forest(region.richness.subgroup)
 
+# Funnel Plots
+
+#abundance
+funnel(m.abundance.hksj, 
+       xlab="Hedges' g",
+       contour = c(0.95, 0.975, 0.99),
+       col.contour = c("grey25", "grey31", "grey61"))
+legend(1, 0, c("p < 0.05", "p<0.025", "< 0.01"),bty = "n",
+       fill=c("grey25", "grey31", "grey61"))
+
+#richness
+funnel(m.richness.hksj, 
+       xlab="Hedges' g",
+       contour = c(0.95, 0.975, 0.99),
+       col.contour = c("grey25", "grey31", "grey61"))
+legend(1, 0, c("p < 0.05", "p < 0.025", "p < 0.01"),bty = "n",
+       fill=c("grey25", "grey31", "grey61"))
+
+#################
 ## BUTTERFLIES ##
+#################
+
+##############
+## COMBINED ##
+##############

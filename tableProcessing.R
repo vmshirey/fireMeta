@@ -5,8 +5,19 @@
 
 require(compute.es)
 
-paper <- read.csv("Paper_001.csv", header=TRUE, sep=",")
+paper <- read.csv("Carabidae/Paper_001.csv", header=TRUE, sep=",")
 head(paper)
+
+## Sites with fire
+## Controls 2013: AG, HN, SB, FC, TC
+## Controls 2014: AG, HF, FC, TC
+## Controls 2015: AG, FC, TC
+
+## Y02013: L, CCW, HW, CCE, SF, HLP, WH, MU
+## Y02014: HN, SB
+
+## Y12014: CCW, WH
+## Y12015: SB, MR
 
 ###########################################################################################################################################
 ##
@@ -16,7 +27,7 @@ head(paper)
 ##
 ## Y02013: L, CCW, HW, CCE, SF, HLP, WH, MU
 ## Y02014: HN, SB | Repeat: L, HW, CCE, SF, HLP, MU
-## Y02015: CCW, WH | Repeats: SF
+## Y02015: CCW, WH | Repeats: SF ---- Trash
 ##
 ## Y12014: CCW, WH
 ## Y12015: SB, MR | Repeat: CCE, MU

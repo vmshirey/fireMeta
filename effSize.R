@@ -207,7 +207,7 @@ mes(2, 3, 1*sqrt(12), 1*sqrt(12), 12, 12)
 mes(152.3, 106.7, 73*sqrt(12), 44.2*sqrt(12), 12, 12)
 
 ####################
-## Lewttow et al. ##
+## Lettow et al.  ##
 ####################
 
 #####################
@@ -268,14 +268,3 @@ mes(sum(controlsM[,1]), sum(PreburnM[,1]), controlsPSD*sqrt(10), PreburnPSD*sqrt
 ########################
 ## Data in Appendix 1 ##
 ########################
-
-hiAbun <- c(472, 1314, 818, 607)
-miAbun <- c(598, 1235, 777, 334)
-unAbun <- 75
-
-mes(mean(hiAbun), unAbun, sd(hiAbun), 0.00001, 4, 1)
-mes(mean(miAbun), unAbun, sd(miAbun), 0.00001, 4, 1)
-
-hiRich <- c()
-miRich <- c()
-unRich <- c()
