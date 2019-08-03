@@ -219,7 +219,23 @@ mes(11, 12, 2, 1, 20, 20) # 2011 richness
 mes(38, 31, 1, 5, 20, 20) # 2012 abundance
 mes(13, 12, 2, 1, 20, 20) # 2012 richness
 
+#################
+## Love et al. ##
+#################
+
+burn <- c(15, 58, 12, 21) # abundance
+control <- c(52, 47, 24, 27) # abundance
+
+mes(mean(burn), mean(control), sd(burn), sd(control), 4, 4)
+
+burn <- c(4, 8, 5, 5) # richness
+control <- c(10, 19, 9, 4) # richness
+
+mes(mean(burn), mean(control), sd(burn), sd(control), 4, 4)
+
+##########################
 ## LoPresti et al. 2018 ##
+##########################
 
 controlsN <-c(5.76, 3.86, 3.33, 2.60, 2.40, 2.25, 2.11, 2.00, 2.00, 1.47)
 controlsSD <-c(5.83, 6.55, 2.08, 1.14, 1.34, 1.91, 1.47, 0.0, 1.41, 1.06)
@@ -262,9 +278,92 @@ PreburnPSD<-sqrt(
 mes(sum(controlsM[,1]), sum(PreburnM[,1]), controlsPSD*sqrt(10), PreburnPSD*sqrt(11), 10, 11)
 
 #############################
+## Potts et al. 2006       ##
+#############################
+
+mes(18, 17, 2.4, 2.0, 3, 3) # richness
+mes(469, 161, 70, 32, 3, 3) # abundance
+
+#############################
+## Peralta et al.          ##
+#############################
+
+fb <- c(6, 4) # richness
+ib <- c(3, 4, 9, 7) # richness
+ob <- c(4, 3, 5, 7) # richness
+control <- c(7, 5, 5, 7) # richness
+
+mes(mean(fb), mean(control), sd(fb), sd(control), length(fb), length(control))
+mes(mean(ib), mean(control), sd(ib), sd(control), length(ib), length(control))
+mes(mean(ob), mean(control), sd(ob), sd(control), length(ob), length(control))
+
+#############################
+## Moretti et al.          ##
+#############################
+
+mes(20, 12.2, 1.9*sqrt(6), 1.1*sqrt(6), 6, 6) # richness med
+mes(64.8, 45.3, 7.1*sqrt(6), 6.1*sqrt(6), 6, 6) # abundance med
+
+mes(11.5, 12.2, 2.3*sqrt(6), 0.7*sqrt(6), 6, 6) # richness med in
+mes(40, 45.3, 6.3*sqrt(6), 6.1*sqrt(6), 6, 6) # abundance med in
+
+mes(9.7, 12.2, 2*sqrt(3), 1.1*sqrt(6), 3, 6) # richness med ma
+mes(39, 45.3, 40*sqrt(3), 6.1*sqrt(6), 6, 6) # abundance med ma
+
+
+mes(67, 48.8, 6.4*sqrt(5), 1.3*sqrt(6), 5, 6) # richness temp
+mes(928, 504, 234*sqrt(5), 63*sqrt(6), 5, 6) # abundance temp
+
+mes(52,  48.8, 1.8*sqrt(7), 1.3*sqrt(6), 7, 6) # richness temp in
+mes(554, 504, 103*sqrt(7), 63*sqrt(6), 7, 6) # abundance temp in
+
+mes(49.3,  48.8, 3.4*sqrt(3), 1.3*sqrt(6), 3, 6) # richness temp ma
+mes(508, 504, 158*sqrt(3), 63*sqrt(6), 3, 6) # abundance temp ma
+
+
+#############################
 ## DISSERTATION: Simanonok ##
 #############################
 
 ########################
 ## Data in Appendix 1 ##
 ########################
+
+hi.burn <- c(472, 1314, 818, 607) # abundance
+mx.burn <- c(598, 1235, 777, 334)
+control <- c(75)
+
+mes(mean(hi.burn), mean(control), sd(hi.burn), 0.0001, 4, 1)
+mes(mean(mx.burn), mean(control), sd(mx.burn), 0.0001, 4, 1)
+
+hi.burn <- c(106, 83, 94, 90) # richness
+mx.burn <- c(98, 109, 103, 66)
+control <- c(25)
+
+mes(mean(hi.burn), mean(control), sd(hi.burn), 0.0001, 4, 1)
+mes(mean(mx.burn), mean(control), sd(mx.burn), 0.0001, 4, 1)
+
+####################
+## Granath et al. ##
+####################
+
+###################
+## Data on Dryad ##
+###################
+
+control <- c(0,0,0,0,2,2,6,0,9,1,2,2) # abundance
+burn <- c(7,7,3,2,2,11,6,2,5,6,4,3)
+
+mes(mean(burn), mean(control), sd(burn), sd(control), 12, 12)
+
+control <- c(0,0,0,0,2,2,2,0,4,1,3,2) # richness
+burn <- c(7,6,3,1,2,6,4,2,4,3,2,2)
+
+mes(mean(burn), mean(control), sd(burn), sd(control), 12, 12)
+
+###################
+## Nuland et al. ##
+###################
+
+# mes(17.1, 8.2, 2.52, 1.92, 18, 18)
+

@@ -1,0 +1,37 @@
+PaperID,Metric,EffectSize,EffectSizeStandardError,Intensity,YearSinceFire,HabitatType,FireType,Region,Biome,Month,Season
+Bogusch et al.,,,,,,,,,,,
+Campbell et al.,,,,,,,,,,,
+Lazzarina et al.,,,,,,,,,,,
+Lettow et al.,Abundance,0.95,0.11,Low,0,Deciduous Forest,Prescribed Fire,North America Midwest,Temperate broadleaf & mixed forests,No,Spring
+Lettow et al.,Abundance,1.9,0.14,Low,0,Deciduous Forest,Prescribed Fire,North America Midwest,Temperate broadleaf & mixed forests,No,Spring
+Lettow et al.,Richness,-0.62,0.1,Low,0,Deciduous Forest,Prescribed Fire,North America Midwest,Temperate broadleaf & mixed forests,No,Spring
+Lettow et al.,Richness,0.62,0.1,Low,0,Deciduous Forest,Prescribed Fire,North America Midwest,Temperate broadleaf & mixed forests,No,Spring
+LoPresti et al.,Abundance,0.61,0.18,High,1,Grassland,Wildfire,North America West,"Temperate grasslands, savannas, & shrublands",No,Spring
+Love and Cane,Abundance,-0.53,0.4,High,0,Grassland,Wildfire,North American West,"Temperate grasslands, savannas, & shrublands",August,
+Love and Cane,Richness,-0.95,0.43,High,0,Grassland,Wildfire,North American West,"Temperate grasslands, savannas, & shrublands",August,
+Moretti et al. 2004,,,,,,,,,,August,
+Moretti et al. 2009,Richness,1.89,0.43,High,2,Coniferous Forest,Wildfire,Middle East,"Mediterranean forests, woodlands, & scrub",June; July; August; September; October,
+Moretti et al. 2009,Abundance,1.11,0.34,High,2,Coniferous Forest,Wildfire,Middle East,"Mediterranean forests, woodlands, & scrub",June; July; August; September; October,
+Moretti et al. 2009,Richness,-0.16,0.29,High,12,Coniferous Forest,Wildfire,Middle East,"Mediterranean forests, woodlands, & scrub",June; July; August; September; October,
+Moretti et al. 2009,Abundance,-0.32,0.29,High,12,Coniferous Forest,Wildfire,Middle East,"Mediterranean forests, woodlands, & scrub",June; July; August; September; October,
+Moretti et al. 2009,Richness,-0.76,0.43,High,25,Coniferous Forest,Wildfire,Middle East,"Mediterranean forests, woodlands, & scrub",June; July; August; September; October,
+Moretti et al. 2009,Abundance,-0.12,0.28,High,25,Coniferous Forest,Wildfire,Middle East,"Mediterranean forests, woodlands, & scrub",June; July; August; September; October,
+Moretti et al. 2009,Richness,1.69,0.44,Low,2,Deciduous Forest,Wildfire,Europe,Temperate broadlead & mixed forests,December; January ;February; March; April,
+Moretti et al. 2009,Abundance,1.06,0.36,Low,2,Deciduous Forest,Wildfire,Europe,Temperate broadlead & mixed forests,December; January ;February; March; April,
+Moretti et al. 2009,Richness,0.72,0.29,Low,12,Deciduous Forest,Wildfire,Europe,Temperate broadlead & mixed forests,December; January ;February; March; April,
+Moretti et al. 2009,Abundance,0.21,0.27,Low,12,Deciduous Forest,Wildfire,Europe,Temperate broadlead & mixed forests,December; January ;February; March; April,
+Moretti et al. 2009,Richness,0.11,0.4,Low,25,Deciduous Forest,Wildfire,Europe,Temperate broadlead & mixed forests,December; January ;February; March; April,
+Moretti et al. 2009,Abundance,0.02,0.4,Low,25,Deciduous Forest,Wildfire,Europe,Temperate broadlead & mixed forests,December; January ;February; March; April,
+Peralta et al.,Richness,-0.65,0.52,Mid,2,Desert,Wildfire,South America,Montane grasslands & shrublands,,
+Peralta et al.,Richness,-0.1,0.38,Mid,8,Desert,Wildfire,South America,Montane grasslands & shrublands,,
+Peralta et al.,Richness,-0.75,0.41,Mid,19,Desert,Wildfire,South America,Montane grasslands & shrublands,,
+Potts et al. 2006,Richness,0.36,0.44,High,3,Coniferous Forest,Wildfire,Europe,,,
+Potts et al. 2006,Abundance,4.53,2.13,High,3,Coniferous Forest,Wildfire,Europe,,,
+Ne'eman et al.,,,,,,,,,,,
+Granath et al.,Abundance,0.99,0.18,Low,12,Coniferous Forest,Prescribed Fire,Europe,Temperate Conifer Forest,June,
+Granath et al.,Richness,1.29,0.2,Low,12,Coniferous Forest,Prescribed Fire,Europe,Temperate Conifer Forest,June,
+Barton and Menges,,,,,,,,,,,
+Simanonok (Grey),Abundance,1.43,0.87,High,,,Wildfire,North America West,Temperate Conifer Forest,,
+Simanonok (Grey),Abundance,1.27,0.82,Mid,,,Wildfire,North America West,Temperate Conifer Forest,,
+Simanonok (Grey),Richness,5.15,3.31,High,,,Wildfire,North America West,Temperate Conifer Forest,,
+Simanonok (Grey),Richness,2.61,1.34,Mid,,,Wildfire,North America West,Temperate Conifer Forest,,
