@@ -201,10 +201,23 @@ mes(9.8, 8.4, 1.69*sqrt(20), 2.55*sqrt(20), 20, 20)
 ## Data in Table 2 ##
 #####################
 
-mes(5, 5, 2*sqrt(12), 1*sqrt(12), 12, 12)
-mes(104.3, 118, 25.2*sqrt(12), 52.9*sqrt(12), 12, 12)
-mes(2, 3, 1*sqrt(12), 1*sqrt(12), 12, 12)
-mes(152.3, 106.7, 73*sqrt(12), 44.2*sqrt(12), 12, 12)
+bAbun <- c(104.3, 4.7, 5.0)
+bAbunVar <- c(25.2, 2.7, 2.0)
+bAbunSD <- sqrt(bAbunVar)
+uAbun <- c(118, 4.0, 5.0)
+uAbunVar <- c(52.9, 2.0, 1.0)
+uAbunSD <- sqrt(uAbunVar)
+
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10)
+
+bAbun <- c(152.3, 5.7, 2.0)
+bAbunVar <- c(73, 0.88, 1.0)
+bAbunSD <- sqrt(bAbunVar)
+uAbun <- c(106.7, 17.7, 3.0)
+uAbunVar <- c(44.2, 11.2, 1.0)
+uAbunSD <- sqrt(uAbunVar)
+
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10)
 
 ####################
 ## Lettow et al.  ##
@@ -365,5 +378,8 @@ mes(mean(burn), mean(control), sd(burn), sd(control), 12, 12)
 ## Nuland et al. ##
 ###################
 
-# mes(17.1, 8.2, 2.52, 1.92, 18, 18)
+# this paper is fire freq!
+
+mes(1.133, 1, 0.681, 0.871, 30, 30) # richness
+mes(3.633, 2.167, 2.735, 2.198, 30, 30) # abundance
 
