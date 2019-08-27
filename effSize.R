@@ -191,6 +191,15 @@ mes(sum(burnedM[,1]), sum(controlsM[,1]), burnedPSD*sqrt(17), controlsPSD*sqrt(1
 mes(103.6, 32, 38.89*sqrt(20), 14.58*sqrt(20), 20, 20)
 mes(9.8, 8.4, 1.69*sqrt(20), 2.55*sqrt(20), 20, 20)
 
+########################
+## Martikainen et al. ##
+########################
+
+# values are inverse effects 
+
+mes(103, 88, 19*sqrt(20), 34*sqrt(20), 20, 20) # abundance
+mes(5.6, 7.8, 0.9*sqrt(20), 2.2*sqrt(20), 20, 20) # richness
+
 ## BEES ##
 
 #####################
@@ -373,6 +382,26 @@ control <- c(0,0,0,0,2,2,2,0,4,1,3,2) # richness
 burn <- c(7,6,3,1,2,6,4,2,4,3,2,2)
 
 mes(mean(burn), mean(control), sd(burn), sd(control), 12, 12)
+
+###################
+## Burkle et al. ##
+###################
+
+# inverse effect
+
+b.abun <- c(2.7, 1.2, 1.8)
+b.abunSD <- c(0.2, 0.1, 0.1)
+u.abun <- c(5.4, 3.1, 1.9)
+u.abunSD <- c(0.2, 0.2, 0.1)
+
+mes(mean(b.abun), mean(u.abun), sqrt((sum(b.abunSD))/3), sqrt((sum(u.abunSD))/3), 36, 17)
+
+b.rich <- c(2.1, 1.2, 1.6)
+b.richSD <- c(0.2, 0.03, 0.1)
+u.rich <- c(4.0, 2.6, 1.8)
+u.richSD <- c(0.1, 0.1, 0.03)
+
+mes(mean(b.rich), mean(u.rich), sqrt((sum(b.richSD))/3), sqrt((sum(u.richSD))/3), 36, 17)
 
 ###################
 ## Nuland et al. ##
