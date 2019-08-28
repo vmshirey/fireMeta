@@ -73,7 +73,7 @@ plot.data <- structure(list( # wildfire vs prescribed fire
   row.names = c(NA, -11L),
   class = "data.frame")
 tabletext <- cbind(
-  c("Fire Type", "Wildfire (Abundance)", "Wildfire (Richness)", "Prescribed Fire (Abundance)", "Prescribed Fire (Richness)"),
+  c("Fire Type", "Wildfire (Abundance) [11]", "Wildfire (Richness) [13]", "Prescribed Fire (Abundance) [5]", "Prescribed Fire (Richness) [3]"),
   c("p-value", format(bees.abun.wf$pval, digits=2), format(bees.rich.wf$pval, digits=2), format(bees.abun.pf$pval, digits=2), format(bees.rich.wf$pval, digits=2))
 )
 forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
@@ -90,6 +90,19 @@ tabletext <- cbind(
     "Low Intensity (Abundance) [8]", "Low Intensity (Richness) [6]"),
   c("p-value", format(bees.abun.hi$pval, digits=2), format(bees.rich.hi$pval, digits=2), format(bees.abun.mi$pval, digits=2), format(bees.rich.hi$pval, digits=2),
     format(bees.abun.lo$pval, digits=2), format(bees.rich.lo$pval, digits=2))
+)
+forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
+
+plot.data <- structure(list( # dormant vs. growing season
+  mean = c(NA, bees.abun.g$beta, bees.rich.g$beta, bees.abun.ng$beta, bees.rich.ng$beta),
+  lower = c(NA, bees.abun.g$ci.lb, bees.rich.g$ci.lb, bees.abun.ng$ci.lb, bees.rich.ng$ci.lb),
+  upper = c(NA, bees.abun.g$ci.ub, bees.rich.g$ci.ub, bees.abun.ng$ci.ub, bees.rich.ng$ci.ub)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -11L),
+  class = "data.frame")
+tabletext <- cbind(
+  c("Season of Fire", "Growing (Abundance) [9]", "Growing (Richness) [8]", "Dormant (Abundance) [5]", "Dormant (Richness) [3]"),
+  c("p-value", format(bees.abun.g$pval, digits=2), format(bees.rich.g$pval, digits=2), format(bees.abun.ng$pval, digits=2), format(bees.rich.g$pval, digits=2))
 )
 forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
 
