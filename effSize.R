@@ -22,13 +22,6 @@ control.rch <- c(13, 18, 28, 34, 30, 16, 11, 22, 35)
 wf.abd <-c(63.08, 102.56, 84.62, 88.21, 50.77, 15.38, 6.67)
 wf.rch <- c(29, 31, 22, 20, 18, 12, 20)
 
-print(paste("Control Rch Mean: ", mean(control.rch), " | Control Rch SE: ", sd(control.rch)/sqrt(length(control.rch))))
-print(paste("Control Abd Mean: ", mean(control.abd), " | Control Abd SE: ", sd(control.abd)/sqrt(length(control.abd))))
-
-print(paste("WF Rch Mean: ", mean(wf.rch), " | WF Abd SE: ", sd(wf.rch)/sqrt(length(wf.rch))))
-print(paste("WF Abd Mean: ", mean(wf.abd), " | WF Abd SE: ", sd(wf.abd)/sqrt(length(wf.abd))))
-
-
 mes(mean(wf.rch), mean(control.rch), sd(wf.rch), sd(control.rch), length(wf.rch), length(control.rch))
 mes(mean(wf.abd), mean(control.abd), sd(wf.abd), sd(control.abd), length(wf.abd), length(control.abd))
 
@@ -204,10 +197,8 @@ mes(5.6, 7.8, 0.9*sqrt(20), 2.2*sqrt(20), 20, 20) # richness
 ## Parmenter et al. ##
 ######################
 
-# Sevilleta Fire
-mes(244, 477, 1.14, 3.94, 149, 81) # abundance
-
-#
+mes(7.63, 15.39, 4.995, 11.66, 32, 32) # abundance
+mes(2.97, 1.45, 1.12, 0.50, 32, 32) # richness
 
 ## BEES ##
 
