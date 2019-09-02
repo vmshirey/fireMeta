@@ -63,7 +63,19 @@ bees.abun.ng <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, m
 bees.rich.g <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(Growing=="Growing"), slab=Author)
 bees.rich.ng <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(Growing=="Dormant"), slab=Author)
 
+bees.abun.df <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(HabitatType=="Deciduous Forest"), slab=Author)
+bees.abun.gr <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(HabitatType=="Grassland"), slab=Author)
+bees.abun.cf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(HabitatType=="Coniferous Forest"), slab=Author)
+bees.abun.de <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(HabitatType=="Desert"), slab=Author)
+
+bees.rich.df <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(HabitatType=="Deciduous Forest"), slab=Author)
+bees.rich.gr <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(HabitatType=="Grassland"), slab=Author)
+bees.rich.cf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(HabitatType=="Coniferous Forest"), slab=Author)
+bees.rich.de <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(HabitatType=="Desert"), slab=Author)
+
 # Subgroup Forest Plots #
+
+par(mfrow=c(1,1), font=1)
 
 plot.data <- structure(list( # wildfire vs prescribed fire
   mean = c(NA, bees.abun.wf$beta, bees.rich.wf$beta, bees.abun.pf$beta, bees.rich.pf$beta),
@@ -103,6 +115,21 @@ plot.data <- structure(list( # dormant vs. growing season
 tabletext <- cbind(
   c("Season of Fire", "Growing (Abundance) [9]", "Growing (Richness) [8]", "Dormant (Abundance) [5]", "Dormant (Richness) [3]"),
   c("p-value", format(bees.abun.g$pval, digits=2), format(bees.rich.g$pval, digits=2), format(bees.abun.ng$pval, digits=2), format(bees.rich.g$pval, digits=2))
+)
+forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
+
+plot.data <- structure(list( # habitat type
+  mean = c(NA, bees.abun.df$beta, bees.rich.df$beta, bees.abun.cf$beta, bees.rich.cf$beta, bees.abun.gr$beta, bees.rich.gr$beta, bees.rich.de$beta),
+  lower = c(NA, bees.abun.df$ci.lb, bees.rich.df$ci.lb, bees.abun.cf$ci.lb, bees.rich.cf$ci.lb, bees.abun.gr$ci.lb, bees.rich.gr$ci.lb, bees.rich.de$ci.lb),
+  upper = c(NA, bees.abun.df$ci.ub, bees.rich.df$ci.ub, bees.abun.cf$ci.ub, bees.rich.cf$ci.ub, bees.abun.gr$ci.ub, bees.rich.gr$ci.ub, bees.rich.de$ci.ub)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -11L),
+  class = "data.frame")
+tabletext <- cbind(
+  c("Habitat of Fire", "Deciduous Forest (Abundance) [7]", "Deciduous Forest (Richness) [5]", "Coniferous Forest (Abundance) [7]", "Coniferous Forest (Richness) [7]",
+    "Grassland (Abundance) [2]", "Grassland (Richness) [1]", "Desert (Richness) [3]"),
+  c("p-value", format(bees.abun.df$pval, digits=2), format(bees.rich.df$pval, digits=2), format(bees.abun.cf$pval, digits=2), format(bees.rich.cf$pval, digits=2),
+    format(bees.abun.gr$pval, digits=2), format(bees.rich.gr$pval, digits=2), format(bees.rich.de$pval, digits=2))
 )
 forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
 
