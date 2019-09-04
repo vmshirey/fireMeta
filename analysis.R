@@ -41,8 +41,6 @@ forest(bees.rich.meta, slab=paste(bees.rich$Author), order="obs", xlab="Hedge's 
 
 # Subgroup forest plots for each metric (code from metafor website)
 
-par(mfrow=c(2,1), font=1)
-
 bees.abun.wf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(FireType=="Wildfire"), slab=Author)
 bees.abun.pf <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(FireType=="Prescribed Fire"), slab=Author)
 

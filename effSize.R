@@ -412,3 +412,54 @@ mes(mean(b.rich), mean(u.rich), sqrt((sum(b.richSD))/3), sqrt((sum(u.richSD))/3)
 mes(1.133, 1, 0.681, 0.871, 30, 30) # richness
 mes(3.633, 2.167, 2.735, 2.198, 30, 30) # abundance
 
+## BUTTERFLIES ##
+
+#########################
+## Campbell et al 2007 ##
+#########################
+
+## Data in table 2
+
+bAbun <- c(13.7, 3.5)
+bAbunVar <- c(3.5, 0.5)
+bAbunSD <- sqrt(bAbunVar)
+uAbun <- c(11.3, 5.3)
+uAbunVar <- c(4.9, 1.5)
+uAbunSD <- sqrt(uAbunVar)
+
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10)
+
+bAbun <- c(20.7, 4.0)
+bAbunVar <- c(10.7, 2.5)
+bAbunSD <- sqrt(bAbunVar)
+uAbun <- c(11.3, 4.0)
+uAbunVar <- c(2.7, 0)
+uAbunSD <- sqrt(uAbunVar)
+
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10)
+
+#####################
+## Fleishman et al ##
+#####################
+
+bRich <- c(18, 28, 28, 20, 15, 22, 16)
+uRich <- c(43, 47, 54, 38, 46)
+
+mes(mean(bRich), mean(uRich), sd(bRich), sd(uRich), 7, 5)
+
+###################
+## Warchola 2015 ##
+###################
+
+# abundance
+mes(0.048, 0.030, sqrt(80)*(0.068-0.034)/3.92, sqrt(80)*(0.055-0.016)/3.92, 80, 80)
+
+###################
+## Warchola 2015 ##
+###################
+
+# Abundance
+mes(9.74, 7.48, 7.88, 6.69, 67, 91)
+mes(24.99, 18.72, 22.41, 22.89, 67, 91)
+mes(15.57, 16.36, 18.44, 19.74, 67, 91)
+
