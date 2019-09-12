@@ -641,6 +641,63 @@ unburn <- c(10,
             5)
 mes(mean(burn), mean(unburn), sd(burn), sd(unburn), length(burn), length(unburn))
 
+#############
+## Hammond ##
+#############
+
+burn <- c(24,
+          14,
+          17,
+          11,
+          16,
+          25,
+          2,
+          6,
+          4,
+          23,
+          21,
+          13)
+
+unburn <- c(51,
+            81,
+            122,
+            115,
+            129,
+            38,
+            25,
+            51,
+            59,
+            74,
+            60,
+            71)
+
+mes(mean(burn), mean(unburn), sd(burn), sd(unburn), length(burn), length(unburn))
+
+burn <- c(6,
+          4,
+          5,
+          6,
+          6,
+          7,
+          2,
+          4,
+          3,
+          3,
+          7,
+          4)
+unburn <- c(7,
+            10,
+            8,
+            8,
+            8,
+            9,
+            5,
+            6,
+            7,
+            7,
+            7,
+            6)
+mes(mean(burn), mean(unburn), sd(burn), sd(unburn), length(burn), length(unburn))
 
 ## BEES ##
 
