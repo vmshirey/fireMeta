@@ -699,6 +699,19 @@ unburn <- c(7,
             6)
 mes(mean(burn), mean(unburn), sd(burn), sd(unburn), length(burn), length(unburn))
 
+#####################
+## Toivenen et al. ##
+#####################
+
+b.abun <- c(31, 62, 3, 4, 50, 102, 68, 41, 35)
+u.abun <- c(28, 72, 89, 44, 100, 51, 28, 44, 43)
+
+b.rich <- c(7, 10, 3, 3, 5, 10, 9, 7, 5)
+u.rich <- c(5, 5, 8, 5, 8, 6, 9, 6, 8)
+
+mes(mean(b.abun), mean(u.abun), sd(b.abun), sd(u.abun), length(b.abun), length(u.abun))
+mes(mean(b.rich), mean(u.rich), sd(b.rich), sd(u.rich), length(b.rich), length(u.rich))
+
 ## BEES ##
 
 #####################
@@ -1001,4 +1014,21 @@ fu <- c(4,5,5,5)
 
 mes(mean(cbb), mean(cbu), sd(cbb), sd(cbu), 3, 4)
 mes(mean(fb), mean(fu), sd(fb), sd(fu), 3, 4)
+
+#################
+## Kwon et al. ##
+#################
+
+# Richness #
+mes(27, 30, sqrt(6)*4, sqrt(6)*3, 6, 6) # 0 year
+mes(63, 45, sqrt(7)*7, sqrt(7)*6, 7, 7) # 1 year
+mes(30, 46, sqrt(7)*5, sqrt(7)*6, 7, 7) # 2 year
+mes(37, 46, sqrt(6)*4, sqrt(6)*2, 6, 6) # 3 year
+mes(41, 41, sqrt(5)*5, sqrt(5)*6, 5, 5) # 4 year
+
+###########################
+## Mciver and Macke 2014 ##
+###########################
+
+mes(2.79, )
 
