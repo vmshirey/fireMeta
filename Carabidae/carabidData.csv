@@ -1,4 +1,4 @@
-PaperID,Taxon,Author,YearPublished,Metric,EffectSize,EffectSizeStandardError,FireType,Intensity,FireQuantified,FieldNotes,YearSinceFire,HabitatType,HabitatDetails,Region,RegionDetails,Biome,Month,Month/Season,Growing/non
+PaperID,Taxon,Author,YearPublished,Metric,EffectSize,EffectSizeStandardError,FireType,Intensity,FireQuantified,FieldNotes,YearSinceFire,HabitatType,HabitatDetails,Region,RegionDetails,Biome,Month,Season,Growing
 1,Carabids,Barber et al.,2017,Abundance,-0.92,0.31,Prescribed Fire,N/A,No,,0,Grassland,Grassland,North America Midwest,"Illinois, USA","Temperate grasslands, savannas, & shrublands",No,No,N/A
 1,Carabids,Barber et al.,2017,Abundance,0.84,0.32,Prescribed Fire,N/A,No,,0,Grassland,Grassland,North America Midwest,"Illinois, USA","Temperate grasslands, savannas, & shrublands",No,No,N/A
 1,Carabids,Barber et al.,2017,Abundance,-0.77,0.53,Prescribed Fire,N/A,No,,1,Grassland,Grassland,North America Midwest,"Illinois, USA","Temperate grasslands, savannas, & shrublands",No,No,N/A

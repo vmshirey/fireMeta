@@ -41,6 +41,41 @@ forest(bees.rich.meta, slab=paste(bees.rich$Author), order="obs", xlab="Hedge's 
 
 # Subgroup forest plots for each metric (code from metafor website)
 
+# CARABIDS #
+carab.abun.wf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(FireType=="Wildfire"), slab=Author)
+carab.abun.pf <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(FireType=="Prescribed Fire"), slab=Author)
+
+carab.rich.wf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(FireType=="Wildfire"), slab=Author)
+carab.rich.pf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(FireType=="Prescribed Fire"), slab=Author)
+
+carab.abun.hi <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(Intensity=="High"), slab=Author)
+carab.abun.mi <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(Intensity=="Mid"), slab=Author)
+carab.abun.lo <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(Intensity=="Low"), slab=Author)
+
+carab.rich.hi <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(Intensity=="High"), slab=Author)
+carab.rich.mi <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(Intensity=="Mid"), slab=Author)
+carab.rich.lo <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(Intensity=="Low"), slab=Author)
+
+carab.abun.g <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(Growing=="Growing"), slab=Author)
+carab.abun.ng <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(Growing=="Dormant"), slab=Author)
+
+carab.rich.g <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(Growing=="Growing"), slab=Author)
+carab.rich.ng <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(Growing=="Dormant"), slab=Author)
+
+carab.abun.df <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(HabitatType=="Deciduous Forest"), slab=Author)
+carab.abun.gr <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(HabitatType=="Grassland"), slab=Author)
+carab.abun.cf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(HabitatType=="Coniferous Forest"), slab=Author)
+carab.abun.de <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(HabitatType=="Shrubland"), slab=Author)
+carab.abun.mf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(HabitatType=="Mixed Forest"), slab=Author)
+
+carab.rich.df <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(HabitatType=="Deciduous Forest"), slab=Author)
+carab.rich.gr <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(HabitatType=="Grassland"), slab=Author)
+carab.rich.cf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(HabitatType=="Coniferous Forest"), slab=Author)
+carab.rich.de <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(HabitatType=="Shrubland"), slab=Author)
+carab.rich.mf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(HabitatType=="Mixed Forest"), slab=Author)
+
+
+# BEES #
 bees.abun.wf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(FireType=="Wildfire"), slab=Author)
 bees.abun.pf <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(FireType=="Prescribed Fire"), slab=Author)
 
@@ -73,6 +108,66 @@ bees.rich.de <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, 
 
 # Subgroup Forest Plots #
 
+# CARABIDS #
+par(mfrow=c(1,1), font=1)
+
+plot.data <- structure(list( # wildfire vs prescribed fire
+  mean = c(NA, carab.abun.wf$beta, carab.rich.wf$beta, carab.abun.pf$beta, carab.rich.pf$beta),
+  lower = c(NA, carab.abun.wf$ci.lb, carab.rich.wf$ci.lb, carab.abun.pf$ci.lb, carab.rich.pf$ci.lb),
+  upper = c(NA, carab.abun.wf$ci.ub, carab.rich.wf$ci.ub, carab.abun.pf$ci.ub, carab.rich.pf$ci.ub)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -11L),
+  class = "data.frame")
+tabletext <- cbind(
+  c("Fire Type", "Wildfire (Abundance) [14]", "Wildfire (Richness) [11]", "Prescribed Fire (Abundance) [15]", "Prescribed Fire (Richness) [13]"),
+  c("p-value", format(carab.abun.wf$pval, digits=2), format(carab.rich.wf$pval, digits=2), format(carab.abun.pf$pval, digits=2), format(carab.rich.wf$pval, digits=2))
+)
+forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
+
+plot.data <- structure(list( # fire intensity
+  mean = c(NA, carab.abun.hi$beta, carab.rich.hi$beta, carab.abun.mi$beta, carab.rich.mi$beta, carab.abun.lo$beta, carab.rich.lo$beta),
+  lower = c(NA, carab.abun.hi$ci.lb, carab.rich.hi$ci.lb, carab.abun.mi$ci.lb, carab.rich.mi$ci.lb, carab.abun.lo$ci.lb, carab.rich.lo$ci.lb),
+  upper = c(NA, carab.abun.hi$ci.ub, carab.rich.hi$ci.ub, carab.abun.mi$ci.ub, carab.rich.mi$ci.ub, carab.abun.lo$ci.ub, carab.rich.lo$ci.ub)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -11L),
+  class = "data.frame")
+tabletext <- cbind(
+  c("Fire Intensity", "High Intensity (Abundance) [1]", "High Intensity (Richness) [1]", "Mid Intensity (Abundance) [1]", "Mid Intensity (Richness) [1]",
+    "Low Intensity (Abundance) [4]", "Low Intensity (Richness) [4]"),
+  c("p-value", format(carab.abun.hi$pval, digits=2), format(carab.rich.hi$pval, digits=2), format(carab.abun.mi$pval, digits=2), format(carab.rich.hi$pval, digits=2),
+    format(carab.abun.lo$pval, digits=2), format(carab.rich.lo$pval, digits=2))
+)
+forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
+
+plot.data <- structure(list( # dormant vs. growing season
+  mean = c(NA, carab.abun.g$beta, carab.rich.g$beta, carab.abun.ng$beta, carab.rich.ng$beta),
+  lower = c(NA, carab.abun.g$ci.lb, carab.rich.g$ci.lb, carab.abun.ng$ci.lb, carab.rich.ng$ci.lb),
+  upper = c(NA, carab.abun.g$ci.ub, carab.rich.g$ci.ub, carab.abun.ng$ci.ub, carab.rich.ng$ci.ub)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -11L),
+  class = "data.frame")
+tabletext <- cbind(
+  c("Season of Fire", "Growing (Abundance) [18]", "Growing (Richness) [15]", "Dormant (Abundance) [1]", "Dormant (Richness) [1]"),
+  c("p-value", format(carab.abun.g$pval, digits=2), format(carab.rich.g$pval, digits=2), format(carab.abun.ng$pval, digits=2), format(carab.rich.g$pval, digits=2))
+)
+forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
+
+plot.data <- structure(list( # habitat type
+  mean = c(NA, carab.abun.df$beta, carab.rich.df$beta, carab.abun.cf$beta, carab.rich.cf$beta, carab.abun.mf$beta, carab.rich.mf$beta, carab.abun.gr$beta, carab.rich.gr$beta, carab.abun.de$beta, carab.rich.de$beta),
+  lower = c(NA, carab.abun.df$ci.lb, carab.rich.df$ci.lb, carab.abun.cf$ci.lb, carab.rich.cf$ci.lb, carab.abun.mf$ci.lb, carab.rich.mf$ci.lb, carab.abun.gr$ci.lb, carab.rich.gr$ci.lb, carab.abun.de$beta, carab.rich.de$ci.lb),
+  upper = c(NA, carab.abun.df$ci.ub, carab.rich.df$ci.ub, carab.abun.cf$ci.ub, carab.rich.cf$ci.ub, carab.abun.mf$ci.ub, carab.rich.mf$ci.ub, carab.abun.gr$ci.ub, carab.rich.gr$ci.ub, carab.abun.de$beta, carab.rich.de$ci.ub)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -11L),
+  class = "data.frame")
+tabletext <- cbind(
+  c("Habitat of Fire", "Deciduous Forest (Abundance) [2]", "Deciduous Forest (Richness) [2]", "Coniferous Forest (Abundance) [15]", "Coniferous Forest (Richness) [10]",
+    "Mixed Forest (Abudance) [1]", "Mixed Forest (Richness) [1]", "Grassland (Abundance) [2]", "Grassland (Richness) [2]",  "Shrubland (Abundance) [2]", "Shrubland (Richness) [2]"),
+  c("p-value", format(carab.abun.df$pval, digits=2), format(carab.rich.df$pval, digits=2), format(carab.abun.cf$pval, digits=2), format(carab.rich.cf$pval, digits=2),
+    format(carab.abun.mf$pval, digits=2), format(carab.rich.mf$pval, digits=2), format(carab.abun.gr$pval, digits=2), format(carab.rich.gr$pval, digits=2), format(carab.abun.de$pval, digits=2), format(carab.rich.de$pval, digits=2))
+)
+forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
+
+# BEES #
 par(mfrow=c(1,1), font=1)
 
 plot.data <- structure(list( # wildfire vs prescribed fire
