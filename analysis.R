@@ -26,15 +26,15 @@ bees.abun <- bees[bees$Metric == "Abundance",]
 bees.rich <- bees[bees$Metric == "Richness",]
 
 # Random effects models
-carab.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ")
-carab.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ")
+carab.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", slab=paste(carab.abun$Author, carab.abun$YearPublished))
+carab.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", slab=paste(carab.rich$Author, carab.rich$YearPublished))
 
 bees.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", slab=Author)
 bees.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", slab=Author)
 
 # Forest plots for each metric
-forest(carab.abun.meta, slab=paste(carab.abun$Author), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = FALSE)
-forest(carab.rich.meta, slab=paste(carab.rich$Author), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = FALSE)
+forest(carab.abun.meta, slab=paste(carab.abun$Author, carab.abun$YearPublished), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = FALSE)
+forest(carab.rich.meta, slab=paste(carab.rich$Author, carab.rich$YearPublished), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = FALSE)
 
 forest(bees.abun.meta, slab=paste(bees.abun$Author), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = TRUE)
 forest(bees.rich.meta, slab=paste(bees.rich$Author), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = TRUE)
