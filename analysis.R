@@ -106,6 +106,13 @@ bees.rich.gr <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, 
 bees.rich.cf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(HabitatType=="Coniferous Forest"), slab=Author)
 bees.rich.de <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(HabitatType=="Desert"), slab=Author)
 
+bees.abun.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(TimeClass=="0"), slab=Author)
+bees.abun.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(TimeClass=="1-5"), slab=Author)
+bees.abun.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(TimeClass=="5+"), slab=Author)
+
+bees.rich.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(TimeClass=="0"), slab=Author)
+bees.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(TimeClass=="1-5"), slab=Author)
+bees.rich.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(TimeClass=="5+"), slab=Author)
 # Subgroup Forest Plots #
 
 # CARABIDS #
@@ -223,6 +230,21 @@ tabletext <- cbind(
     "Grassland (Abundance) [2]", "Grassland (Richness) [1]", "Desert (Richness) [3]"),
   c("p-value", format(bees.abun.df$pval, digits=2), format(bees.rich.df$pval, digits=2), format(bees.abun.cf$pval, digits=2), format(bees.rich.cf$pval, digits=2),
     format(bees.abun.gr$pval, digits=2), format(bees.rich.gr$pval, digits=2), format(bees.rich.de$pval, digits=2))
+)
+forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
+
+plot.data <- structure(list( # fire intensity
+  mean = c(NA, bees.abun.in$beta, bees.rich.in$beta, bees.abun.nd$beta, bees.rich.nd$beta, bees.abun.ol$beta, bees.rich.ol$beta),
+  lower = c(NA, bees.abun.in$ci.lb, bees.rich.in$ci.lb, bees.abun.nd$ci.lb, bees.rich.nd$ci.lb, bees.abun.ol$ci.lb, bees.rich.ol$ci.lb),
+  upper = c(NA, bees.abun.in$ci.ub, bees.rich.in$ci.ub, bees.abun.nd$ci.ub, bees.rich.nd$ci.ub, bees.abun.ol$ci.ub, bees.rich.ol$ci.ub)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -11L),
+  class = "data.frame")
+tabletext <- cbind(
+  c("Time Since Fire", "0 Years (Abundance) [5]", "0 Years (Richness) [5]", "1-5 Years (Abundance) [4]", "1-5 Years (Richness) [4]",
+    "5+ Years (Abundance) [5]", "5+ Years (Richness) [7]"),
+  c("p-value", format(bees.abun.in$pval, digits=2), format(bees.rich.in$pval, digits=2), format(bees.abun.nd$pval, digits=2), format(bees.rich.nd$pval, digits=2),
+    format(bees.abun.ol$pval, digits=2), format(bees.rich.ol$pval, digits=2))
 )
 forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
 
