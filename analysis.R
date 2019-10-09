@@ -120,6 +120,13 @@ bees.abun.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, 
 bees.rich.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(TimeClass=="0"), slab=Author)
 bees.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(TimeClass=="1-5"), slab=Author)
 bees.rich.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(TimeClass=="5+"), slab=Author)
+
+bees.abun.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(YearSinceFire <= 3), slab=Author)
+bees.abun.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(YearSinceFire > 3), slab=Author)
+
+bees.rich.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(YearSinceFire <= 3), slab=Author)
+bees.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(YearSinceFire > 3), slab=Author)
+
 # Subgroup Forest Plots #
 
 # CARABIDS #
@@ -267,6 +274,19 @@ tabletext <- cbind(
     "5+ Years (Abundance) [5]", "5+ Years (Richness) [7]"),
   c("p-value", format(bees.abun.in$pval, digits=2), format(bees.rich.in$pval, digits=2), format(bees.abun.nd$pval, digits=2), format(bees.rich.nd$pval, digits=2),
     format(bees.abun.ol$pval, digits=2), format(bees.rich.ol$pval, digits=2))
+)
+forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
+
+plot.data <- structure(list( # fire intensity
+  mean = c(NA, bees.abun.in$beta, bees.rich.in$beta, bees.abun.nd$beta, bees.rich.nd$beta),
+  lower = c(NA, bees.abun.in$ci.lb, bees.rich.in$ci.lb, bees.abun.nd$ci.lb, bees.rich.nd$ci.lb),
+  upper = c(NA, bees.abun.in$ci.ub, bees.rich.in$ci.ub, bees.abun.nd$ci.ub, bees.rich.nd$ci.ub)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -11L),
+  class = "data.frame")
+tabletext <- cbind(
+  c("Time Since Fire", "0-5 Years (Abundance) [9]", "0-5 Years (Richness) [9]", "5+ Years (Abundance) [5]", "5+ Years (Richness) [7]"),
+  c("p-value", format(bees.abun.in$pval, digits=2), format(bees.rich.in$pval, digits=2), format(bees.abun.nd$pval, digits=2), format(bees.rich.nd$pval, digits=2))
 )
 forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
 
