@@ -17,7 +17,7 @@ leps <- NA
 
 # Modify data to conform to particular research question
 # carab <- carab[which(carab$YearSinceFire < 2),]
-# bees <- bees[which(bees$YearSinceFire < 2),]
+bees <- bees[which(bees$Author != "Simanonok (Thesis)"),]
 
 carab.abun <- carab[carab$Metric == "Abundance",]
 carab.rich <- carab[carab$Metric == "Richness",]
@@ -29,15 +29,15 @@ bees.rich <- bees[bees$Metric == "Richness",]
 carab.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", slab=paste(carab.abun$Author, carab.abun$YearPublished))
 carab.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", slab=paste(carab.rich$Author, carab.rich$YearPublished))
 
-bees.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", slab=Author)
-bees.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", slab=Author)
+bees.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", slab=paste(bees.abun$Author, bees.abun$YearPublished))
+bees.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", slab=paste(bees.rich$Author, bees.rich$YearPublished))
 
 # Forest plots for each metric
 forest(carab.abun.meta, slab=paste(carab.abun$Author, carab.abun$YearPublished), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = FALSE)
 forest(carab.rich.meta, slab=paste(carab.rich$Author, carab.rich$YearPublished), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = FALSE)
 
-forest(bees.abun.meta, slab=paste(bees.abun$Author), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = TRUE)
-forest(bees.rich.meta, slab=paste(bees.rich$Author), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = TRUE)
+forest(bees.abun.meta, slab=paste(bees.abun$Author, bees.abun$Year.Published), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = TRUE)
+forest(bees.rich.meta, slab=paste(bees.rich$Author, bees.rich$Year.Published), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = TRUE)
 
 # Subgroup forest plots for each metric (code from metafor website)
 
