@@ -74,6 +74,13 @@ carab.rich.cf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich
 carab.rich.de <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(HabitatType=="Shrubland"), slab=Author)
 carab.rich.mf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(HabitatType=="Mixed Forest"), slab=Author)
 
+carab.abun.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(TimeClass=="0"), slab=Author)
+carab.abun.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(TimeClass=="1-5"), slab=Author)
+carab.abun.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(TimeClass=="5+"), slab=Author)
+
+carab.rich.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(TimeClass=="0"), slab=Author)
+carab.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(TimeClass=="1-5"), slab=Author)
+carab.rich.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(TimeClass=="5+"), slab=Author)
 
 # BEES #
 bees.abun.wf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(FireType=="Wildfire"), slab=Author)
@@ -127,7 +134,7 @@ plot.data <- structure(list( # wildfire vs prescribed fire
   class = "data.frame")
 tabletext <- cbind(
   c("Fire Type", "Wildfire (Abundance) [14]", "Wildfire (Richness) [11]", "Prescribed Fire (Abundance) [15]", "Prescribed Fire (Richness) [13]"),
-  c("p-value", format(carab.abun.wf$pval, digits=2), format(carab.rich.wf$pval, digits=2), format(carab.abun.pf$pval, digits=2), format(carab.rich.wf$pval, digits=2))
+  c("p-value", format(carab.abun.wf$pval, digits=2), format(carab.rich.wf$pval, digits=2), format(carab.abun.pf$pval, digits=2), format(carab.rich.pf$pval, digits=2))
 )
 forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
 
@@ -161,8 +168,8 @@ forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page
 
 plot.data <- structure(list( # habitat type
   mean = c(NA, carab.abun.df$beta, carab.rich.df$beta, carab.abun.cf$beta, carab.rich.cf$beta, carab.abun.mf$beta, carab.rich.mf$beta, carab.abun.gr$beta, carab.rich.gr$beta, carab.abun.de$beta, carab.rich.de$beta),
-  lower = c(NA, carab.abun.df$ci.lb, carab.rich.df$ci.lb, carab.abun.cf$ci.lb, carab.rich.cf$ci.lb, carab.abun.mf$ci.lb, carab.rich.mf$ci.lb, carab.abun.gr$ci.lb, carab.rich.gr$ci.lb, carab.abun.de$beta, carab.rich.de$ci.lb),
-  upper = c(NA, carab.abun.df$ci.ub, carab.rich.df$ci.ub, carab.abun.cf$ci.ub, carab.rich.cf$ci.ub, carab.abun.mf$ci.ub, carab.rich.mf$ci.ub, carab.abun.gr$ci.ub, carab.rich.gr$ci.ub, carab.abun.de$beta, carab.rich.de$ci.ub)),
+  lower = c(NA, carab.abun.df$ci.lb, carab.rich.df$ci.lb, carab.abun.cf$ci.lb, carab.rich.cf$ci.lb, carab.abun.mf$ci.lb, carab.rich.mf$ci.lb, carab.abun.gr$ci.lb, carab.rich.gr$ci.lb, carab.abun.de$ci.lb, carab.rich.de$ci.lb),
+  upper = c(NA, carab.abun.df$ci.ub, carab.rich.df$ci.ub, carab.abun.cf$ci.ub, carab.rich.cf$ci.ub, carab.abun.mf$ci.ub, carab.rich.mf$ci.ub, carab.abun.gr$ci.ub, carab.rich.gr$ci.ub, carab.abun.de$ci.ub, carab.rich.de$ci.ub)),
   .Names = c("mean", "lower", "upper"),
   row.names = c(NA, -11L),
   class = "data.frame")
@@ -171,6 +178,21 @@ tabletext <- cbind(
     "Mixed Forest (Abudance) [1]", "Mixed Forest (Richness) [1]", "Grassland (Abundance) [2]", "Grassland (Richness) [2]",  "Shrubland (Abundance) [2]", "Shrubland (Richness) [2]"),
   c("p-value", format(carab.abun.df$pval, digits=2), format(carab.rich.df$pval, digits=2), format(carab.abun.cf$pval, digits=2), format(carab.rich.cf$pval, digits=2),
     format(carab.abun.mf$pval, digits=2), format(carab.rich.mf$pval, digits=2), format(carab.abun.gr$pval, digits=2), format(carab.rich.gr$pval, digits=2), format(carab.abun.de$pval, digits=2), format(carab.rich.de$pval, digits=2))
+)
+forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
+
+plot.data <- structure(list( # fire intensity
+  mean = c(NA, carab.abun.in$beta, carab.rich.in$beta, carab.abun.nd$beta, carab.rich.nd$beta, carab.abun.ol$beta, carab.rich.ol$beta),
+  lower = c(NA, carab.abun.in$ci.lb, carab.rich.in$ci.lb, carab.abun.nd$ci.lb, carab.rich.nd$ci.lb, carab.abun.ol$ci.lb, carab.rich.ol$ci.lb),
+  upper = c(NA, carab.abun.in$ci.ub, carab.rich.in$ci.ub, carab.abun.nd$ci.ub, carab.rich.nd$ci.ub, carab.abun.ol$ci.ub, carab.rich.ol$ci.ub)),
+  .Names = c("mean", "lower", "upper"),
+  row.names = c(NA, -11L),
+  class = "data.frame")
+tabletext <- cbind(
+  c("Time Since Fire", "0 Years (Abundance) [11]", "0 Years (Richness) [9]", "1-5 Years (Abundance) [17]", "1-5 Years (Richness) [14]",
+    "5+ Years (Abundance) [1]", "5+ Years (Richness) [1]"),
+  c("p-value", format(carab.abun.in$pval, digits=2), format(carab.rich.in$pval, digits=2), format(carab.abun.nd$pval, digits=2), format(carab.rich.nd$pval, digits=2),
+    format(carab.abun.ol$pval, digits=2), format(carab.rich.ol$pval, digits=2))
 )
 forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
 
