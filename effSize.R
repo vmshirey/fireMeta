@@ -712,6 +712,14 @@ u.rich <- c(5, 5, 8, 5, 8, 6, 9, 6, 8)
 mes(mean(b.abun), mean(u.abun), sd(b.abun), sd(u.abun), length(b.abun), length(u.abun))
 mes(mean(b.rich), mean(u.rich), sd(b.rich), sd(u.rich), length(b.rich), length(u.rich))
 
+##########################
+## Colby (Dissertation) ##
+##########################
+
+# Treatment 1X NA #
+mes(12, 2, ) # abundance
+mes() # richness
+
 ## BEES ##
 
 #####################
@@ -944,6 +952,25 @@ fu <- c(0,8,8,3)
 mes(mean(cbb), mean(cbu), sd(cbb), sd(cbu), 3, 4)
 mes(mean(fb), mean(fu), sd(fb), sd(fu), 3, 4)
 
+######################
+## Tucker and Rehan ##
+######################
+
+mes(22.69, ) # abundance
+mes() # richness
+
+####################
+## Adedoja et al. ##
+####################
+
+mes(14, 24.33, 13, 18.90326, 3, 3) # abundance hilltop
+mes(12, 31.667, 8.544, 27.68273, 3, 3) # abundance hill slope
+mes(15, 22, 10.54, 12.28821, 3, 3) # abundance valley
+
+mes(3, 4.667, 2.65, 4.04, 3, 3) # richness hilltop
+mes(2.667, 3, 1.15, 1, 3, 3) # richness hill slope
+mes(3, 2.667, 1, 1.53, 3, 3) # richness valley
+
 ## BUTTERFLIES ##
 
 #########################
@@ -1030,7 +1057,91 @@ mes(41, 41, sqrt(5)*5, sqrt(5)*6, 5, 5) # 4 year
 ## Mciver and Macke 2014 ##
 ###########################
 
-mes(2.79, )
+## year one
+mes(18.4, 5.4, 29.72, 9.26, 6, 6) # JP Abun
+mes(10.32, 14.4, 12.17, 5.67, 5, 6) # PJ Abun
+mes(9.2, 3.6, 5.67, 1.2, 3, 3) # SBE Abun
+mes(13, 11.8, 9.94, 7.14, 6, 6) # SBW Abun
+mes(13.44, 12.48, 19.63, 13.13, 5, 5) # WJ Abun
+
+mes(2.67, 1.83, 2.34, 2.23, 6, 6) # JP Rich
+mes(2, 4, 1.41, 2.97, 5, 6) # PJ Rich
+mes(3.33, 1.33, 3.21, 0.58, 3, 3) # SBE Rich
+mes(2, 1.83, 0.89, 0.41, 6, 6) # SBW Rich
+mes(3, 3, 1.58, 1.41, 5, 5) # WJ Rich
+
+## year two
+mes(18.24, 8.16, 10.44, 6.08, 5, 5) # JP Abun
+mes(11.53, 28.08, 11.93, 23.58, 6, 5) # PJ Abun
+mes(8.1, 8.4, 5.49, 4.596, 4, 4) # SBE Abun
+mes(10.15, 14.8, 4.3, 18.24, 6, 6) # SBW Abun
+mes(27.78, 22.32, 32.2, 31.53, 5, 5) # WJ Abun
+
+mes(2.8, 1.6, 1.48, 1.52, 5, 5) # JP Rich
+mes(3.5, 2.8, 2.43, 1.64, 6, 5) # PJ Rich
+mes(2.25, 2.5, 0.96, 1.91, 4, 4) # SBE Rich
+mes(3.17, 3.17, 1.72, 2.64, 6, 6) # SBW Rich
+mes(4.8, 3.2, 2.77, 2.49, 5, 5) # WJ Rich
+
+## year three
+mes(18.69, 8.57, 15.53, 13.92, 7, 7) # JP Abun
+mes(24.6, 36.8, 21.98, 33.47, 6, 6) # PJ Abun
+mes(7.15, 3, 2.94, 5.23, 4, 4) # SBE Abun
+mes(6.25, 2.8, 3.50, 2.36, 7, 6) # SBW Abun
+mes(32.23, 75.43, 45.23, 107.5, 7, 7) # WJ Abun
+
+mes(2.86, 1.57, 2.67, 2.299, 7, 7) # JP Rich
+mes(4.17, 4.33, 1.72, 2.25, 6, 6) # PJ Rich
+mes(3.25, 1.25, 1.5, 1.89, 4, 4) # SBE Rich
+mes(1.86, 1.5, 0.69, 1.38, 7, 6) # SBW Rich
+mes(4, 4.14, 2.65, 3.13, 7, 7) # WJ Rich
+
+## year four
+mes(7.2, 5.2, 2.49, 4.34, 6, 6) # JP Abun
+mes(24.96, 20.88, 13.82, 18.41, 5, 5) # PJ Abun
+mes(5.28, 1.44, 4.21, 1.13, 5, 5) # SBE Abun
+mes(9.6, 5.14, 8.28, 4.79, 6, 7) # SBW Abun
+mes(16.29, 65.1, 22.03, 127.15, 7, 8) # WJ Abun
+
+mes(3.17, 2.33, 1.33, 2.25, 6, 6) # JP Rich
+mes(5.4, 3.2, 2.88, 1.79, 5, 5) # PJ Rich
+mes(2.4, 0.6, 1.5, 0.55, 5, 5) # SBE Rich
+mes(2.67, 2.14, 2.88, 1.68, 6, 7) # SBW Rich
+mes(3.29, 3.63, 1.98, 2.72, 7, 8) # WJ Rich
+
+## year five
+mes(21.84, 5.04, 32.94, 4.75, 5, 5) # JP Abun
+mes(17.1, 24, 12.98, 20.39, 4, 4) # PJ Abun
+mes(1.6, 2.8, 2.77, 3.02, 3, 3) # SBE Abun
+mes(4.8, 6.72, 4.07, 8.17, 5, 5) # SBW Abun
+mes(16.8, 22.4, 13.34, 16.48, 6, 6) # WJ Abun
+
+mes(3.8, 2.6, 4.66, 1.82, 5, 5) # JP Rich
+mes(3.25, 3, 2.87, 1.83, 4, 4) # PJ Rich
+mes(1, 1.33, 1.73, 1.15, 3, 3) # SBE Rich
+mes(1.6, 1.8, 1.52, 1.92, 5, 5) # SBW Rich
+mes(3.33, 3.5, 1.97, 1.22, 6, 6) # WJ Rich
+
+## year six
+mes(16.5, 15.9, 10.79, 15.03, 4, 4) # JP Abun
+mes(11.1, 14.7, 3.71, 11.06, 4, 4) # PJ Abun
+mes(6, 3.2, 1.2, 3.67, 3, 3) # SBE Abun
+mes(30.6, 20.1, 17.35, 3.96) # WJ Abun
+
+mes(3.5, 2.75, 1.73, 1.71, 4, 4) # JP Rich
+mes(2.5, 2.75, 1.29, 2.36, 4, 4) # PJ Rich
+mes(2, 1, 1.73, 1, 3, 3) # SBE Rich
+mes(4.5, 4, 1.29, 1.41, 4, 4) # WJ Rich
+
+## year seven
+mes(4.8, 4.8, 4.49, 1.96, 4, 4) # JP Abun
+mes(51.6, 50.4, 6.79, 11.88, 2, 2) # PJ Abun
+mes(3, 1.2, 0.85, 1.697, 2, 2) # SBE Abun
+mes(15.12, 14.64, 15.57, 17.17, 5, 5) # WJ Abun
+
+mes(2.5, 2.75, 2.08, 1.26, 4, 4) # JP Rich
+mes(5.5, 2.5, 2.12, 0.71, 2, 2) # PJ Rich
+mes(3.2, 1.4, 2.49, 1.14, 5, 5) # WJ Rich
 
 ######################
 ## Riva et al, 2018 ##
@@ -1059,3 +1170,12 @@ mes(16.0, 13.9, 5, 8.2, 70, 70) # Richness
 mes(16.6, 32.6, 6.025, 6.5803, 5, 5) # 2007
 mes(17, 35.8, 4.42, 7.5299, 5, 5) # 2008
 
+
+## Ants / Formicidae ##
+
+#######################
+# Colby Dissertation ##
+#######################
+
+mes(14.19, 4.73, 25.52, 6.43, 19, 9) # Abundance
+mes(2.5, 3.5, 1, 2.12, 2, 4) # Richness
