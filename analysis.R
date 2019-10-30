@@ -9,11 +9,12 @@ library(meta)
 library(metafor)
 library(metaviz)
 library(forestplot)
+library(glmm)
 
 # Read in data from .csv files
 carab <- read.csv("Carabidae/carabidData.csv", header=TRUE, sep=",")
 bees <- read.csv("Bees/beeData.csv", header=TRUE, sep=",")
-leps <- NA
+leps <- read.csv("Leps/lepData.csv", header=TRUE, sep=",")
 
 # Modify data to conform to particular research question
 # carab <- carab[which(carab$YearSinceFire < 2),]
@@ -25,6 +26,9 @@ carab.rich <- carab[carab$Metric == "Richness",]
 bees.abun <- bees[bees$Metric == "Abundance",]
 bees.rich <- bees[bees$Metric == "Richness",]
 
+leps.abun <- leps[leps$Metric == "Abundance",]
+leps.rich <- leps[leps$Metric == "Richness",]
+
 # Random effects models
 carab.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", slab=paste(carab.abun$Author, carab.abun$YearPublished))
 carab.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", slab=paste(carab.rich$Author, carab.rich$YearPublished))
@@ -32,12 +36,67 @@ carab.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.ri
 bees.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", slab=paste(bees.abun$Author, bees.abun$YearPublished))
 bees.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", slab=paste(bees.rich$Author, bees.rich$YearPublished))
 
+leps.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", slab=paste(leps.abun$Author, leps.abun$YearPublished))
+leps.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", slab=paste(leps.rich$Author, leps.rich$YearPublished))
+
+# meta regressions for variable effects
+carab.abun.mreg <- rma(yi=EffectSize, 
+                      sei=EffectSizeStandardError, 
+                      mods=~FireType+Intensity+HabitatType+Growing+TimeClass,
+                      data=filter(carab.abun, !Intensity=="N/A" & !Growing=="N/A"),
+                      test="knha",
+                      method="SJ")
+carab.abun.mreg
+
+carab.rich.mreg <- rma(yi=EffectSize, 
+                      sei=EffectSizeStandardError, 
+                      mods=~FireType+Intensity+HabitatType+Growing+TimeClass,
+                      data=filter(carab.rich, !Intensity=="N/A" & !Growing=="N/A"),
+                      test="knha",
+                      method="SJ")
+carab.rich.mreg
+
+bees.abun.mreg <- rma(yi=EffectSize, 
+                     sei=EffectSizeStandardError, 
+                     mods=~FireType+Intensity+HabitatType+Growing+TimeClass,
+                     data=filter(bees.abun, !Intensity=="N/A" & !Growing=="N/A"),
+                     test="knha",
+                     method="SJ")
+bees.abun.mreg
+
+bees.rich.mreg <- rma(yi=EffectSize, 
+                      sei=EffectSizeStandardError, 
+                      mods=~FireType+Intensity+HabitatType+Growing+TimeClass,
+                      data=filter(bees.rich, !Intensity=="N/A" & !Growing=="N/A"),
+                      test="knha",
+                      method="SJ")
+bees.rich.mreg
+
+leps.abun.mreg <- rma(yi=EffectSize, 
+                      sei=EffectSizeStandardError, 
+                      mods=~FireType+Intensity+HabitatType+Growing+TimeClass,
+                      data=filter(leps.abun, !Intensity=="N/A" & !Growing=="N/A"),
+                      test="knha",
+                      method="SJ")
+leps.abun.mreg
+
+leps.rich.mreg <- rma(yi=EffectSize, 
+                      sei=EffectSizeStandardError, 
+                      mods=~FireType+Intensity+HabitatType+Growing+TimeClass,
+                      data=filter(leps.rich, !Intensity=="N/A" & !Growing=="N/A"),
+                      test="knha",
+                      method="SJ")
+leps.rich.mreg
+
 # Forest plots for each metric
 forest(carab.abun.meta, slab=paste(carab.abun$Author, carab.abun$YearPublished), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = FALSE)
 forest(carab.rich.meta, slab=paste(carab.rich$Author, carab.rich$YearPublished), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = FALSE)
 
 forest(bees.abun.meta, slab=paste(bees.abun$Author, bees.abun$Year.Published), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = TRUE)
 forest(bees.rich.meta, slab=paste(bees.rich$Author, bees.rich$Year.Published), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = TRUE)
+
+forest(leps.abun.meta, slab=paste(leps.abun$Author, leps.abun$Year.Published), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = TRUE)
+forest(leps.rich.meta, slab=paste(leps.rich$Author, leps.rich$Year.Published), order="obs", xlab="Hedge's G", alim=c(-10,10), annotate = TRUE)
 
 # Subgroup forest plots for each metric (code from metafor website)
 
@@ -296,3 +355,6 @@ funnel(carab.rich.meta)
 
 funnel(bees.abun.meta)
 funnel(bees.rich.meta)
+
+funnel(leps.abun.meta)
+funnel(leps.rich.meta)

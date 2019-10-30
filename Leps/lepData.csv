@@ -1,0 +1,95 @@
+Author,YearPublished,Metric,EffectSize,EffectSizeStandardError,Intensity,Quantified?,Details,YearSinceFire,TimeClass,HabitatType,Details,FireType,Details,Region,RegionDetails,Biome,Month,Season,Growing
+Bohl et al.,2016,Abundance,-2.99,0.26,N/A,No,N/A,0,0,Grassland,"""restored prairie""",Prescribed,,"Ohio, USA",North American Miidwest,,April,Spring,Growing
+Campbell et al.,2007,Abundance,4.72,0.74,Low,,,2,1to5,Deciduous Forest,Oak Dominated,Prescribed,"hand ignition, spot fire, strip headfire, moderate to high flame length",North America East,"North Carolina, USA",,March,Winter,Dormant
+Campbell et al.,2007,Abundance,0.54,0.19,Low,,,1,1to5,Deciduous Forest,Oak Dominated,Prescribed,"hand ignition, spot fire, strip headfire, moderate to high flame length",North America East,"North Carolina, USA",,March,Winter,Dormant
+Cleary and Mooers 2004,2004,Richness,-0.12,0,High,,"N/A, but B1 = wildfire = high",2,1to5,Tropical Rainforest,,Wildfire,ENSO Event,Borneo,,,Sept 97 - Feb 98,,
+Cleary and Mooers 2006,2006,Abundance,-0.25,0,High,,"N/A, but B1 = wildfire = high",2,1to5,Tropical Rainforest,,Wildfire,ENSO Event,Borneo,,,No,,
+Dollar,2013,Abundance,-0.62,0.3,Low,Descriptive,"""buffers. Litter cover was greatest on control buffers, intermediate on disk 2007 buffers (1st growing season post-disk), and least on burn 2008 buffers (1st growing season post-burn; Table 2). Flowering stems and flowering types were greatest on burn 2008 buffers...""",1,1to5,Grassland,grassland,Prescribed,"""We used prescribed burning because...""","Mississippi, USA",,,March-April,Spring,Growing
+Dollar,2013,Richness,0,0.28,Low,Descriptive,"""buffers. Litter cover was greatest on control buffers, intermediate on disk 2007 buffers (1st growing season post-disk), and least on burn 2008 buffers (1st growing season post-burn; Table 2). Flowering stems and flowering types were greatest on burn 2008 buffers...""",1,1to5,Grassland,grassland,Prescribed,"""We used prescribed burning because...""","Mississippi, USA",,,March-April,Spring,Growing
+Fleishman,2000,Richness,-2.29,0.59,Low,,Prescribed burn = low,0,0,Riparian/GreatBasin,,Prescribed,,Nevada,,,Oct/April,Winter?,Dormant
+Fleishman,2000,Richness,-2.75,0.7,Low,,Prescribed burn = low,1,1to5,Riparian/GreatBasin,,Prescribed,,Nevada,,,Oct/April,Winter?,Dormant
+Kwon et al.,2013,Richness,-0.32,0.29,High,Descriptive,"""large forest fire""",0,0,Grassland,"""..changed into grassland..""",Wildfire,"""large forest fire""",Korea,,,April,Spring,Growing
+Kwon et al.,2013,Richness,0.98,0.28,High,Descriptive,"""large forest fire""",1,1to5,Grassland,"""..changed into grassland..""",Wildfire,"""large forest fire""",Korea,,,April,Spring,Growing
+Kwon et al.,2013,Richness,-1.03,0.29,High,Descriptive,"""large forest fire""",2,1to5,Grassland,"""..changed into grassland..""",Wildfire,"""large forest fire""",Korea,,,April,Spring,Growing
+Kwon et al.,2013,Richness,-1.07,0.33,High,Descriptive,"""large forest fire""",3,1to5,Grassland,"""..changed into grassland..""",Wildfire,"""large forest fire""",Korea,,,April,Spring,Growing
+Kwon et al.,2013,Richness,0,0.33,High,Descriptive,"""large forest fire""",4,1to5,Grassland,"""..changed into grassland..""",Wildfire,"""large forest fire""",Korea,,,April,Spring,Growing
+Mciver and Macke,2014,Abundance,0.55,0.3,Low,Descriptive,gave numbers of consumption,1,1to5,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,-0.41,0.31,Low,Descriptive,gave numbers of consumption,1,1to5,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,1.09,0.53,Low,Descriptive,gave numbers of consumption,1,1to5,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,0.13,0.28,Low,Descriptive,gave numbers of consumption,1,1to5,Grassland,SBW,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,0.05,0.33,Low,Descriptive,gave numbers of consumption,1,1to5,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Richness,0.34,0.29,Low,Descriptive,gave numbers of consumption,1,1to5,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,-0.76,0.33,Low,Descriptive,gave numbers of consumption,1,1to5,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.69,0.47,Low,Descriptive,gave numbers of consumption,1,1to5,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.23,0.29,Low,Descriptive,gave numbers of consumption,1,1to5,Grassland,SBW,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0,0.33,Low,Descriptive,gave numbers of consumption,1,1to5,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,1.07,0.38,Low,Descriptive,gave numbers of consumption,2,1to5,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,-0.84,0.34,Low,Descriptive,gave numbers of consumption,2,1to5,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,-0.05,0.38,Low,Descriptive,gave numbers of consumption,2,1to5,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,-0.32,0.29,Low,Descriptive,gave numbers of consumption,2,1to5,Grassland,SBW,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,0.15,0.33,Low,Descriptive,gave numbers of consumption,2,1to5,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Richness,0.72,0.35,Low,Descriptive,gave numbers of consumption,2,1to5,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.3,0.31,Low,Descriptive,gave numbers of consumption,2,1to5,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,-0.14,0.38,Low,Descriptive,gave numbers of consumption,2,1to5,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0,0.28,Low,Descriptive,gave numbers of consumption,2,1to5,Grassland,SBW,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.55,0.34,Low,Descriptive,gave numbers of consumption,2,1to5,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,0.64,0.27,Low,Descriptive,gave numbers of consumption,3,1to5,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,-0.4,0.29,Low,Descriptive,gave numbers of consumption,3,1to5,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,0.85,0.42,Low,Descriptive,gave numbers of consumption,3,1to5,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,1.06,0.31,Low,Descriptive,gave numbers of consumption,3,1to5,Grassland,SBW,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,-0.49,0.26,Low,Descriptive,gave numbers of consumption,3,1to5,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Richness,0.48,0.26,Low,Descriptive,gave numbers of consumption,3,1to5,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,-0.07,0.28,Low,Descriptive,gave numbers of consumption,3,1to5,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,10.2,0.44,Low,Descriptive,gave numbers of consumption,3,1to5,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.32,0.27,Low,Descriptive,gave numbers of consumption,3,1to5,Grassland,SBW,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,-0.05,0.25,Low,Descriptive,gave numbers of consumption,3,1to5,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,0.52,0.3,Low,Descriptive,gave numbers of consumption,4,1to5,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,0.23,0.33,Low,Descriptive,gave numbers of consumption,4,1to5,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,1.13,0.39,Low,Descriptive,gave numbers of consumption,4,1to5,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,0.63,0.28,Low,Descriptive,gave numbers of consumption,4,1to5,Grassland,SBW,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,-0.49,0.25,Low,Descriptive,gave numbers of consumption,4,1to5,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Richness,0.42,0.29,Low,Descriptive,gave numbers of consumption,4,1to5,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.83,0.36,Low,Descriptive,gave numbers of consumption,4,1to5,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,1.44,0.43,Low,Descriptive,gave numbers of consumption,4,1to5,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.21,0.27,Low,Descriptive,gave numbers of consumption,4,1to5,Grassland,SBW,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,-0.13,0.24,Low,Descriptive,gave numbers of consumption,4,1to5,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,0.64,0.35,Low,Descriptive,gave numbers of consumption,5,1to5,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,-0.35,0.39,Low,Descriptive,gave numbers of consumption,5,1to5,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,-0.33,0.44,Low,Descriptive,gave numbers of consumption,5,1to5,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,-0.27,0.33,Low,Descriptive,gave numbers of consumption,5,1to5,Grassland,SBW,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,-0.34,0.29,Low,Descriptive,gave numbers of consumption,5,1to5,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Richness,0.31,0.33,Low,Descriptive,gave numbers of consumption,5,1to5,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.09,0.38,Low,Descriptive,gave numbers of consumption,5,1to5,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,-0.18,0.43,Low,Descriptive,gave numbers of consumption,5,1to5,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,-0.1,0.33,Low,Descriptive,gave numbers of consumption,5,1to5,Grassland,SBW,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,-0.1,0.28,Low,Descriptive,gave numbers of consumption,5,1to5,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,0.04,0.38,Low,Descriptive,gave numbers of consumption,6,5+,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,-0.38,0.39,Low,Descriptive,gave numbers of consumption,6,5+,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,0.82,0.48,Low,Descriptive,gave numbers of consumption,6,5+,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,0.82,0.48,Low,Descriptive,gave numbers of consumption,6,5+,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Richness,0.38,0.39,Low,Descriptive,gave numbers of consumption,6,5+,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,-0.11,0.38,Low,Descriptive,gave numbers of consumption,6,5+,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.57,0.45,Low,Descriptive,gave numbers of consumption,6,5+,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.32,0.38,Low,Descriptive,gave numbers of consumption,6,5+,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,0,0.38,Low,Descriptive,gave numbers of consumption,7,5+,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,0.07,0.33,Low,Descriptive,gave numbers of consumption,7,5+,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Abundance,0.77,0.4,Low,Descriptive,gave numbers of consumption,7,5+,Grassland,SBE,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Abundance,0.03,0.33,Low,Descriptive,gave numbers of consumption,7,5+,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,Aug-Nov,Summer/Fall,Growing
+Mciver and Macke,2014,Richness,-0.13,0.38,Low,Descriptive,gave numbers of consumption,7,5+,Coniferous Forest,JP,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,1.08,0.47,Low,Descriptive,gave numbers of consumption,7,5+,Coniferous Forest,PJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Mciver and Macke,2014,Richness,0.84,0.36,Low,Descriptive,gave numbers of consumption,7,5+,Coniferous Forest,WJ,Prescribed,N/A,Western US,"Great Basin, mulitple states",,May-Oct,Spring/Summer,Growing
+Nowicki et al.,2015,Abundance,0.22,0.09,High,Descriptive,"extensive fire, rapid spread of flames, strong wind, dry conditions",0,0,floodplain meadow,,Wildfire,started by teens,Poland,,,March,Spring,Growing
+Powell et al.,2007,Abundance,-0.66,0.07,Mid,Desciptive,"""absence of litter, recently killed junipers, charred stems""",0,0,Grassland,praire,Prescribed,,Kansas,,,No,No,Growing
+Pryke et al.,2012,Abundance,0.07,0.41,Low,Desciptive,some woody vegetation both dead and alive,1,1to5,Dessert,rocky habitat,Wildfire,major accidental fires,South Africa,,,January,,
+Pryke et al.,2012,Abundance,0.44,0.43,Low,Desciptive,some woody vegetation both dead and alive,3,1to5,Dessert,rocky habitat,Wildfire,major accidental fires,South Africa,,,January,,
+Pryke et al.,2012,Richness,-1.1,0.5,Low,Desciptive,some woody vegetation both dead and alive,1,1to5,Dessert,rocky habitat,Wildfire,major accidental fires,South Africa,,,January,,
+Pryke et al.,2012,Richness,-0.42,0.43,Low,Desciptive,some woody vegetation both dead and alive,3,1to5,Dessert,rocky habitat,Wildfire,major accidental fires,South Africa,,,January,,
+Riva et al.,2018,Abundance,-0.81,0.01,High,Desciptive,>85% tree mortality,0,0,Coniferous Forest,"spruce, large, aspen",Wildfire,Fort McMurrary,"Alberta, Canada",,,No,No,No
+Scandurra et al.,2014,Richness,3.47,0.21,,No,Wildfire,0,0,Deciduous Forest,chestnut and hazelnut trees,Wildfire,,Italy,,,October,,Dormant
+Scandurra et al.,2014,Abundance,4.78,0.32,,No,Wildfire,0,0,Deciduous Forest,chestnut and hazelnut trees,Wildfire,,Italy,,,October,,Dormant
+Serrat et al.,2015,Richness,0.31,0.03,High,Descriptive,severe,2,1to5,Coniferous Forest,Aleppo pine,Wildfire,,Spain,,,July,,
+Serrat et al.,2015,Abundance,-0.51,0.03,High,Descriptive,severe,2,1to5,Coniferous Forest,Aleppo pine,Wildfire,,Spain,,,July,,
+Warchola et al. 2015,2015,Abundance,0.21,0.02,Low,No,Prescribed burn = low,2,1to5,Grassland,praire,Prescribed,,"Oregon, USA",,,No,Summer,Growing
+Warchola et al. 2017,2017,Abundance,0.31,0.03,Low,No,Prescribed burn = low,1,1to5,Grassland,praire,Prescribed,,"Oregon, USA",,,October,Fall,Dormant
+Warchola et al. 2017,2017,Abundance,0.28,0.03,Low,No,Prescribed burn = low,2,1to5,Grassland,praire,Prescribed,,"Oregon, USA",,,October,Fall,Dormant
+Warchola et al. 2017,2017,Abundance,-0.04,0.03,Low,No,Prescribed burn = low,3,1to5,Grassland,praire,Prescribed,,"Oregon, USA",,,October,Fall,Dormant
