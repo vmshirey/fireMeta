@@ -4,12 +4,12 @@
 ####################################################
 
 # load libraries
-library(dplyr)
 library(meta)
 library(metafor)
 library(metaviz)
 library(forestplot)
 library(glmm)
+library(tidyverse)
 
 # Read in data from .csv files
 carab <- read.csv("Carabidae/carabidData.csv", header=TRUE, sep=",")
@@ -188,166 +188,35 @@ bees.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, 
 
 # Subgroup Forest Plots #
 
-# CARABIDS #
-par(mfrow=c(1,1), font=1)
+bees.richPlot <- as_tibble(rbind(c(19, "Bee Richness", "Wildfire", bees.rich.wf$beta, bees.rich.wf$ci.lb, bees.rich.wf$ci.ub, bees.rich.wf$pval, bees.rich.wf$k),
+                             c(18, "Bee Richness", "Prescribed Fire", bees.rich.pf$beta, bees.rich.pf$ci.lb, bees.rich.pf$ci.ub, bees.rich.pf$pval, bees.rich.pf$k),
+                             c(15, "Bee Richness", "Growing", bees.rich.g$beta, bees.rich.g$ci.lb, bees.rich.g$ci.ub, bees.rich.g$pval, bees.rich.g$k),
+                             c(14, "Bee Richness", "Non-growing", bees.rich.ng$beta, bees.rich.ng$ci.lb, bees.rich.ng$ci.ub, bees.rich.ng$pval, bees.rich.ng$k),
+                             c(11, "Bee Richness", "Deciduous Forest", bees.rich.df$beta, bees.rich.df$ci.lb, bees.rich.df$ci.ub, bees.rich.df$pval, bees.rich.df$k),
+                             c(10, "Bee Richness", "Coniferous Forest", bees.rich.cf$beta, bees.rich.cf$ci.lb, bees.rich.cf$ci.ub, bees.rich.cf$pval, bees.rich.cf$k),
+                             c(9, "Bee Richness", "Grassland", bees.rich.gr$beta, bees.rich.gr$ci.lb, bees.rich.gr$ci.ub, bees.rich.gr$pval, bees.rich.gr$k),
+                             c(8, "Bee Richness", "Desert", bees.rich.de$beta, bees.rich.de$ci.lb, bees.rich.de$ci.ub, bees.rich.de$pval, bees.rich.de$k),
+                             c(5, "Bee Richness", "Low Severity", bees.rich.lo$beta, bees.rich.lo$ci.lb, bees.rich.lo$ci.ub, bees.rich.lo$pval, bees.rich.lo$k),
+                             c(2, "Bee Richness", "0 Years", bees.rich.in$beta, bees.rich.in$ci.lb, bees.rich.in$ci.ub, bees.rich.in$pval, bees.rich.in$k),
+                             c(1, "Bee Richness", "1-5 Years", bees.rich.nd$beta, bees.rich.nd$ci.lb, bees.rich.nd$ci.ub, bees.rich.nd$pval, bees.rich.nd$k),
+                             c(0, "Bee Richness", "5+ Years", bees.rich.ol$beta, bees.rich.ol$ci.lb, bees.rich.ol$ci.ub, bees.rich.ol$pval, bees.rich.ol$k),
+                             c(-2, "Bee Richness", "Overall Effect", bees.rich.meta$beta, bees.rich.meta$ci.lb, bees.rich.meta$ci.ub, bees.rich.meta$pval, bees.rich.meta$k)))
 
-plot.data <- structure(list( # wildfire vs prescribed fire
-  mean = c(NA, carab.abun.wf$beta, carab.rich.wf$beta, carab.abun.pf$beta, carab.rich.pf$beta),
-  lower = c(NA, carab.abun.wf$ci.lb, carab.rich.wf$ci.lb, carab.abun.pf$ci.lb, carab.rich.pf$ci.lb),
-  upper = c(NA, carab.abun.wf$ci.ub, carab.rich.wf$ci.ub, carab.abun.pf$ci.ub, carab.rich.pf$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Fire Type", "Wildfire (Abundance) [14]", "Wildfire (Richness) [11]", "Prescribed Fire (Abundance) [15]", "Prescribed Fire (Richness) [13]"),
-  c("p-value", format(carab.abun.wf$pval, digits=2), format(carab.rich.wf$pval, digits=2), format(carab.abun.pf$pval, digits=2), format(carab.rich.pf$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
-
-plot.data <- structure(list( # fire intensity
-  mean = c(NA, carab.abun.hi$beta, carab.rich.hi$beta, carab.abun.mi$beta, carab.rich.mi$beta, carab.abun.lo$beta, carab.rich.lo$beta),
-  lower = c(NA, carab.abun.hi$ci.lb, carab.rich.hi$ci.lb, carab.abun.mi$ci.lb, carab.rich.mi$ci.lb, carab.abun.lo$ci.lb, carab.rich.lo$ci.lb),
-  upper = c(NA, carab.abun.hi$ci.ub, carab.rich.hi$ci.ub, carab.abun.mi$ci.ub, carab.rich.mi$ci.ub, carab.abun.lo$ci.ub, carab.rich.lo$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Fire Intensity", "High Intensity (Abundance) [1]", "High Intensity (Richness) [1]", "Mid Intensity (Abundance) [1]", "Mid Intensity (Richness) [1]",
-    "Low Intensity (Abundance) [4]", "Low Intensity (Richness) [4]"),
-  c("p-value", format(carab.abun.hi$pval, digits=2), format(carab.rich.hi$pval, digits=2), format(carab.abun.mi$pval, digits=2), format(carab.rich.hi$pval, digits=2),
-    format(carab.abun.lo$pval, digits=2), format(carab.rich.lo$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
-
-plot.data <- structure(list( # dormant vs. growing season
-  mean = c(NA, carab.abun.g$beta, carab.rich.g$beta, carab.abun.ng$beta, carab.rich.ng$beta),
-  lower = c(NA, carab.abun.g$ci.lb, carab.rich.g$ci.lb, carab.abun.ng$ci.lb, carab.rich.ng$ci.lb),
-  upper = c(NA, carab.abun.g$ci.ub, carab.rich.g$ci.ub, carab.abun.ng$ci.ub, carab.rich.ng$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Season of Fire", "Growing (Abundance) [18]", "Growing (Richness) [15]", "Dormant (Abundance) [1]", "Dormant (Richness) [1]"),
-  c("p-value", format(carab.abun.g$pval, digits=2), format(carab.rich.g$pval, digits=2), format(carab.abun.ng$pval, digits=2), format(carab.rich.g$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
-
-plot.data <- structure(list( # habitat type
-  mean = c(NA, carab.abun.df$beta, carab.rich.df$beta, carab.abun.cf$beta, carab.rich.cf$beta, carab.abun.mf$beta, carab.rich.mf$beta, carab.abun.gr$beta, carab.rich.gr$beta, carab.abun.de$beta, carab.rich.de$beta),
-  lower = c(NA, carab.abun.df$ci.lb, carab.rich.df$ci.lb, carab.abun.cf$ci.lb, carab.rich.cf$ci.lb, carab.abun.mf$ci.lb, carab.rich.mf$ci.lb, carab.abun.gr$ci.lb, carab.rich.gr$ci.lb, carab.abun.de$ci.lb, carab.rich.de$ci.lb),
-  upper = c(NA, carab.abun.df$ci.ub, carab.rich.df$ci.ub, carab.abun.cf$ci.ub, carab.rich.cf$ci.ub, carab.abun.mf$ci.ub, carab.rich.mf$ci.ub, carab.abun.gr$ci.ub, carab.rich.gr$ci.ub, carab.abun.de$ci.ub, carab.rich.de$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Habitat of Fire", "Deciduous Forest (Abundance) [2]", "Deciduous Forest (Richness) [2]", "Coniferous Forest (Abundance) [15]", "Coniferous Forest (Richness) [10]",
-    "Mixed Forest (Abudance) [1]", "Mixed Forest (Richness) [1]", "Grassland (Abundance) [2]", "Grassland (Richness) [2]",  "Shrubland (Abundance) [2]", "Shrubland (Richness) [2]"),
-  c("p-value", format(carab.abun.df$pval, digits=2), format(carab.rich.df$pval, digits=2), format(carab.abun.cf$pval, digits=2), format(carab.rich.cf$pval, digits=2),
-    format(carab.abun.mf$pval, digits=2), format(carab.rich.mf$pval, digits=2), format(carab.abun.gr$pval, digits=2), format(carab.rich.gr$pval, digits=2), format(carab.abun.de$pval, digits=2), format(carab.rich.de$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
-
-plot.data <- structure(list( # fire intensity
-  mean = c(NA, carab.abun.in$beta, carab.rich.in$beta, carab.abun.nd$beta, carab.rich.nd$beta, carab.abun.ol$beta, carab.rich.ol$beta),
-  lower = c(NA, carab.abun.in$ci.lb, carab.rich.in$ci.lb, carab.abun.nd$ci.lb, carab.rich.nd$ci.lb, carab.abun.ol$ci.lb, carab.rich.ol$ci.lb),
-  upper = c(NA, carab.abun.in$ci.ub, carab.rich.in$ci.ub, carab.abun.nd$ci.ub, carab.rich.nd$ci.ub, carab.abun.ol$ci.ub, carab.rich.ol$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Time Since Fire", "0 Years (Abundance) [11]", "0 Years (Richness) [9]", "1-5 Years (Abundance) [17]", "1-5 Years (Richness) [14]",
-    "5+ Years (Abundance) [1]", "5+ Years (Richness) [1]"),
-  c("p-value", format(carab.abun.in$pval, digits=2), format(carab.rich.in$pval, digits=2), format(carab.abun.nd$pval, digits=2), format(carab.rich.nd$pval, digits=2),
-    format(carab.abun.ol$pval, digits=2), format(carab.rich.ol$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
-
-# BEES #
-par(mfrow=c(1,1), font=1)
-
-plot.data <- structure(list( # wildfire vs prescribed fire
-  mean = c(NA, bees.abun.wf$beta, bees.rich.wf$beta, bees.abun.pf$beta, bees.rich.pf$beta),
-  lower = c(NA, bees.abun.wf$ci.lb, bees.rich.wf$ci.lb, bees.abun.pf$ci.lb, bees.rich.pf$ci.lb),
-  upper = c(NA, bees.abun.wf$ci.ub, bees.rich.wf$ci.ub, bees.abun.pf$ci.ub, bees.rich.pf$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Fire Type", "Wildfire (Abundance) [11]", "Wildfire (Richness) [13]", "Prescribed Fire (Abundance) [5]", "Prescribed Fire (Richness) [3]"),
-  c("p-value", format(bees.abun.wf$pval, digits=2), format(bees.rich.wf$pval, digits=2), format(bees.abun.pf$pval, digits=2), format(bees.rich.wf$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
-
-plot.data <- structure(list( # fire intensity
-  mean = c(NA, bees.abun.hi$beta, bees.rich.hi$beta, bees.abun.mi$beta, bees.rich.mi$beta, bees.abun.lo$beta, bees.rich.lo$beta),
-  lower = c(NA, bees.abun.hi$ci.lb, bees.rich.hi$ci.lb, bees.abun.mi$ci.lb, bees.rich.mi$ci.lb, bees.abun.lo$ci.lb, bees.rich.lo$ci.lb),
-  upper = c(NA, bees.abun.hi$ci.ub, bees.rich.hi$ci.ub, bees.abun.mi$ci.ub, bees.rich.mi$ci.ub, bees.abun.lo$ci.ub, bees.rich.lo$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Fire Intensity", "High Intensity (Abundance) [5]", "High Intensity (Richness) [6]", "Mid Intensity (Abundance) [1]", "Mid Intensity (Richness) [4]",
-    "Low Intensity (Abundance) [8]", "Low Intensity (Richness) [6]"),
-  c("p-value", format(bees.abun.hi$pval, digits=2), format(bees.rich.hi$pval, digits=2), format(bees.abun.mi$pval, digits=2), format(bees.rich.hi$pval, digits=2),
-    format(bees.abun.lo$pval, digits=2), format(bees.rich.lo$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
-
-plot.data <- structure(list( # dormant vs. growing season
-  mean = c(NA, bees.abun.g$beta, bees.rich.g$beta, bees.abun.ng$beta, bees.rich.ng$beta),
-  lower = c(NA, bees.abun.g$ci.lb, bees.rich.g$ci.lb, bees.abun.ng$ci.lb, bees.rich.ng$ci.lb),
-  upper = c(NA, bees.abun.g$ci.ub, bees.rich.g$ci.ub, bees.abun.ng$ci.ub, bees.rich.ng$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Season of Fire", "Growing (Abundance) [9]", "Growing (Richness) [8]", "Dormant (Abundance) [5]", "Dormant (Richness) [3]"),
-  c("p-value", format(bees.abun.g$pval, digits=2), format(bees.rich.g$pval, digits=2), format(bees.abun.ng$pval, digits=2), format(bees.rich.g$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
-
-plot.data <- structure(list( # habitat type
-  mean = c(NA, bees.abun.df$beta, bees.rich.df$beta, bees.abun.cf$beta, bees.rich.cf$beta, bees.abun.gr$beta, bees.rich.gr$beta, bees.rich.de$beta),
-  lower = c(NA, bees.abun.df$ci.lb, bees.rich.df$ci.lb, bees.abun.cf$ci.lb, bees.rich.cf$ci.lb, bees.abun.gr$ci.lb, bees.rich.gr$ci.lb, bees.rich.de$ci.lb),
-  upper = c(NA, bees.abun.df$ci.ub, bees.rich.df$ci.ub, bees.abun.cf$ci.ub, bees.rich.cf$ci.ub, bees.abun.gr$ci.ub, bees.rich.gr$ci.ub, bees.rich.de$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Habitat of Fire", "Deciduous Forest (Abundance) [7]", "Deciduous Forest (Richness) [5]", "Coniferous Forest (Abundance) [7]", "Coniferous Forest (Richness) [7]",
-    "Grassland (Abundance) [2]", "Grassland (Richness) [1]", "Desert (Richness) [3]"),
-  c("p-value", format(bees.abun.df$pval, digits=2), format(bees.rich.df$pval, digits=2), format(bees.abun.cf$pval, digits=2), format(bees.rich.cf$pval, digits=2),
-    format(bees.abun.gr$pval, digits=2), format(bees.rich.gr$pval, digits=2), format(bees.rich.de$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
-
-plot.data <- structure(list( # fire intensity
-  mean = c(NA, bees.abun.in$beta, bees.rich.in$beta, bees.abun.nd$beta, bees.rich.nd$beta, bees.abun.ol$beta, bees.rich.ol$beta),
-  lower = c(NA, bees.abun.in$ci.lb, bees.rich.in$ci.lb, bees.abun.nd$ci.lb, bees.rich.nd$ci.lb, bees.abun.ol$ci.lb, bees.rich.ol$ci.lb),
-  upper = c(NA, bees.abun.in$ci.ub, bees.rich.in$ci.ub, bees.abun.nd$ci.ub, bees.rich.nd$ci.ub, bees.abun.ol$ci.ub, bees.rich.ol$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Time Since Fire", "0 Years (Abundance) [5]", "0 Years (Richness) [5]", "1-5 Years (Abundance) [4]", "1-5 Years (Richness) [4]",
-    "5+ Years (Abundance) [5]", "5+ Years (Richness) [7]"),
-  c("p-value", format(bees.abun.in$pval, digits=2), format(bees.rich.in$pval, digits=2), format(bees.abun.nd$pval, digits=2), format(bees.rich.nd$pval, digits=2),
-    format(bees.abun.ol$pval, digits=2), format(bees.rich.ol$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
-
-plot.data <- structure(list( # fire intensity
-  mean = c(NA, bees.abun.in$beta, bees.rich.in$beta, bees.abun.nd$beta, bees.rich.nd$beta),
-  lower = c(NA, bees.abun.in$ci.lb, bees.rich.in$ci.lb, bees.abun.nd$ci.lb, bees.rich.nd$ci.lb),
-  upper = c(NA, bees.abun.in$ci.ub, bees.rich.in$ci.ub, bees.abun.nd$ci.ub, bees.rich.nd$ci.ub)),
-  .Names = c("mean", "lower", "upper"),
-  row.names = c(NA, -11L),
-  class = "data.frame")
-tabletext <- cbind(
-  c("Time Since Fire", "0-5 Years (Abundance) [9]", "0-5 Years (Richness) [9]", "5+ Years (Abundance) [5]", "5+ Years (Richness) [7]"),
-  c("p-value", format(bees.abun.in$pval, digits=2), format(bees.rich.in$pval, digits=2), format(bees.abun.nd$pval, digits=2), format(bees.rich.nd$pval, digits=2))
-)
-forestplot(tabletext, plot.data$mean, plot.data$lower, plot.data$upper, new_page=TRUE)
+ggplot(data=bees.richPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
+  geom_vline(xintercept=0, color="gray25", lty="dotted")+
+  geom_errorbarh(aes(xmin=as.numeric(V5), xmax=as.numeric(V6)), width=0.1)+
+  geom_point(size=3, pch=22, fill="black")+
+  geom_text(aes(x=0, label=paste(V3, " (",V8,")", sep="")), position=position_nudge(x=-3.25))+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.background=element_rect(fill="white"),
+        axis.line.x = element_line(color="black"))+
+  xlab("Effect Size (d)")+
+  ylim(-3,21)+
+  scale_x_continuous(limits=c(-4,3), breaks=c(-2, -1, -0.5, 0, 0.5, 1, 2))
 
 # Funnel plots for each analysis
 funnel(carab.abun.meta)
