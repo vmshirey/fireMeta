@@ -180,14 +180,42 @@ bees.rich.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, 
 bees.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(TimeClass=="1-5"), slab=Author)
 bees.rich.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(TimeClass=="5+"), slab=Author)
 
-bees.abun.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(YearSinceFire <= 3), slab=Author)
-bees.abun.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.abun, method="SJ", subset=(YearSinceFire > 3), slab=Author)
+# BUTTERFLIES #
+leps.abun.wf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(FireType=="Wildfire"), slab=Author)
+leps.abun.pf <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(FireType=="Prescribed"), slab=Author)
 
-bees.rich.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(YearSinceFire <= 3), slab=Author)
-bees.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich, method="SJ", subset=(YearSinceFire > 3), slab=Author)
+leps.rich.wf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(FireType=="Wildfire"), slab=Author)
+leps.rich.pf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(FireType=="Prescribed"), slab=Author)
+
+leps.abun.hi <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(Intensity=="High"), slab=Author)
+leps.abun.mi <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(Intensity=="Mid"), slab=Author)
+leps.abun.lo <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(Intensity=="Low"), slab=Author)
+
+leps.rich.hi <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(Intensity=="High"), slab=Author)
+leps.rich.lo <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(Intensity=="Low"), slab=Author)
+
+leps.abun.g <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(Growing=="Growing"), slab=Author)
+leps.abun.ng <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(Growing=="Dormant"), slab=Author)
+
+leps.rich.g <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(Growing=="Growing"), slab=Author)
+leps.rich.ng <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(Growing=="Dormant"), slab=Author)
+
+leps.abun.gr <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(HabitatType=="Grassland"), slab=Author)
+leps.abun.cf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(HabitatType=="Coniferous Forest"), slab=Author)
+
+leps.rich.gr <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(HabitatType=="Grassland"), slab=Author)
+leps.rich.cf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(HabitatType=="Coniferous Forest"), slab=Author)
+
+leps.abun.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(TimeClass=="0"), slab=Author)
+leps.abun.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(TimeClass=="1to5"), slab=Author)
+leps.abun.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", subset=(TimeClass=="5+"), slab=Author)
+
+leps.rich.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(TimeClass=="0"), slab=Author)
+leps.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(TimeClass=="1to5"), slab=Author)
+leps.rich.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(TimeClass=="5+"), slab=Author)
 
 # Subgroup Forest Plots #
-
+## BEES RICHNESS PLOT ##
 bees.richPlot <- as_tibble(rbind(c(19, "Bee Richness", "Wildfire", bees.rich.wf$beta, bees.rich.wf$ci.lb, bees.rich.wf$ci.ub, bees.rich.wf$pval, bees.rich.wf$k),
                              c(18, "Bee Richness", "Prescribed Fire", bees.rich.pf$beta, bees.rich.pf$ci.lb, bees.rich.pf$ci.ub, bees.rich.pf$pval, bees.rich.pf$k),
                              c(15, "Bee Richness", "Growing", bees.rich.g$beta, bees.rich.g$ci.lb, bees.rich.g$ci.ub, bees.rich.g$pval, bees.rich.g$k),
@@ -217,6 +245,171 @@ ggplot(data=bees.richPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
   xlab("Effect Size (d)")+
   ylim(-3,21)+
   scale_x_continuous(limits=c(-4,3), breaks=c(-2, -1, -0.5, 0, 0.5, 1, 2))
+
+## BEES ABUNDANCE PLOT ##
+bees.abunPlot <- as_tibble(rbind(c(19, "Bee Abundance", "Wildfire", bees.abun.wf$beta, bees.abun.wf$ci.lb, bees.abun.wf$ci.ub, bees.abun.wf$pval, bees.abun.wf$k),
+                                 c(18, "Bee Abundance", "Prescribed Fire", bees.abun.pf$beta, bees.abun.pf$ci.lb, bees.abun.pf$ci.ub, bees.abun.pf$pval, bees.abun.pf$k),
+                                 c(15, "Bee Abundance", "Growing", bees.abun.g$beta, bees.abun.g$ci.lb, bees.abun.g$ci.ub, bees.abun.g$pval, bees.abun.g$k),
+                                 c(14, "Bee Abundance", "Non-growing", bees.abun.ng$beta, bees.abun.ng$ci.lb, bees.abun.ng$ci.ub, bees.abun.ng$pval, bees.abun.ng$k),
+                                 c(11, "Bee Abundance", "Deciduous Forest", bees.abun.df$beta, bees.abun.df$ci.lb, bees.abun.df$ci.ub, bees.abun.df$pval, bees.abun.df$k),
+                                 c(10, "Bee Abundance", "Coniferous Forest", bees.abun.cf$beta, bees.abun.cf$ci.lb, bees.abun.cf$ci.ub, bees.abun.cf$pval, bees.abun.cf$k),
+                                 c(9, "Bee Abundance", "Grassland", bees.abun.gr$beta, bees.abun.gr$ci.lb, bees.abun.gr$ci.ub, bees.abun.gr$pval, bees.abun.gr$k),
+                                 c(5, "Bee Abundance", "Low Severity", bees.abun.lo$beta, bees.abun.lo$ci.lb, bees.abun.lo$ci.ub, bees.abun.lo$pval, bees.abun.lo$k),
+                                 c(2, "Bee Abundance", "0 Years", bees.abun.in$beta, bees.abun.in$ci.lb, bees.abun.in$ci.ub, bees.abun.in$pval, bees.abun.in$k),
+                                 c(1, "Bee Abundance", "1-5 Years", bees.abun.nd$beta, bees.abun.nd$ci.lb, bees.abun.nd$ci.ub, bees.abun.nd$pval, bees.abun.nd$k),
+                                 c(0, "Bee Abundance", "5+ Years", bees.abun.ol$beta, bees.abun.ol$ci.lb, bees.abun.ol$ci.ub, bees.abun.ol$pval, bees.abun.ol$k),
+                                 c(-2, "Bee Abundance", "Overall Effect", bees.abun.meta$beta, bees.abun.meta$ci.lb, bees.abun.meta$ci.ub, bees.abun.meta$pval, bees.abun.meta$k)))
+
+ggplot(data=bees.abunPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
+  geom_vline(xintercept=0, color="gray25", lty="dotted")+
+  geom_errorbarh(aes(xmin=as.numeric(V5), xmax=as.numeric(V6)), width=0.1)+
+  geom_point(size=3, pch=22, fill="black")+
+  geom_text(aes(x=0, label=paste(V3, " (",V8,")", sep="")), position=position_nudge(x=-3.25))+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.background=element_rect(fill="white"),
+        axis.line.x = element_line(color="black"))+
+  xlab("Effect Size (d)")+
+  ylim(-3,21)+
+  scale_x_continuous(limits=c(-4,3), breaks=c(-2, -1, -0.5, 0, 0.5, 1, 2))
+
+## CARABID RICHNESS PLOT ##
+carab.richPlot <- as_tibble(rbind(c(19, "Carabid Richness", "Wildfire", carab.rich.wf$beta, carab.rich.wf$ci.lb, carab.rich.wf$ci.ub, carab.rich.wf$pval, carab.rich.wf$k),
+                                 c(18, "Carabid Richness", "Prescribed Fire", carab.rich.pf$beta, carab.rich.pf$ci.lb, carab.rich.pf$ci.ub, carab.rich.pf$pval, carab.rich.pf$k),
+                                 c(15, "Carabid Richness", "Growing", carab.rich.g$beta, carab.rich.g$ci.lb, carab.rich.g$ci.ub, carab.rich.g$pval, carab.rich.g$k),
+                                 c(14, "Carabid Richness", "Non-growing", carab.rich.ng$beta, carab.rich.ng$ci.lb, carab.rich.ng$ci.ub, carab.rich.ng$pval, carab.rich.ng$k),
+                                 c(11, "Carabid Richness", "Deciduous Forest", carab.rich.df$beta, carab.rich.df$ci.lb, carab.rich.df$ci.ub, carab.rich.df$pval, carab.rich.df$k),
+                                 c(10, "Carabid Richness", "Coniferous Forest", carab.rich.cf$beta, carab.rich.cf$ci.lb, carab.rich.cf$ci.ub, carab.rich.cf$pval, carab.rich.cf$k),
+                                 c(9, "Carabid Richness", "Mixed Forest", carab.rich.mf$beta, carab.rich.mf$ci.lb, carab.rich.mf$ci.ub, carab.rich.mf$pval, carab.rich.mf$k),
+                                 c(8, "Carabid Richness", "Grassland", carab.rich.gr$beta, carab.rich.gr$ci.lb, carab.rich.gr$ci.ub, carab.rich.gr$pval, carab.rich.gr$k),
+                                 c(7, "Carabid Richness", "Shrubland", carab.rich.de$beta, carab.rich.de$ci.lb, carab.rich.de$ci.ub, carab.rich.de$pval, carab.rich.de$k),
+                                 c(4, "Carabid Richness", "Low Severity", carab.rich.lo$beta, carab.rich.lo$ci.lb, carab.rich.lo$ci.ub, carab.rich.lo$pval, carab.rich.lo$k),
+                                 c(3, "Carabid Richness", "Mid Severity", carab.rich.mi$beta, carab.rich.mi$ci.lb, carab.rich.mi$ci.ub, carab.rich.mi$pval, carab.rich.mi$k),
+                                 c(2, "Carabid Richness", "High Severity", carab.rich.hi$beta, carab.rich.hi$ci.lb, carab.rich.hi$ci.ub, carab.rich.hi$pval, carab.rich.hi$k),
+                                 c(-1, "Carabid Richness", "0 Years", carab.rich.in$beta, carab.rich.in$ci.lb, carab.rich.in$ci.ub, carab.rich.in$pval, carab.rich.in$k),
+                                 c(-2, "Carabid Richness", "1-5 Years", carab.rich.nd$beta, carab.rich.nd$ci.lb, carab.rich.nd$ci.ub, carab.rich.nd$pval, carab.rich.nd$k),
+                                 c(-3, "Carabid Richness", "5+ Years", carab.rich.ol$beta, carab.rich.ol$ci.lb, carab.rich.ol$ci.ub, carab.rich.ol$pval, carab.rich.ol$k),
+                                 c(-5, "Carabid Richness", "Overall Effect", carab.rich.meta$beta, carab.rich.meta$ci.lb, carab.rich.meta$ci.ub, carab.rich.meta$pval, carab.rich.meta$k)))
+
+ggplot(data=carab.richPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
+  geom_vline(xintercept=0, color="gray25", lty="dotted")+
+  geom_errorbarh(aes(xmin=as.numeric(V5), xmax=as.numeric(V6)), width=0.1)+
+  geom_point(size=3, pch=22, fill="black")+
+  geom_text(aes(x=0, label=paste(V3, " (",V8,")", sep="")), position=position_nudge(x=-3.25))+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.background=element_rect(fill="white"),
+        axis.line.x = element_line(color="black"))+
+  xlab("Effect Size (d)")+
+  ylim(-6,21)+
+  scale_x_continuous(limits=c(-4,3), breaks=c(-2, -1, -0.5, 0, 0.5, 1, 2, 3))
+
+## CARABID ABUNDANCE PLOT ##
+carab.abunPlot <- as_tibble(rbind(c(19, "Carabid Richness", "Wildfire", carab.abun.wf$beta, carab.abun.wf$ci.lb, carab.abun.wf$ci.ub, carab.abun.wf$pval, carab.abun.wf$k),
+                                  c(18, "Carabid Richness", "Prescribed Fire", carab.abun.pf$beta, carab.abun.pf$ci.lb, carab.abun.pf$ci.ub, carab.abun.pf$pval, carab.abun.pf$k),
+                                  c(15, "Carabid Richness", "Growing", carab.abun.g$beta, carab.abun.g$ci.lb, carab.abun.g$ci.ub, carab.abun.g$pval, carab.abun.g$k),
+                                  c(14, "Carabid Richness", "Non-growing", carab.abun.ng$beta, carab.abun.ng$ci.lb, carab.abun.ng$ci.ub, carab.abun.ng$pval, carab.abun.ng$k),
+                                  c(11, "Carabid Richness", "Deciduous Forest", carab.abun.df$beta, carab.abun.df$ci.lb, carab.abun.df$ci.ub, carab.abun.df$pval, carab.abun.df$k),
+                                  c(10, "Carabid Richness", "Coniferous Forest", carab.abun.cf$beta, carab.abun.cf$ci.lb, carab.abun.cf$ci.ub, carab.abun.cf$pval, carab.abun.cf$k),
+                                  c(9, "Carabid Richness", "Mixed Forest", carab.abun.mf$beta, carab.abun.mf$ci.lb, carab.abun.mf$ci.ub, carab.abun.mf$pval, carab.abun.mf$k),
+                                  c(8, "Carabid Richness", "Grassland", carab.abun.gr$beta, carab.abun.gr$ci.lb, carab.abun.gr$ci.ub, carab.abun.gr$pval, carab.abun.gr$k),
+                                  c(7, "Carabid Richness", "Shrubland", carab.abun.de$beta, carab.abun.de$ci.lb, carab.abun.de$ci.ub, carab.abun.de$pval, carab.abun.de$k),
+                                  c(4, "Carabid Richness", "Low Severity", carab.abun.lo$beta, carab.abun.lo$ci.lb, carab.abun.lo$ci.ub, carab.abun.lo$pval, carab.abun.lo$k),
+                                  c(3, "Carabid Richness", "Mid Severity", carab.abun.mi$beta, carab.abun.mi$ci.lb, carab.abun.mi$ci.ub, carab.abun.mi$pval, carab.abun.mi$k),
+                                  c(2, "Carabid Richness", "High Severity", carab.abun.hi$beta, carab.abun.hi$ci.lb, carab.abun.hi$ci.ub, carab.abun.hi$pval, carab.abun.hi$k),
+                                  c(-1, "Carabid Richness", "0 Years", carab.abun.in$beta, carab.abun.in$ci.lb, carab.abun.in$ci.ub, carab.abun.in$pval, carab.abun.in$k),
+                                  c(-2, "Carabid Richness", "1-5 Years", carab.abun.nd$beta, carab.abun.nd$ci.lb, carab.abun.nd$ci.ub, carab.abun.nd$pval, carab.abun.nd$k),
+                                  c(-3, "Carabid Richness", "5+ Years", carab.abun.ol$beta, carab.abun.ol$ci.lb, carab.abun.ol$ci.ub, carab.abun.ol$pval, carab.abun.ol$k),
+                                  c(-5, "Carabid Richness", "Overall Effect", carab.abun.meta$beta, carab.abun.meta$ci.lb, carab.abun.meta$ci.ub, carab.abun.meta$pval, carab.abun.meta$k)))
+
+ggplot(data=carab.abunPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
+  geom_vline(xintercept=0, color="gray25", lty="dotted")+
+  geom_errorbarh(aes(xmin=as.numeric(V5), xmax=as.numeric(V6)), width=0.1)+
+  geom_point(size=3, pch=22, fill="black")+
+  geom_text(aes(x=0, label=paste(V3, " (",V8,")", sep="")), position=position_nudge(x=-3.25))+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.background=element_rect(fill="white"),
+        axis.line.x = element_line(color="black"))+
+  xlab("Effect Size (d)")+
+  ylim(-6,21)+
+  scale_x_continuous(limits=c(-4,3), breaks=c(-2, -1, -0.5, 0, 0.5, 1, 2, 3))
+
+## BUTTERFLY RICHNESS PLOT ##
+leps.richPlot <- as_tibble(rbind(c(19, "Butterfly Richness", "Wildfire", leps.rich.wf$beta, leps.rich.wf$ci.lb, leps.rich.wf$ci.ub, leps.rich.wf$pval, leps.rich.wf$k),
+                                 c(18, "Butterfly Richness", "Prescribed Fire", leps.rich.pf$beta, leps.rich.pf$ci.lb, leps.rich.pf$ci.ub, leps.rich.pf$pval, leps.rich.pf$k),
+                                 c(15, "Butterfly Richness", "Growing", leps.rich.g$beta, leps.rich.g$ci.lb, leps.rich.g$ci.ub, leps.rich.g$pval, leps.rich.g$k),
+                                 c(14, "Butterfly Richness", "Non-growing", leps.rich.ng$beta, leps.rich.ng$ci.lb, leps.rich.ng$ci.ub, leps.rich.ng$pval, leps.rich.ng$k),
+                                 c(11, "Butterfly Richness", "Coniferous Forest", leps.rich.cf$beta, leps.rich.cf$ci.lb, leps.rich.cf$ci.ub, leps.rich.cf$pval, leps.rich.cf$k),
+                                 c(10, "Butterfly Richness", "Grassland", leps.rich.gr$beta, leps.rich.gr$ci.lb, leps.rich.gr$ci.ub, leps.rich.gr$pval, leps.rich.gr$k),
+                                 c(7, "Butterfly Richness", "Low Severity", leps.rich.lo$beta, leps.rich.lo$ci.lb, leps.rich.lo$ci.ub, leps.rich.lo$pval, leps.rich.lo$k),
+                                 c(6, "Butterfly Richness", "High Severity", leps.rich.hi$beta, leps.rich.hi$ci.lb, leps.rich.hi$ci.ub, leps.rich.hi$pval, leps.rich.hi$k),
+                                 c(3, "Butterfly Richness", "0 Years", leps.rich.in$beta, leps.rich.in$ci.lb, leps.rich.in$ci.ub, leps.rich.in$pval, leps.rich.in$k),
+                                 c(2, "Butterfly Richness", "1-5 Years", leps.rich.nd$beta, leps.rich.nd$ci.lb, leps.rich.nd$ci.ub, leps.rich.nd$pval, leps.rich.nd$k),
+                                 c(1, "Butterfly Richness", "5+ Years", leps.rich.ol$beta, leps.rich.ol$ci.lb, leps.rich.ol$ci.ub, leps.rich.ol$pval, leps.rich.ol$k),
+                                 c(-2, "Butterfly Richness", "Overall Effect", leps.rich.meta$beta, leps.rich.meta$ci.lb, leps.rich.meta$ci.ub, leps.rich.meta$pval, leps.rich.meta$k)))
+
+ggplot(data=leps.richPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
+  geom_vline(xintercept=0, color="gray25", lty="dotted")+
+  geom_errorbarh(aes(xmin=as.numeric(V5), xmax=as.numeric(V6)), width=0.1)+
+  geom_point(size=3, pch=22, fill="black")+
+  geom_text(aes(x=0, label=paste(V3, " (",V8,")", sep="")), position=position_nudge(x=-3.25))+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.background=element_rect(fill="white"),
+        axis.line.x = element_line(color="black"))+
+  xlab("Effect Size (d)")+
+  ylim(-3,21)+
+  scale_x_continuous(limits=c(-4,3), breaks=c(-2, -1, -0.5, 0, 0.5, 1, 2))+
+  annotate("segment", x=-1.5, xend=1.5, y=14, yend=14, arrow=arrow(length=unit(0.02, "npc")))+
+  annotate("segment", x=1.5, xend=-1.5, y=14, yend=14, arrow=arrow(length=unit(0.02, "npc")))+
+  annotate("segment", x=-1.5, xend=1.5, y=3, yend=3, arrow=arrow(length=unit(0.02, "npc")))+
+  annotate("segment", x=1.5, xend=-1.5, y=3, yend=3, arrow=arrow(length=unit(0.02, "npc")))
+
+## BUTTERFLY ABUNDANCE PLOT ##
+leps.abunPlot <- as_tibble(rbind(c(19, "Butterfly Richness", "Wildfire", leps.abun.wf$beta, leps.abun.wf$ci.lb, leps.abun.wf$ci.ub, leps.abun.wf$pval, leps.abun.wf$k),
+                                 c(18, "Butterfly Richness", "Prescribed Fire", leps.abun.pf$beta, leps.abun.pf$ci.lb, leps.abun.pf$ci.ub, leps.abun.pf$pval, leps.abun.pf$k),
+                                 c(15, "Butterfly Richness", "Growing", leps.abun.g$beta, leps.abun.g$ci.lb, leps.abun.g$ci.ub, leps.abun.g$pval, leps.abun.g$k),
+                                 c(14, "Butterfly Richness", "Non-growing", leps.abun.ng$beta, leps.abun.ng$ci.lb, leps.abun.ng$ci.ub, leps.abun.ng$pval, leps.abun.ng$k),
+                                 c(11, "Butterfly Richness", "Coniferous Forest", leps.abun.cf$beta, leps.abun.cf$ci.lb, leps.abun.cf$ci.ub, leps.abun.cf$pval, leps.abun.cf$k),
+                                 c(10, "Butterfly Richness", "Grassland", leps.abun.gr$beta, leps.abun.gr$ci.lb, leps.abun.gr$ci.ub, leps.abun.gr$pval, leps.abun.gr$k),
+                                 c(7, "Butterfly Richness", "Low Severity", leps.abun.lo$beta, leps.abun.lo$ci.lb, leps.abun.lo$ci.ub, leps.abun.lo$pval, leps.abun.lo$k),
+                                 c(6, "Butterfly Richness", "Mid Severity", leps.abun.mi$beta, leps.abun.mi$ci.lb, leps.abun.mi$ci.ub, leps.abun.mi$pval, leps.abun.mi$k),
+                                 c(5, "Butterfly Richness", "High Severity", leps.abun.hi$beta, leps.abun.hi$ci.lb, leps.abun.hi$ci.ub, leps.abun.hi$pval, leps.abun.hi$k),
+                                 c(2, "Butterfly Richness", "0 Years", leps.abun.in$beta, leps.abun.in$ci.lb, leps.abun.in$ci.ub, leps.abun.in$pval, leps.abun.in$k),
+                                 c(1, "Butterfly Richness", "1-5 Years", leps.abun.nd$beta, leps.abun.nd$ci.lb, leps.abun.nd$ci.ub, leps.abun.nd$pval, leps.abun.nd$k),
+                                 c(0, "Butterfly Richness", "5+ Years", leps.abun.ol$beta, leps.abun.ol$ci.lb, leps.abun.ol$ci.ub, leps.abun.ol$pval, leps.abun.ol$k),
+                                 c(-3, "Butterfly Richness", "Overall Effect", leps.abun.meta$beta, leps.abun.meta$ci.lb, leps.abun.meta$ci.ub, leps.abun.meta$pval, leps.abun.meta$k)))
+
+ggplot(data=leps.abunPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
+  geom_vline(xintercept=0, color="gray25", lty="dotted")+
+  geom_errorbarh(aes(xmin=as.numeric(V5), xmax=as.numeric(V6)), width=0.1)+
+  geom_point(size=3, pch=22, fill="black")+
+  geom_text(aes(x=0, label=paste(V3, " (",V8,")", sep="")), position=position_nudge(x=-3.25))+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.background=element_rect(fill="white"),
+        axis.line.x = element_line(color="black"))+
+  xlab("Effect Size (d)")+
+  ylim(-3,21)+
+  scale_x_continuous(limits=c(-4,3), breaks=c(-2, -1, -0.5, 0, 0.5, 1, 2))+
+  annotate("segment", x=1.5, xend=-1.5, y=14, yend=14, arrow=arrow(length=unit(0.02, "npc")))+
+  annotate("segment", x=-1.5, xend=2.0, y=14, yend=14, arrow=arrow(length=unit(0.02, "npc")))
 
 # Funnel plots for each analysis
 funnel(carab.abun.meta)
