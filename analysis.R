@@ -134,11 +134,11 @@ carab.rich.de <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich
 carab.rich.mf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(HabitatType=="Mixed Forest"), slab=Author)
 
 carab.abun.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(TimeClass=="0"), slab=Author)
-carab.abun.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(TimeClass=="1-5"), slab=Author)
+carab.abun.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(TimeClass=="1to5"), slab=Author)
 carab.abun.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", subset=(TimeClass=="5+"), slab=Author)
 
 carab.rich.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(TimeClass=="0"), slab=Author)
-carab.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(TimeClass=="1-5"), slab=Author)
+carab.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(TimeClass=="1to5"), slab=Author)
 carab.rich.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", subset=(TimeClass=="5+"), slab=Author)
 
 # BEES #
@@ -283,7 +283,6 @@ carab.richPlot <- as_tibble(rbind(c(19, "Carabid Richness", "Wildfire", carab.ri
                                  c(14, "Carabid Richness", "Non-growing", carab.rich.ng$beta, carab.rich.ng$ci.lb, carab.rich.ng$ci.ub, carab.rich.ng$pval, carab.rich.ng$k),
                                  c(11, "Carabid Richness", "Deciduous Forest", carab.rich.df$beta, carab.rich.df$ci.lb, carab.rich.df$ci.ub, carab.rich.df$pval, carab.rich.df$k),
                                  c(10, "Carabid Richness", "Coniferous Forest", carab.rich.cf$beta, carab.rich.cf$ci.lb, carab.rich.cf$ci.ub, carab.rich.cf$pval, carab.rich.cf$k),
-                                 c(9, "Carabid Richness", "Mixed Forest", carab.rich.mf$beta, carab.rich.mf$ci.lb, carab.rich.mf$ci.ub, carab.rich.mf$pval, carab.rich.mf$k),
                                  c(8, "Carabid Richness", "Grassland", carab.rich.gr$beta, carab.rich.gr$ci.lb, carab.rich.gr$ci.ub, carab.rich.gr$pval, carab.rich.gr$k),
                                  c(7, "Carabid Richness", "Shrubland", carab.rich.de$beta, carab.rich.de$ci.lb, carab.rich.de$ci.ub, carab.rich.de$pval, carab.rich.de$k),
                                  c(4, "Carabid Richness", "Low Severity", carab.rich.lo$beta, carab.rich.lo$ci.lb, carab.rich.lo$ci.ub, carab.rich.lo$pval, carab.rich.lo$k),
@@ -317,7 +316,6 @@ carab.abunPlot <- as_tibble(rbind(c(19, "Carabid Richness", "Wildfire", carab.ab
                                   c(14, "Carabid Richness", "Non-growing", carab.abun.ng$beta, carab.abun.ng$ci.lb, carab.abun.ng$ci.ub, carab.abun.ng$pval, carab.abun.ng$k),
                                   c(11, "Carabid Richness", "Deciduous Forest", carab.abun.df$beta, carab.abun.df$ci.lb, carab.abun.df$ci.ub, carab.abun.df$pval, carab.abun.df$k),
                                   c(10, "Carabid Richness", "Coniferous Forest", carab.abun.cf$beta, carab.abun.cf$ci.lb, carab.abun.cf$ci.ub, carab.abun.cf$pval, carab.abun.cf$k),
-                                  c(9, "Carabid Richness", "Mixed Forest", carab.abun.mf$beta, carab.abun.mf$ci.lb, carab.abun.mf$ci.ub, carab.abun.mf$pval, carab.abun.mf$k),
                                   c(8, "Carabid Richness", "Grassland", carab.abun.gr$beta, carab.abun.gr$ci.lb, carab.abun.gr$ci.ub, carab.abun.gr$pval, carab.abun.gr$k),
                                   c(7, "Carabid Richness", "Shrubland", carab.abun.de$beta, carab.abun.de$ci.lb, carab.abun.de$ci.ub, carab.abun.de$pval, carab.abun.de$k),
                                   c(4, "Carabid Richness", "Low Severity", carab.abun.lo$beta, carab.abun.lo$ci.lb, carab.abun.lo$ci.ub, carab.abun.lo$pval, carab.abun.lo$k),

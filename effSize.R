@@ -737,6 +737,7 @@ mes(8.15, 1.63, 3.48, 1.09, 40, 40) # richness RAW DATA NEEDED
 ## Roughley et al. ##
 #####################
 
+# First Year #
 mes(192.25, 139.5, 110.65, 65.39, 4, 4) # spring abundance
 mes(282, 139.5, 170.56, 65.39, 4, 4) # summer abundance
 mes(137.5, 139.5, 74.04, 65.39, 4, 4) # fall abundance
@@ -744,6 +745,33 @@ mes(137.5, 139.5, 74.04, 65.39, 4, 4) # fall abundance
 mes(20.75, 17.75, 1.71, 3.95, 4, 4) # spring richness
 mes(20.5, 17.75, 4.36, 3.95, 4, 4) # summer richness
 mes(18, 17.75, 5.23, 3.95, 4, 4) # fall richness
+
+# Second Year #
+mes(216.5, 171, 110.65, 106.52, 4, 4) # spring abundance
+mes(189.75, 171, 170.56, 106.52, 4, 4) # summer abundance
+mes(169.75, 171, 74.04, 106.52, 4, 4) # fall abundance
+
+mes(20.5, 21, 5.07, 5.66, 4, 4) # spring richness
+mes(24.75, 21, 2.63, 5.66, 4, 4) # summer richness
+mes(20.5, 21, 5.92, 5.66, 4, 4) # fall richness
+
+# Third Year #
+mes(183.5, 166.5, 46.26, 60.42, 4, 4) # spring abundance
+mes(128.25, 166.5, 78.56, 60.42, 4, 4) # summer abundance
+mes(103.75, 166.5, 36.2, 60.42, 4, 4) # fall abundance
+
+mes(21.75, 22.5, 2.87, 4.2, 4, 4) # spring richness
+mes(20.5, 22.5, 5, 4.2, 4, 4) # summer richness
+mes(21.25, 22.5, 3.3, 4.2, 4, 4) # fall richness
+
+# Fourth Year #
+mes(127.25, 117.75, 58.67, 39.64, 4, 4) # spring abundance
+mes(117.5, 117.75, 56.18, 39.64, 4, 4) # summer abundance
+mes(125.75, 117.75, 42.36, 39.64, 4, 4) # fall abundance
+
+mes(18.75, 16.25, 3.77, 5.12, 4, 4) # spring richness
+mes(18, 16.25, 5, 3.56, 4, 4) # summer richness
+mes(21.25, 16.25, 2.06, 5.12, 4, 4) # fall richness
 
 ## BEES ##
 
