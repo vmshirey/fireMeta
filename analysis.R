@@ -409,12 +409,41 @@ ggplot(data=leps.abunPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
   annotate("segment", x=1.5, xend=-1.5, y=14, yend=14, arrow=arrow(length=unit(0.02, "npc")))+
   annotate("segment", x=-1.5, xend=2.0, y=14, yend=14, arrow=arrow(length=unit(0.02, "npc")))
 
+## PUBLICATION BIAS ##
 # Funnel plots for each analysis
+cam.tf <- trimfill(carab.abun.meta)
+funnel(cam.tf)
+
+crm.tf <- trimfill(carab.rich.meta)
+funnel(crm.tf)
+
 funnel(carab.abun.meta)
 funnel(carab.rich.meta)
+
+bam.tf <- trimfill(bees.abun.meta)
+funnel(bam.tf)
+
+brm.tf <- trimfill(bees.rich.meta)
+funnel(brm.tf)
 
 funnel(bees.abun.meta)
 funnel(bees.rich.meta)
 
+lam.tf <- trimfill(leps.abun.meta)
+funnel(lam.tf)
+
+lrm.tf <- trimfill(leps.rich.meta)
+funnel(lrm.tf)
+
 funnel(leps.abun.meta)
 funnel(leps.rich.meta)
+
+# Fail safe number
+fsn(bees.abun$EffectSize, sei=bees.abun$EffectSizeStandardError, type="Rosenberg")
+fsn(bees.rich$EffectSize, sei=bees.rich$EffectSizeStandardError, type="Rosenberg")
+
+fsn(carab.abun$EffectSize, sei=carab.abun$EffectSizeStandardError, type="Rosenberg")
+fsn(carab.rich$EffectSize, sei=carab.rich$EffectSizeStandardError, type="Rosenberg")
+
+fsn(leps.abun$EffectSize, sei=leps.abun$EffectSizeStandardError, type="Rosenberg")
+fsn(leps.rich$EffectSize, sei=leps.rich$EffectSizeStandardError, type="Rosenberg")
