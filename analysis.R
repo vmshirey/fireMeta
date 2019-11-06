@@ -554,6 +554,15 @@ funnel(lrm.tf)
 funnel(leps.abun.meta)
 funnel(leps.rich.meta)
 
+atam.tf <- trimfill(all_taxa.abun.meta)
+funnel(atam.tf)
+
+atrm.tf <- trimfill(all_taxa.rich.meta)
+funnel(atrm.tf)
+
+funnel(all_taxa.abun.meta)
+funnel(all_taxa.rich.meta)
+
 # Fail safe number
 fsn(bees.abun$EffectSize, sei=bees.abun$EffectSizeStandardError, type="Rosenberg")
 fsn(bees.rich$EffectSize, sei=bees.rich$EffectSizeStandardError, type="Rosenberg")
@@ -563,3 +572,6 @@ fsn(carab.rich$EffectSize, sei=carab.rich$EffectSizeStandardError, type="Rosenbe
 
 fsn(leps.abun$EffectSize, sei=leps.abun$EffectSizeStandardError, type="Rosenberg")
 fsn(leps.rich$EffectSize, sei=leps.rich$EffectSizeStandardError, type="Rosenberg")
+
+fsn(all_taxa.abun$EffectSize, sei=all_taxa.abun$EffectSizeStandardError, type="Rosenberg")
+fsn(all_taxa.rich$EffectSize, sei=all_taxa.rich$EffectSizeStandardError, type="Rosenberg")
