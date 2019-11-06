@@ -15,6 +15,7 @@ library(tidyverse)
 carab <- read.csv("Carabidae/carabidData.csv", header=TRUE, sep=",")
 bees <- read.csv("Bees/beeData.csv", header=TRUE, sep=",")
 leps <- read.csv("Leps/lepData.csv", header=TRUE, sep=",")
+all_taxa <- read.csv("all_taxa/all_taxa.csv", header=TRUE, sep=",")
 
 # Modify data to conform to particular research question
 # carab <- carab[which(carab$YearSinceFire < 2),]
@@ -29,6 +30,9 @@ bees.rich <- bees[bees$Metric == "Richness",]
 leps.abun <- leps[leps$Metric == "Abundance",]
 leps.rich <- leps[leps$Metric == "Richness",]
 
+all_taxa.abun <- all_taxa[all_taxa$Metric == "Abundance",]
+all_taxa.rich <- all_taxa[all_taxa$Metric == "Richness",]
+
 # Random effects models
 carab.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.abun, method="SJ", slab=paste(carab.abun$Author, carab.abun$YearPublished))
 carab.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=carab.rich, method="SJ", slab=paste(carab.rich$Author, carab.rich$YearPublished))
@@ -38,6 +42,9 @@ bees.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=bees.rich
 
 leps.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, method="SJ", slab=paste(leps.abun$Author, leps.abun$YearPublished))
 leps.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", slab=paste(leps.rich$Author, leps.rich$YearPublished))
+
+all_taxa.abun.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", slab=paste(all_taxa.abun$Author, all_taxa.abun$YearPublished))
+all_taxa.rich.meta <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", slab=paste(all_taxa.rich$Author, all_taxa.rich$YearPublished))
 
 # meta regressions for variable effects
 carab.abun.mreg <- rma(yi=EffectSize, 
@@ -213,6 +220,48 @@ leps.abun.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.abun, 
 leps.rich.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(TimeClass=="0"), slab=Author)
 leps.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(TimeClass=="1to5"), slab=Author)
 leps.rich.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=leps.rich, method="SJ", subset=(TimeClass=="5+"), slab=Author)
+
+## ALL TAXA ##
+all_taxa.abun.wf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(FireType=="Wildfire"), slab=Author)
+all_taxa.abun.pf <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(FireType=="Prescribed Fire"), slab=Author)
+
+all_taxa.rich.wf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(FireType=="Wildfire"), slab=Author)
+all_taxa.rich.pf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(FireType=="Prescribed Fire"), slab=Author)
+
+all_taxa.abun.hi <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(Intensity=="High"), slab=Author)
+all_taxa.abun.mi <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(Intensity=="Mid"), slab=Author)
+all_taxa.abun.lo <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(Intensity=="Low"), slab=Author)
+
+all_taxa.rich.hi <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(Intensity=="High"), slab=Author)
+all_taxa.rich.mi <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(Intensity=="Mid"), slab=Author)
+all_taxa.rich.lo <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(Intensity=="Low"), slab=Author)
+
+all_taxa.abun.g <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(Growing=="Growing"), slab=Author)
+all_taxa.abun.ng <-rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(Growing=="Dormant"), slab=Author)
+
+all_taxa.rich.g <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(Growing=="Growing"), slab=Author)
+all_taxa.rich.ng <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(Growing=="Dormant"), slab=Author)
+
+all_taxa.abun.df <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(HabitatType=="Deciduous Forest"), slab=Author)
+all_taxa.abun.gr <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(HabitatType=="Grassland"), slab=Author)
+all_taxa.abun.cf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(HabitatType=="Coniferous Forest"), slab=Author)
+all_taxa.abun.de <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(HabitatType=="Shrubland"), slab=Author)
+all_taxa.abun.mf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(HabitatType=="Mixed Forest"), slab=Author)
+
+all_taxa.rich.df <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(HabitatType=="Deciduous Forest"), slab=Author)
+all_taxa.rich.gr <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(HabitatType=="Grassland"), slab=Author)
+all_taxa.rich.cf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(HabitatType=="Coniferous Forest"), slab=Author)
+all_taxa.rich.de <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(HabitatType=="Shrubland"), slab=Author)
+all_taxa.rich.mf <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(HabitatType=="Mixed Forest"), slab=Author)
+
+all_taxa.abun.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(TimeClass=="0"), slab=Author)
+all_taxa.abun.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(TimeClass=="1to5"), slab=Author)
+all_taxa.abun.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.abun, method="SJ", subset=(TimeClass=="5+"), slab=Author)
+
+all_taxa.rich.in <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(TimeClass=="0"), slab=Author)
+all_taxa.rich.nd <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(TimeClass=="1to5"), slab=Author)
+all_taxa.rich.ol <- rma(yi=EffectSize, sei=EffectSizeStandardError, data=all_taxa.rich, method="SJ", subset=(TimeClass=="5+"), slab=Author)
+
 
 # Subgroup Forest Plots #
 ## BEES RICHNESS PLOT ##
@@ -408,6 +457,73 @@ ggplot(data=leps.abunPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
   scale_x_continuous(limits=c(-4,3), breaks=c(-2, -1, -0.5, 0, 0.5, 1, 2))+
   annotate("segment", x=1.5, xend=-1.5, y=14, yend=14, arrow=arrow(length=unit(0.02, "npc")))+
   annotate("segment", x=-1.5, xend=2.0, y=14, yend=14, arrow=arrow(length=unit(0.02, "npc")))
+
+## COMBINED PLOTS ##
+all_taxa.richPlot <- as_tibble(rbind(c(19, "all_taxaid Richness", "Wildfire", all_taxa.rich.wf$beta, all_taxa.rich.wf$ci.lb, all_taxa.rich.wf$ci.ub, all_taxa.rich.wf$pval, all_taxa.rich.wf$k),
+                                  c(18, "all_taxaid Richness", "Prescribed Fire", all_taxa.rich.pf$beta, all_taxa.rich.pf$ci.lb, all_taxa.rich.pf$ci.ub, all_taxa.rich.pf$pval, all_taxa.rich.pf$k),
+                                  c(15, "all_taxaid Richness", "Growing", all_taxa.rich.g$beta, all_taxa.rich.g$ci.lb, all_taxa.rich.g$ci.ub, all_taxa.rich.g$pval, all_taxa.rich.g$k),
+                                  c(14, "all_taxaid Richness", "Non-growing", all_taxa.rich.ng$beta, all_taxa.rich.ng$ci.lb, all_taxa.rich.ng$ci.ub, all_taxa.rich.ng$pval, all_taxa.rich.ng$k),
+                                  c(11, "all_taxaid Richness", "Deciduous Forest", all_taxa.rich.df$beta, all_taxa.rich.df$ci.lb, all_taxa.rich.df$ci.ub, all_taxa.rich.df$pval, all_taxa.rich.df$k),
+                                  c(10, "all_taxaid Richness", "Coniferous Forest", all_taxa.rich.cf$beta, all_taxa.rich.cf$ci.lb, all_taxa.rich.cf$ci.ub, all_taxa.rich.cf$pval, all_taxa.rich.cf$k),
+                                  c(8, "all_taxaid Richness", "Grassland", all_taxa.rich.gr$beta, all_taxa.rich.gr$ci.lb, all_taxa.rich.gr$ci.ub, all_taxa.rich.gr$pval, all_taxa.rich.gr$k),
+                                  c(7, "all_taxaid Richness", "Shrubland", all_taxa.rich.de$beta, all_taxa.rich.de$ci.lb, all_taxa.rich.de$ci.ub, all_taxa.rich.de$pval, all_taxa.rich.de$k),
+                                  c(4, "all_taxaid Richness", "Low Severity", all_taxa.rich.lo$beta, all_taxa.rich.lo$ci.lb, all_taxa.rich.lo$ci.ub, all_taxa.rich.lo$pval, all_taxa.rich.lo$k),
+                                  c(3, "all_taxaid Richness", "Mid Severity", all_taxa.rich.mi$beta, all_taxa.rich.mi$ci.lb, all_taxa.rich.mi$ci.ub, all_taxa.rich.mi$pval, all_taxa.rich.mi$k),
+                                  c(2, "all_taxaid Richness", "High Severity", all_taxa.rich.hi$beta, all_taxa.rich.hi$ci.lb, all_taxa.rich.hi$ci.ub, all_taxa.rich.hi$pval, all_taxa.rich.hi$k),
+                                  c(-1, "all_taxaid Richness", "0 Years", all_taxa.rich.in$beta, all_taxa.rich.in$ci.lb, all_taxa.rich.in$ci.ub, all_taxa.rich.in$pval, all_taxa.rich.in$k),
+                                  c(-2, "all_taxaid Richness", "1-5 Years", all_taxa.rich.nd$beta, all_taxa.rich.nd$ci.lb, all_taxa.rich.nd$ci.ub, all_taxa.rich.nd$pval, all_taxa.rich.nd$k),
+                                  c(-3, "all_taxaid Richness", "5+ Years", all_taxa.rich.ol$beta, all_taxa.rich.ol$ci.lb, all_taxa.rich.ol$ci.ub, all_taxa.rich.ol$pval, all_taxa.rich.ol$k),
+                                  c(-5, "all_taxaid Richness", "Overall Effect", all_taxa.rich.meta$beta, all_taxa.rich.meta$ci.lb, all_taxa.rich.meta$ci.ub, all_taxa.rich.meta$pval, all_taxa.rich.meta$k)))
+
+ggplot(data=all_taxa.richPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
+  geom_vline(xintercept=0, color="gray25", lty="dotted")+
+  geom_errorbarh(aes(xmin=as.numeric(V5), xmax=as.numeric(V6)), width=0.1)+
+  geom_point(size=3, pch=22, fill="black")+
+  geom_text(aes(x=0, label=paste(V3, " (",V8,")", sep="")), position=position_nudge(x=-3.25))+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.background=element_rect(fill="white"),
+        axis.line.x = element_line(color="black"))+
+  xlab("Effect Size (d)")+
+  ylim(-6,21)+
+  scale_x_continuous(limits=c(-4,3), breaks=c(-2, -1, -0.5, 0, 0.5, 1, 2, 3))
+
+## all_taxaID ABUNDANCE PLOT ##
+all_taxa.abunPlot <- as_tibble(rbind(c(19, "all_taxaid Richness", "Wildfire", all_taxa.abun.wf$beta, all_taxa.abun.wf$ci.lb, all_taxa.abun.wf$ci.ub, all_taxa.abun.wf$pval, all_taxa.abun.wf$k),
+                                  c(18, "all_taxaid Richness", "Prescribed Fire", all_taxa.abun.pf$beta, all_taxa.abun.pf$ci.lb, all_taxa.abun.pf$ci.ub, all_taxa.abun.pf$pval, all_taxa.abun.pf$k),
+                                  c(15, "all_taxaid Richness", "Growing", all_taxa.abun.g$beta, all_taxa.abun.g$ci.lb, all_taxa.abun.g$ci.ub, all_taxa.abun.g$pval, all_taxa.abun.g$k),
+                                  c(14, "all_taxaid Richness", "Non-growing", all_taxa.abun.ng$beta, all_taxa.abun.ng$ci.lb, all_taxa.abun.ng$ci.ub, all_taxa.abun.ng$pval, all_taxa.abun.ng$k),
+                                  c(11, "all_taxaid Richness", "Deciduous Forest", all_taxa.abun.df$beta, all_taxa.abun.df$ci.lb, all_taxa.abun.df$ci.ub, all_taxa.abun.df$pval, all_taxa.abun.df$k),
+                                  c(10, "all_taxaid Richness", "Coniferous Forest", all_taxa.abun.cf$beta, all_taxa.abun.cf$ci.lb, all_taxa.abun.cf$ci.ub, all_taxa.abun.cf$pval, all_taxa.abun.cf$k),
+                                  c(8, "all_taxaid Richness", "Grassland", all_taxa.abun.gr$beta, all_taxa.abun.gr$ci.lb, all_taxa.abun.gr$ci.ub, all_taxa.abun.gr$pval, all_taxa.abun.gr$k),
+                                  c(7, "all_taxaid Richness", "Shrubland", all_taxa.abun.de$beta, all_taxa.abun.de$ci.lb, all_taxa.abun.de$ci.ub, all_taxa.abun.de$pval, all_taxa.abun.de$k),
+                                  c(4, "all_taxaid Richness", "Low Severity", all_taxa.abun.lo$beta, all_taxa.abun.lo$ci.lb, all_taxa.abun.lo$ci.ub, all_taxa.abun.lo$pval, all_taxa.abun.lo$k),
+                                  c(3, "all_taxaid Richness", "Mid Severity", all_taxa.abun.mi$beta, all_taxa.abun.mi$ci.lb, all_taxa.abun.mi$ci.ub, all_taxa.abun.mi$pval, all_taxa.abun.mi$k),
+                                  c(2, "all_taxaid Richness", "High Severity", all_taxa.abun.hi$beta, all_taxa.abun.hi$ci.lb, all_taxa.abun.hi$ci.ub, all_taxa.abun.hi$pval, all_taxa.abun.hi$k),
+                                  c(-1, "all_taxaid Richness", "0 Years", all_taxa.abun.in$beta, all_taxa.abun.in$ci.lb, all_taxa.abun.in$ci.ub, all_taxa.abun.in$pval, all_taxa.abun.in$k),
+                                  c(-2, "all_taxaid Richness", "1-5 Years", all_taxa.abun.nd$beta, all_taxa.abun.nd$ci.lb, all_taxa.abun.nd$ci.ub, all_taxa.abun.nd$pval, all_taxa.abun.nd$k),
+                                  c(-3, "all_taxaid Richness", "5+ Years", all_taxa.abun.ol$beta, all_taxa.abun.ol$ci.lb, all_taxa.abun.ol$ci.ub, all_taxa.abun.ol$pval, all_taxa.abun.ol$k),
+                                  c(-5, "all_taxaid Richness", "Overall Effect", all_taxa.abun.meta$beta, all_taxa.abun.meta$ci.lb, all_taxa.abun.meta$ci.ub, all_taxa.abun.meta$pval, all_taxa.abun.meta$k)))
+
+ggplot(data=all_taxa.abunPlot, mapping=aes(x=as.numeric(V4), y=as.numeric(V1)))+
+  geom_vline(xintercept=0, color="gray25", lty="dotted")+
+  geom_errorbarh(aes(xmin=as.numeric(V5), xmax=as.numeric(V6)), width=0.1)+
+  geom_point(size=3, pch=22, fill="black")+
+  geom_text(aes(x=0, label=paste(V3, " (",V8,")", sep="")), position=position_nudge(x=-3.25))+
+  theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.background=element_rect(fill="white"),
+        axis.line.x = element_line(color="black"))+
+  xlab("Effect Size (d)")+
+  ylim(-6,21)+
+  scale_x_continuous(limits=c(-4,3), breaks=c(-2, -1, -0.5, 0, 0.5, 1, 2, 3))
+
 
 ## PUBLICATION BIAS ##
 # Funnel plots for each analysis
