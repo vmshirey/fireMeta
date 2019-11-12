@@ -773,6 +773,12 @@ mes(18.75, 16.25, 3.77, 5.12, 4, 4) # spring richness
 mes(18, 16.25, 5, 3.56, 4, 4) # summer richness
 mes(21.25, 16.25, 2.06, 5.12, 4, 4) # fall richness
 
+###########
+## Short ##
+###########
+mes(9.8, 23.6, 14.7/sqrt(3), 32.3/sqrt(3), 3, 3) # 1y
+mes(13.5, 15.7, 11.1/sqrt(3), 22.6/sqrt(3), 3, 3) # 2y
+
 ## BEES ##
 
 #####################
@@ -1023,6 +1029,12 @@ mes(15, 22, 10.54, 12.28821, 3, 3) # abundance valley
 mes(3, 4.667, 2.65, 4.04, 3, 3) # richness hilltop
 mes(2.667, 3, 1.15, 1, 3, 3) # richness hill slope
 mes(3, 2.667, 1, 1.53, 3, 3) # richness valley
+
+##################
+## Short et al. ##
+##################
+mes(18.4, 16.8, 20.4/sqrt(3), 23.2/sqrt(3), 3, 3) # abundance y1
+mes(22.5, 17.3, 17.2/sqrt(3), 17.1/sqrt(3), 3, 3) # abundance y2
 
 ## BUTTERFLIES ##
 
@@ -1280,3 +1292,9 @@ mes(3280.83, 894.83, sqrt(360)*324.19, sqrt(360)*235.76, 360, 360) # wet spin ab
 
 mes(736, 1166.33, sqrt(360)*189.28, sqrt(360)*310.14, 360, 360) # dry sand abundance
 mes(1927.83, 2066.06, sqrt(360)*465.41, sqrt(360)*290.34, 360, 360) # wet sand abundance
+
+###########
+## Short ##
+###########
+mes(142.4, 92.0, 80.3/sqrt(3), 42.1/sqrt(3), 3, 3) # 1y
+mes(81.8, 91.7, 14.8/sqrt(3), 24.7/sqrt(3), 3, 3) # 2y
