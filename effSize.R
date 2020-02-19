@@ -3,7 +3,237 @@
 ## Author: Vaughn M. Shirey                                                        ##
 #####################################################################################
 
-require(compute.es)
+## 95% CI to SD = sqrt(n)*(upper - lower)/3.92
+
+library(compute.es)
+library(esc)
+
+################
+## Vogel 2007 ##
+################
+mes(31.48, 27.78, 7.25, 5.67, ) # abundance
+mes() # richness
+
+###############
+## Riva 2019 ##
+###############
+mes(16.06, 15.5, 5.3, 5.6, 18, 12) # richness 
+mes(73.33, 86.58, 49.33, 52.33, 18, 12) # abundance
+
+#####################
+## Rudolph and Ely ##
+#####################
+ub <- c(242.7, 57.6, 86.8, 153.0)
+b <- c(348.1, 200.3, 260.5, 502.9)
+mes(mean(b), mean(ub), sd(b), sd(ub), 4, 4) # abundance loblolly
+
+ub <- c(110.0, 106.7, 45.8, 50.0)
+b <- c(275.0, 165.0, 56.7, 126.7)
+mes(mean(b), mean(ub), sd(b), sd(ub), 4, 4) # abundance loblolly
+
+#######################
+## Salvato & Salvato ##
+#######################
+esc_t(t=1.7885, p=0.0669, grp1n=29, grp2n=4, es.type="g") # abundance
+
+ub <- c(31, 15, 8, 2, 6, 8)
+b <- c(23, 14, 9, 2, 2, 8)
+mes(mean(b), mean(ub), sd(b), sd(ub), 6, 6) # abundance
+
+#################
+## Ohwaki 2019 ##
+#################
+mes(10.91, 17.75, 3.62, 2.36, 11, 4) # richness
+mes(25.27, 68.75, 13.09, 16.15, 11, 4) # abundance
+
+############################
+## Pascale and Theit 2006 ##
+############################
+
+
+############################
+## McCullough et al. 2019 ##
+############################
+# butterflies #
+mes(0.004384, 0.005591, 0.003882, 0.008501, 8, 12) # mid term burn abundance 2012
+mes(0.000954, 0.005591, 0.001102, 0.008501, 4, 12) # low term burn abundance 2012
+
+mes(0.003647, 0.00048, 0.006195, 0.00107, 57, 18) # mid term burn abundance 2014
+mes(0.000989, 0.00048, 0.000857, 0.00107, 3, 18) # low term burn abundance 2014
+
+mes(0.002039, 0.001485, 0.003514, 0.00217, 132, 72) # mid term burn abundance 2015
+mes(0.000502, 0.001485, 0.001182, 0.00217, 24, 72) # low term burn abundance 2015
+
+mes(0.0000924, 0.000456, 0.000316, 0.000877, 24, 30) # low term burn abundance 2016
+mes(0.0000378, 0.000456, 0.00128, 0.000877, 84, 30) # mid term burn abundance 2016
+
+
+##################
+## Gaigher 2019 ##
+##################
+# thicket #
+mes(71.5, 95.75, 56.71, 60.15, 8, 4) # abundance
+mes(6.88, 11.25, 1.25, 1.89, 8, 4) # richness
+
+# 1-2 y #
+mes(46, 95.75, 14.66, 60.15, 7, 4) # abundance
+mes(12.57, 11.25, 1.13, 1.89, 7, 4) # richness
+
+# < 1y #
+mes(51.88, 95.75, 19.37, 60.15, 17, 4) # abundance
+mes(12.88, 2.80, 11.25, 1.89, 17, 4) # richness
+
+############
+## Oliver ##
+############
+# ants #
+mes() # richness
+
+#################
+## Kobach 2013 ##
+#################
+mes(0.625, 2.125, 1.19, 1.96, 7, 8) # abundance
+mes(0.625, 1.88, 1.19, 1.73, 7, 8) # richness
+
+##################
+## Kambach 2013 ##
+##################
+# bees #
+esc_t(t=-3.80, p=0.002, totaln=15, es.type="g") # richness
+esc_t(t=6.05, p=0.001, totaln=15, es.type="g") # abundance
+
+#################
+## Doabma 2014 ##
+#################
+# carabidae #
+mes()
+
+##################################
+## Valley Forge NHP Bee Surveys ##
+##################################
+# bees #
+mes(42, 41, 0.00, 23.14, 1, 6) # 2014 burn abundance
+
+########################
+## Kwilosz  & Knutson ##
+########################
+# Butterflies #
+control <- c(104, 65)
+burn <- c(288, 213)
+mes(mean(burn), mean(control), sd(burn), sd(control), 2, 2)
+
+# Freq 1995 #
+control <- c(68, 131, 159, 121, 59, 109, 79, 35, 58, 37, 20, 26, 21, 20, 45, 26)
+burn <- c(245, 323, 207, 126, 165, 215, 276)
+mes(mean(burn), mean(control), sd(burn), sd(control), length(burn), length(control))
+
+# Freq 1996 #
+control <- c(6, 20, 15, 2, 44, 63, 89, 86, 5, 6, 13, 4, 0, 12, 23, 25, 17, 60, 33, 39, 25, 0, 5, 14, 88, 103)
+burn <- c(52, 144, 39, 158, 224, 284, 335, 21, 30, 41, 29, 5, 16, 92, 161, 164)
+mes(mean(burn), mean(control), sd(burn), sd(control), length(burn), length(control))
+
+# Freq 1997 #
+control <- c(60, 79, 36, 103, 96, 50, 26, 31, 23, 0, 71, 46, 37, 75, 71, 78, 164, 184, 107)
+burn <- c(160, 153, 152, 365, 725, 541, 70, 94, 93, 24, 189, 296, 248)
+mes(mean(burn), mean(control), sd(burn), sd(control), length(burn), length(control))
+
+##################
+## Moylett 2019 ##
+##################
+# Bees #
+mes(5.97, 2.5, 2*(8.36-4.25)/3.92, 2*(3.88-1.72)/3.92, 4, 4) #0y abun
+mes(4.14, 2.5, 2*(5.86-2.95)/3.92, 2*(3.88-1.72)/3.92, 4, 4) #1y abun
+mes(4.10, 2.5, 2*(5.75-2.91)/3.92, 2*(3.88-1.72)/3.92, 4, 4) #2y abun
+
+mes(4.02, 1.85, 2*(5.05-3.2)/3.92, 2*(2.46-1.44)/3.92, 4, 4) #0y rich
+mes(3.27, 1.85, 2*(4.08-2.59)/3.92, 2*(2.46-1.44)/3.92, 4, 4) #1y rich
+mes(3.02, 1.85, 2*(3.83-2.41)/3.92, 2*(2.46-1.44)/3.92, 4, 4) #2y rich
+
+############
+## Rubene ##
+############
+# Bees #
+mes(19.2, 16.824, 6.03, 4.32, 15, 17) # richness
+mes(250.133, 109.71, 179.65, 58.196, 15, 17) # abundance
+
+##########################
+## DeSantis et al. 2007 ##
+##########################
+# carabidae #
+# fire #
+mes(2.35, 5.05, 0.806225775, 1.857417562, 4, 4) # abun
+
+# fire + mechanical #
+mes(3.2, 5.05, 0.909212113, 1.857417562, 4, 4) # abun
+
+############################
+## Van Amburg et al. 1981 ##
+############################
+esc_chisq(chisq=8.33, p=0.01, totaln=240, es.type="g")
+
+##################
+## Adedoja 2019 ##
+##################
+mes(38, 24.83, 22.52, 15.33, 6, 3) # abundance
+mes(10, 7.83, 3.61, 4.54, 6, 3) # richness
+
+##########################
+## McFarren et al. 1995 ##
+##########################
+# Carabids #
+esc_f(f=7.92, grp1n = 19, grp2n = 19, es.type="g")
+
+################
+## Sasal 2015 ##
+################
+# Carabidae #
+# Fire & Grazing, Control was Grazed #
+
+
+#################
+## Decker 2019 ##
+#################
+# Bees #
+mes(76.86354, 39.63636, 88.79849, 33.00872, 22, 22) # y0 growing abundance
+mes(13.18182, 10.86364, 9.912168, 7.845505, 22, 22) # y0 growing richness
+mes(74.2381, 39.63636, 92.45048, 33.00872, 22, 21) # y0 dormant abundance
+mes(12.66667, 10.86364, 9.520154, 7.845505, 22, 21) # y0 dormant richness
+
+#################
+## Wikers 1995 ##
+#################
+mes(46.8, 29.5, 9.8, 5.2, 5, 5) # burn abundance
+mes(51.0, 29.5, 27.5, 5.2, 5, 5) # extra fuel burn abundance
+
+#########################
+## Villa-Castillo 2002 ##
+#########################
+## Fire ##
+mes(9, 1.75, 1.83, 0.95, 4, 4) # 1998 richness
+mes(8, 2.25, 2.44, 1.89, 4, 4) # 1999 richness
+mes(8.25, 1.25, 2.98, 0.43, 4, 4) # 2000 richness
+
+mes(145, 122, 50.61, 89.01, 4, 4) # 1998 abundance
+mes(49.25, 151, 22.44, 101.96, 4, 4) # 1999 abundance
+mes(25, 13.5, 7.39, 3.77, 4, 4) # 2000 abundance
+
+## Mechanical + Fire ##
+mes(5.75, 1.75, 0.95, 0.95, 4, 4) # 1998 richness
+mes(5, 2.25, 1.41, 1.89, 4, 4) # 1999 richness
+mes(3.75, 1.25, 1.70, 0.43, 4, 4) # 2000 richness
+
+mes(55.25, 122, 5.85, 89.01, 4, 4) # 1998 abundance
+mes(23.25, 151, 16.54, 101.96, 4, 4) # 1999 abundance
+mes(25.50, 13.5, 23.04, 3.77, 4, 4) # 2000 abundance
+
+############
+## Harris ##
+############
+mes(9.09, 44.45, 4.8, 19.07, 13, 13) #y0 abundance
+mes(1.85, 5.62, 0.8, 1.15, 13, 13) #y0 richness
+
+mes(17.0, 77.28, 15.98, 25.02, 17, 17) #y1 abundance
+mes(2.24, 6.47, 2.12, 1.62, 17, 17) #y1 richness
 
 ###################
 ## Sackmann 2006 ##
@@ -26,14 +256,17 @@ c.abun <- c()
 b.abun <- c()
 mes() # abundance
 
-###################
-## Holliday 1991 ##
-###################
+##########################
+## Holiday 1991 & 1992 ##
+##########################
 # aspen forest
 mes(22.25, 63.19, 1.77*sqrt(16), 4.78*sqrt(16), 16, 16) # abundance
 
 # conifer forest
 mes(17.31, 51.75, 1.62*sqrt(16), 6.30*sqrt(16), 16, 16) # abundance
+
+# pooled #
+esc_f(f=0.1, grp1n = 16, grp2n = 16, es.type="g") # 1992 paper richness
 
 ############
 ## Garcia ##
@@ -82,17 +315,38 @@ b.abun.sd <- c((8.3*sqrt(6))^2, (3.3*sqrt(6))^2)
 
 mes(mean(b.abun), mean(c.abun), sum(b.abun.sd)/12, sum(c.abun.sd)/12, 12, 12)
 
-#####################
-## Campbell et. al ##
-#####################
-
+##########################
+## Campbell et. al 2018 ##
+##########################
 c.abun <- c(0.67, 5.67)
 b.abun <- c(3.67, 3.00)
 
-c.abun.sd <- c((0.33*sqrt(48))^2, (2.03*sqrt(48))^2)
-b.abun.sd <- c((3.67*sqrt(48))^2, (3.00*sqrt(48))^2)
+c.abun.sd <- c((0.33*sqrt(11))^2, (2.03*sqrt(11))^2)
+b.abun.sd <- c((3.67*sqrt(11))^2, (3.00*sqrt(11))^2)
 
-mes(mean(b.abun), mean(c.abun), sum(b.abun.sd)/48, sum(c.abun.sd)/48, 48, 48)
+mes(mean(b.abun), mean(c.abun), sum(b.abun.sd)/2, sum(c.abun.sd)/2, 11, 11)
+
+# Bees #
+c.abun <- c(0.8, 8.0)
+mb.abun <- c(7.6, 8.4)
+
+c.abun.sd <- c((0.2*sqrt(11))^2, (2.5*sqrt(11))^2)
+mb.abun.sd <- c((1.9*sqrt(11))^2, (1.6*sqrt(11))^2)
+
+mes(mean(mb.abun), mean(c.abun), sum(mb.abun.sd)/2, sum(c.abun.sd)/2, 11, 11)
+
+# Butterflies #
+# Fire #
+c.abun <- c(0.1, 0.04)
+mb.abun <- c(0.6, 0.2)
+b.abun <- c(0.3, 0.2)
+
+c.abun.sd <- c((0.03*sqrt(11))^2, (0.02*sqrt(11))^2)
+mb.abun.sd <- c((0.2*sqrt(11))^2, (0.1*sqrt(11))^2)
+b.abun.sd <- c((0.09*sqrt(11))^2, (0.09*sqrt(11))^2)
+
+mes(mean(b.abun), mean(c.abun), sum(b.abun.sd)/2, sum(c.abun.sd)/2, 11, 11)
+mes(mean(mb.abun), mean(c.abun), sum(mb.abun.sd)/2, sum(c.abun.sd)/2, 11, 11)
 
 #################
 ## Rice et al. ##
@@ -105,26 +359,14 @@ mes(mean(b.abun), mean(c.abun), sd(b.abun), sd(c.abun), 4, 4) # abundance
 ###################
 ## Barber et al. ##
 ###################
-mes(14.375, 12, 4.14, 5.14, 8, 5) # 2013 y0 no freq richness
-mes(16.5, 8.75, 6.36, 2.5, 2, 4) # 2014 y0 no freq richness
+# Carabidae #
+# fire
+mes(57.67, 70.71, 12.1, 64.91, 3, 7) # abun
+mes(12.67, 9, 4.93, 4.83, 3, 7) # rich
 
-mes(132.36, 303.6, 68.83, 271.72, 8, 5) # 2013 y0 no freq abun
-mes(328, 133, 340.83, 87.83, 2, 4) # 2014 y0 no freq abun
-
-mes(11.5, 8.75, 4.95, 2.5, 2, 4) # 2014 y1 no freq richness
-mes(7.5, 8.67, 2.12, 4.16, 2, 3) # 2015 y1 no freq richness
-
-mes(56.5, 133, 47.38, 87.83, 2, 4) # 2014 y1 no freq abun
-mes(72.5, 52.33, 67.18, 59.54, 2, 3) # 2015 y1 no freq abun
-
-mes(12, 8.75, 4.195, 2.5, 6, 4) # 2014 y0 freq richness
-mes(12.67, 8.67, 4.93, 2.5, 3, 3) # 2015 y0 freq richness
-
-mes(96.33, 133, 39.35, 87.83, 6, 4) # 2014 y0 freq abun
-mes(57.6, 52.33, 12.097, 59.54, 3, 3) # 2015 y0 freq abun
-
-mes(93.5, 52.33, 106.77, 59.54, 2, 3) # 2015 y1 freq abun
-mes(10.5, 8.67, 9.19, 4.16, 2, 3) # 2015 y1 freq richness
+# fire + grazing
+mes(143.75, 70.71, 151.27, 64.91, 4, 7) # abun
+mes(10.5, 9, 6.24, 4.83, 4, 7) # rich
 
 ##################
 ## Valko et. al ##
@@ -152,23 +394,6 @@ wf.rch <- c(3, 3, 3, 1)
 
 mes(mean(wf.rch), mean(control.rch), sd(wf.rch), sd(control.rch), length(wf.rch), length(control.rch))
 mes(mean(wf.abd), mean(control.abd), sd(wf.abd), sd(control.abd), length(wf.abd), length(control.abd))
-
-#########################
-## Castillo and Wagner ##
-#########################
-
-############################################################
-## Data in Table 4, sample sizes reported in methodology. ##
-############################################################
-
-mes(9, 1.75, 1.82, 0.95, 10, 10) ## richness
-mes(145, 50.61, 122, 89.01, 10, 10) ## abundance
-
-mes(8, 2.44, 2.25, 0.598, 10, 10)
-mes(29.25, 22.44, 151, 101.96, 10, 10)
-
-mes(8.25, 2.98, 1.25, .43, 6, 6)
-mes(25, 7.39, 13.5, 3.77, 6, 6)
 
 ######################
 ## Ghandi et al. ##
@@ -211,16 +436,15 @@ mes(mean(wf.rch), # average fire richness
 
 mes(mean(wf.abd), mean(control.abd), sd(wf.abd), sd(control.abd), length(wf.abd), length(control.abd))
 
-####################
-## Moretti et al. ##
-####################
-
-###################
-## Data in Fig 2 ##
-###################
-
+#########################
+## Moretti et al. 2004 ##
+#########################
+## Carabidae in Figure 2 ##
 mes(8, 8, 0.55*sqrt(24), 0.5*sqrt(24), 24, 24) # richness
 mes(90, 95, 30*sqrt(24), 15*sqrt(24), 24, 24) # abundance
+
+## Bees in ANOVA, Figure 1 (only fire freq) ##
+esc_f(f=7.23, grp1n=24, grp2n=24, es.type="g")
 
 ####################
 ## Nunes et al.   ##
@@ -245,20 +469,15 @@ mes(0.01, 0.015, 0.01*sqrt(350), 0.01*sqrt(350), 350, 350)
 ############################
 ## Saint-Germain et al.   ##
 ############################
-
 #####################
 ## Data in Table 1 ##
 #####################
-
 controlsN <- c(0.14, 0.15, 13.78, 4.6, 0.06, 0.06, 0.06, .69, 6.82, 1.15, 0.20, 0.12, 2.25, 1.86, 0.11)
 controlsSD <- c(0.41, 0.65, 56.97, 12.58, 0.24, 0.24, 0.24, 1.36, 12.37, 1.55, 0.85, 0.36, 7.15, 6.33, 0.47)
-
 burnedN <- c(0.08, 0.09, 0.08, 0.66, 0.21, 0.08, 0.25, 0.13, 0.17, 0.08, 0.09, 3.37, 0.65, 0.60, 0.09, 0.09, 0.38)
 burnedSD <- c(0.29, 0.31, 0.29, 1.34, 0.50, 0.29, 0.45, 0.43, 0.40, 0.29, 0.31, 3.04, 0.98, 1.30, 0.31, 0.31, 0.90)
-
 controlsM <- cbind(controlsN, controlsSD)
 burnedM <- cbind(burnedN, burnedSD)
-
 controlsPSD <- sqrt(
   ((controlsM[1,1] - 1)*controlsM[1,2]^2 + 
   (controlsM[2,1] - 1)*controlsM[2,2]^2 +
@@ -277,7 +496,6 @@ controlsPSD <- sqrt(
   (controlsM[15,1] - 1)*controlsM[15,2]^2)/
     (sum(controlsM[,1])-nrow(controlsM))
 )
-
 burnedPSD <- sqrt(
   abs(((burnedM[1,1] - 1)*burnedM[1,2]^2 + 
      (burnedM[2,1] - 1)*burnedM[2,2]^2 +
@@ -298,28 +516,41 @@ burnedPSD <- sqrt(
      (burnedM[17,1] - 1)*burnedM[17,2]^2)/
         (sum(burnedM[,1])-nrow(burnedM)))
 )
+mes(sum(burnedM[,1]), sum(controlsM[,1]), burnedPSD, controlsPSD, 17, 15) # abundance
+mes(11.58, 8.13, 13.89-11.58, 9.94-8.13, 95, 95) # richness
 
-mes(sum(burnedM[,1]), sum(controlsM[,1]), burnedPSD*sqrt(17), controlsPSD*sqrt(15), 17, 15)
-
-############################
-## Samu et al.           ##
-############################
-
+#################
+## Samu et al. ##
+#################
 #####################
 ## Data in Table 2 ##
 #####################
-
-mes(103.6, 32, 38.89*sqrt(20), 14.58*sqrt(20), 20, 20)
-mes(9.8, 8.4, 1.69*sqrt(20), 2.55*sqrt(20), 20, 20)
+mes(103.6, 32, 38.89*sqrt(20), 14.58*sqrt(20), 20, 20) # abundance
+mes(9.8, 8.4, 1.69*sqrt(20), 2.55*sqrt(20), 20, 20) # richness
 
 ########################
 ## Martikainen et al. ##
 ########################
-
-# values are inverse effects 
-
+# Carabids
+# values are inverse effects (fire)
 mes(103, 88, 19*sqrt(20), 34*sqrt(20), 20, 20) # abundance
-mes(5.6, 7.8, 0.9*sqrt(20), 2.2*sqrt(20), 20, 20) # richness
+mes(5.6, 5.38, 0.9*sqrt(20), (6.54-5.38)*sqrt(20), 20, 20) # richness
+
+# fire + mechanical
+mes(532.97, 103, 19*sqrt(20), (608.65-532.97)*sqrt(20), 20, 20) # 0m abun
+mes(520.00, 103, 19*sqrt(20), (567.57-520.00)*sqrt(20), 20, 20) # 10m abun
+mes(390.27, 103, 19*sqrt(20), (450.87-390.27)*sqrt(20), 20, 20) # 50m abun
+
+mes(23.23, 5.38, (27.46-23.23)*sqrt(20), (6.54-5.38)*sqrt(20), 20, 20) # 0m rich
+mes(25.77, 5.38, (29.15-25.77)*sqrt(20), (6.54-5.38)*sqrt(20), 20, 20) # 10m rich
+mes(26.15, 5.38, (28.92-26.15)*sqrt(20), (6.54-5.38)*sqrt(20), 20, 20) # 50m rich
+
+##########
+## Niwa ##
+##########
+# Carabids
+mes(553.6, 1090.1, 196.6*sqrt(9), 350.00*sqrt(9), 9, 9) # abundance
+mes(8.4, 7.4, 0.6*sqrt(9), 0.5*sqrt(9), 9, 9) # richness
 
 ######################
 ## Parmenter et al. ##
@@ -766,6 +997,13 @@ unburn <- c(10,
             5)
 mes(mean(burn), mean(unburn), sd(burn), sd(unburn), length(burn), length(unburn))
 
+# fire + mechanical #
+mes(23.3, 16.3, 30.424, 22.856, 70, 70) # clearcut abun
+mes(6.843, 5.771, 4.128, 4.879, 70, 70) # clearcut rich
+
+mes(34.063, 16.3, 26.648, 22.856, 70, 70) # altcut abun
+mes(9.888, 5.771, 4.600, 4.879, 70, 70) # altcut rich
+
 ######################
 ## Gongalsky et al. ##
 ######################
@@ -843,7 +1081,8 @@ mes(mean(burn), mean(unburn), sd(burn), sd(unburn), length(burn), length(unburn)
 #####################
 ## Toivenen et al. ##
 #####################
-
+# carabid #
+# burn #
 b.abun <- c(31, 62, 3, 4, 50, 102, 68, 41, 35)
 u.abun <- c(28, 72, 89, 44, 100, 51, 28, 44, 43)
 
@@ -853,25 +1092,42 @@ u.rich <- c(5, 5, 8, 5, 8, 6, 9, 6, 8)
 mes(mean(b.abun), mean(u.abun), sd(b.abun), sd(u.abun), length(b.abun), length(u.abun))
 mes(mean(b.rich), mean(u.rich), sd(b.rich), sd(u.rich), length(b.rich), length(u.rich))
 
+# burn + harvest #
+mes(35.11, 54.33, 27.84, 29.71, 9, 9) # abun 5-burn
+mes(27.89, 54.33, 11.95, 29.71, 9, 9) # abun 30-burn
+mes(31.78, 54.33, 14.32, 29.71, 9, 9) # abun 60-burn
+
+mes(6.67, 6.22, 1.66, 2.11, 9, 9) # rich 5-burn
+mes(8.44, 6.22, 1.94, 2.11, 9, 9) # rich 30-burn
+mes(7.67, 6.22, 1.32, 2.11, 9, 9) # rich 60-burn
+
 ##########################
 ## Colby (Dissertation) ##
 ##########################
-
+# Carabidae #
 # Treatment 1X NA #
 mes(12, 2, ) # abundance
 mes() # richness
 
+# Ants #
+mes(14.19, 4.73, 25.52, 6.43, 19, 9) # Abundance
+mes(2.5, 3.5, 1, 2.12, 2, 4) # Richness
+
 #############
 ## Apigian ##
 #############
-
 mes(14.82, -4.65, 2.43, 13.58, 3, 3) # richness
 mes(-4.13, -1.43, 3.47, 1.29, 3, 3) # abundance
 
 #################
 ## Chen et al. ##
 #################
+# Carabidae #
+# Wildfire #
 mes(8.19, 1.65, 11.65-8.19, 2.74-1.65, 160, 160) # richness from data thief
+
+# Fire + Mechnanical #
+mes(2.32, 1.65, 3.82-2.32, 2.74-1.65, 160, 160) # richness from data thief
 
 #####################
 ## Roughley et al. ##
@@ -916,12 +1172,23 @@ mes(21.25, 16.25, 2.06, 5.12, 4, 4) # fall richness
 ###########
 ## Short ##
 ###########
-mes(9.8, 23.6, 14.7/sqrt(3), 32.3/sqrt(3), 3, 3) # 1y
-mes(13.5, 15.7, 11.1/sqrt(3), 22.6/sqrt(3), 3, 3) # 2y
+## Carabidae ##
+mes(9.8, 23.6, 14.7/sqrt(3), 32.3/sqrt(3), 3, 3) # abundance 1y
+mes(13.5, 15.7, 11.1/sqrt(3), 22.6/sqrt(3), 3, 3) # abundance 2y
+
+## Bees ##
+mes(18.4, 16.8, 20.4/sqrt(3), 23.2/sqrt(3), 3, 3) # abundance y1
+mes(22.5, 17.3, 17.2/sqrt(3), 17.1/sqrt(3), 3, 3) # abundance y2
+
+## Ants ##
+mes(142.4, 92.0, 80.3*sqrt(3), 42.1*sqrt(3), 3, 3) # abundance 1y
+mes(81.8, 91.7, 14.8*sqrt(3), 24.7*sqrt(3), 3, 3) # abundance 2y
 
 #############################
 ## Nelson (Masters Thesis) ##
 #############################
+# Carabidae #
+# Fire #
 mes(184.33, 174.56, 57.07, 131.68, 3, 9) # 2017 abundance
 mes(16, 15.78, 1.73, 2.82, 3, 9) # 2017 richness
 
@@ -931,19 +1198,33 @@ mes(14.67, 12, 2.16, 6.88, 6, 4) # 2018 richness 1y
 mes(146.67, 93.25, 40.38, 62.39, 3, 4) # 2018 abundance 2y
 mes(17.67, 12, 1.15, 6.88, 3, 4) # 2018 richness 2y
 
-## BEES ##
+# Fire + Grazing #
+mes(397, 174.56, 392.3869, 131.68, 5, 9) # 2017 abundance y0
+mes(17.8, 15.78, 4.55, 2.82, 5, 9) # 2017 richness y0
+
+mes(407.67, 93.25, 96.69, 62.39, 3, 4) # 2018 abundance y0
+mes(13.67, 12, 4.16, 6.88, 3, 4) # 2018 richness y0
+
+mes(130.5, 93.25, 20.51, 62.39, 2, 4) # 2018 abundance fire freq y0
+mes(14, 12, 1.41, 6.88, 2, 4) # 2018 richness fire freq y0
 
 ##########################
 ## Campbell et al. 2018 ##
 ##########################
+# Carabids #
+# Burn + Mechanical #
+csd <- sum(c(0.33*sqrt(24), 2.03*sqrt(24))^2)
+bsd <- sum(c(1.86*sqrt(24), 1.2*sqrt(24))^2)
 
+mes(3.67+1.67, 0.67+5.67, sqrt(bsd/2), sqrt(csd/2), 24, 24)
+
+# Burn #
 c.abun <- c(0.8, 8.0)
 b.abun <- c(5.1, 10.0)
 
 c.abun.sd <- c((0.2*sqrt(24))^2, (2.5*sqrt(24))^2)
 b.abun.sd <- c((2.0*sqrt(24))^2, (3.3*sqrt(24))^2)
-
-mes(mean(b.abun), mean(c.abun), sum(b.abun.sd)/24, sum(c.abun.sd)/24, 24, 24)
+mes(mean(b.abun), mean(c.abun), sum(b.abun.sd)/2, sum(c.abun.sd)/2, 24, 24)
 
 #############################
 ## Davis (Grey-literature) ##
@@ -980,10 +1261,38 @@ mes(rich.b, rich.ub, rich.se.b, rich.se.ub, 6, 6)
 #######################
 ## Welti et al. 2018 ##
 #######################
+## Bees ##
+## Fire ##
 mes(22, 8.5, 5.7, 2.1, 4, 2) #1y rich
 mes(269, 54, 11, 26, 4, 2) #1y abun
 mes(25.5, 8.5, 3.5, 2.1, 4, 2) #4y rich
 mes(187, 54, 53, 26, 4, 2) #4y abun
+
+## Fire + Grazing ##
+mes(10.25, 9, 4.03, 1.41, 4, 2) # 1y rich
+mes(78.5, 53.5, 20.42, 24.75, 4, 2) # 1y abun
+mes(11.5, 9, 3.697, 1.41, 4, 2) # 4y rich
+mes(88.5, 53.5, 43.26, 24.75, 4, 2) # 4y abun
+
+## Ants ##
+## Fire + Grazing ##
+mes(1.25, 2, 1.5, 0, 4, 2) # 1y rich
+mes(3.25, 13.5, 3.95, 7.78, 4, 2) # 1y abun
+mes(2.25, 3, 0.95, 1.41, 4, 2) # 4y rich
+mes(8, 9.5, 6.38, 10.61, 4, 2) # 4y abun
+
+## Butterflies ##
+## Fire ##
+mes(4, 3, 0, 1.4, 4, 2) #1y rich
+mes(10, 9.5, 8.5, 11, 4, 2) #1y abun
+mes(3.5, 3, 3.5, 1.4, 4, 2) #4y rich
+mes(6.5, 9.5, 7.8, 11, 4, 2) #4y abun
+
+## Fire + Grazing ##
+mes(0.75, 3, 0.5, 1.41, 4, 2) # 1y rich
+mes(1.5, 9.5, 1.73, 10.61, 4, 2) # 1y abun
+mes(2.25, 0.96, 3, 1.41, 4, 2) # 4y rich
+mes(8, 6.38, 9.5, 10.61, 4, 2) # 4y abun
 
 #########################
 ## Carbone et al. 2017 ##
@@ -1009,63 +1318,35 @@ mes(5, 3.7, (5.9-3.2)/3.92, (5.3-2)/3.92, ) #ub vs hi y2 s2
 mes(3.6, 2.1, 2.7, 2.12, 30, 30) # abundance
 mes(1.1, 0.97, 0.66, 0.76, 30, 30) # richness
 
-#####################
-## Campbell et al. ##
-#####################
-
-#####################
-## Data in Table 2 ##
-#####################
-
-bAbun <- c(104.3, 4.7, 5.0)
-bAbunVar <- c(25.2, 2.7, 2.0)
-bAbunSD <- sqrt(bAbunVar)
-uAbun <- c(118, 4.0, 5.0)
-uAbunVar <- c(52.9, 2.0, 1.0)
-uAbunSD <- sqrt(uAbunVar)
-
-mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10)
-
-bAbun <- c(152.3, 5.7, 2.0)
-bAbunVar <- c(73, 0.88, 1.0)
-bAbunSD <- sqrt(bAbunVar)
-uAbun <- c(106.7, 17.7, 3.0)
-uAbunVar <- c(44.2, 11.2, 1.0)
-uAbunSD <- sqrt(uAbunVar)
-
-mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10)
-
-####################
-## Lettow et al.  ##
-####################
-
-#####################
-## Data in Table 1 ##
-#####################
-
+#########################
+## Lettow et al. 2018  ##
+#########################
+## Burn Data in Table 1 ##
 mes(41, 37, 5, 3, 20, 20) # 2011 abundance
 mes(11, 12, 2, 1, 20, 20) # 2011 richness
 mes(38, 31, 1, 5, 20, 20) # 2012 abundance
 mes(13, 12, 2, 1, 20, 20) # 2012 richness
 
-#################
-## Love et al. ##
-#################
+## Mechanical Burn Data in Table 1 ##
+mes(48, 37, 9, 3, 20, 20) # 2011 abundance
+mes(17, 12, 2, 1, 20, 20) # 2011 richness
+mes(54, 31, 8, 5, 20, 20) # 2012 abundance
+mes(21, 12, 3, 1, 20, 20) # 2012 richness
 
+######################
+## Love et al. 2016 ##
+######################
 burn <- c(15, 58, 12, 21) # abundance
 control <- c(52, 47, 24, 27) # abundance
-
 mes(mean(burn), mean(control), sd(burn), sd(control), 4, 4)
 
 burn <- c(4, 8, 5, 5) # richness
 control <- c(10, 19, 9, 4) # richness
-
 mes(mean(burn), mean(control), sd(burn), sd(control), 4, 4)
 
 ##########################
 ## LoPresti et al. 2018 ##
 ##########################
-
 controlsN <-c(5.76, 3.86, 3.33, 2.60, 2.40, 2.25, 2.11, 2.00, 2.00, 1.47)
 controlsSD <-c(5.83, 6.55, 2.08, 1.14, 1.34, 1.91, 1.47, 0.0, 1.41, 1.06)
 
@@ -1109,7 +1390,6 @@ mes(sum(controlsM[,1]), sum(PreburnM[,1]), controlsPSD*sqrt(10), PreburnPSD*sqrt
 #############################
 ## Potts et al. 2006       ##
 #############################
-
 mes(18, 17, 2.4*sqrt(3), 2.0*sqrt(3), 3, 3) # richness
 mes(469, 161, 70*sqrt(3), 32*sqrt(3), 3, 3) # abundance
 
@@ -1119,7 +1399,6 @@ mes(354, 161, 81*sqrt(3), 32*sqrt(3), 3, 3) # abundance
 #############################
 ## Peralta et al.          ##
 #############################
-
 fb <- c(6, 4) # richness
 ib <- c(3, 4, 9, 7) # richness
 ob <- c(4, 3, 5, 7) # richness
@@ -1132,7 +1411,6 @@ mes(mean(ob), mean(control), sd(ob), sd(control), length(ob), length(control))
 #############################
 ## Moretti et al.          ##
 #############################
-
 mes(20, 12.2, 1.9*sqrt(6), 1.1*sqrt(6), 6, 6) # richness med
 mes(64.8, 45.3, 7.1*sqrt(6), 6.1*sqrt(6), 6, 6) # abundance med
 
@@ -1156,47 +1434,56 @@ mes(508, 504, 158*sqrt(3), 63*sqrt(6), 3, 6) # abundance temp ma
 #############################
 ## DISSERTATION: Simanonok ##
 #############################
+# Bees #
+mes(1.83, 0, 0.75, 0, 6, 6) # 3y Hi Rich
+mes(1.61, 0, 1.30, 0, 6, 6) # 3y Hi Abun
 
-########################
-## Data in Appendix 1 ##
-########################
+mes(1.83, 0, 1.17, 0, 6, 6) # 3y Mx Rich
+mes(3.09, 0, 1.35, 0, 6, 6) # 3y Mx Abun
 
-hi.burn <- c(472, 1314, 818, 607) # abundance
-mx.burn <- c(598, 1235, 777, 334)
-control <- c(75)
+mes(2.5, 0, 1.38, 0, 6, 6) # 4y Hi Rich
+mes(1.1, 0, 0.37, 0, 6, 6) # 4y Hi Abun
 
-mes(mean(hi.burn), mean(control), sd(hi.burn), 0.0001, 4, 1)
-mes(mean(mx.burn), mean(control), sd(mx.burn), 0.0001, 4, 1)
+mes(1.5, 0, 1.7, 0, 6, 6) # 4y Mx Rich
+mes(0.86, 0, 0.87, 0, 6, 6) # 4y Mx Abun
 
-hi.burn <- c(106, 83, 94, 90) # richness
-mx.burn <- c(98, 109, 103, 66)
-control <- c(25)
+mes(1.8, 0, 1.72, 0, 6, 6) # 25y Hi Rich
+mes(0.696, 0, 0.75, 0, 6, 6) # 25y Hi Abun
 
-mes(mean(hi.burn), mean(control), sd(hi.burn), 0.0001, 4, 1)
-mes(mean(mx.burn), mean(control), sd(mx.burn), 0.0001, 4, 1)
+mes(0.6, 0, 0.54, 0, 6, 6) # 25y Mx Rich
+mes(0.14, 0, 0.17, 0, 6, 6) # 25y Mx Abun
+
+mes(3, 0, 0.63, 0, 6, 6) # 9y Hi Rich
+mes(0.78, 0, 0.37, 0, 6, 6) # 9y Hi Abun
+
+mes(3, 0, 1.09, 0, 6, 6) # 9y Mx Rich
+mes(1.47, 0, 0.41, 0, 6, 6) # 9y Mx Abun
 
 ####################
 ## Granath et al. ##
 ####################
-
-###################
 ## Data on Dryad ##
-###################
-
-control <- c(0,0,0,0,2,2,6,0,9,1,2,2) # abundance
+control <- c(0,0,0,0,2,2,6,0,9,1,2,2) 
 burn <- c(7,7,3,2,2,11,6,2,5,6,4,3)
+mes(mean(burn), mean(control), sd(burn), sd(control), 12, 12) # abundance
 
-mes(mean(burn), mean(control), sd(burn), sd(control), 12, 12)
-
-control <- c(0,0,0,0,2,2,2,0,4,1,3,2) # richness
+control <- c(0,0,0,0,2,2,2,0,4,1,3,2)
 burn <- c(7,6,3,1,2,6,4,2,4,3,2,2)
+mes(mean(burn), mean(control), sd(burn), sd(control), 12, 12) # richness
 
-mes(mean(burn), mean(control), sd(burn), sd(control), 12, 12)
+## Fire + Mechnical Burn ##
+mes(12, 3.17, 3.28, 1.64, 12, 12) # 0-ret richness
+mes(35, 5.58, 15.93, 3.579, 12, 12) # 0-ret abundance
+
+mes(13, 3.17, 2.73, 1.64, 12, 12) # 10-ret richness
+mes(34.92, 5.58, 13.86, 3.579, 12, 12) # 10-ret abundance
+
+mes(13.33, 3.17, 3.92, 1.64, 12, 12) # 50-ret richness
+mes(61.75, 5.58, 59.29, 3.579, 12, 12) # 50-ret abundance
 
 ###################
 ## Burkle et al. ##
 ###################
-
 # inverse effect
 
 b.abun <- c(2.7, 1.2, 1.8)
@@ -1252,7 +1539,6 @@ mes() # richness
 ####################
 ## Adedoja et al. ##
 ####################
-
 mes(14, 24.33, 13, 18.90326, 3, 3) # abundance hilltop
 mes(12, 31.667, 8.544, 27.68273, 3, 3) # abundance hill slope
 mes(15, 22, 10.54, 12.28821, 3, 3) # abundance valley
@@ -1260,12 +1546,6 @@ mes(15, 22, 10.54, 12.28821, 3, 3) # abundance valley
 mes(3, 4.667, 2.65, 4.04, 3, 3) # richness hilltop
 mes(2.667, 3, 1.15, 1, 3, 3) # richness hill slope
 mes(3, 2.667, 1, 1.53, 3, 3) # richness valley
-
-##################
-## Short et al. ##
-##################
-mes(18.4, 16.8, 20.4/sqrt(3), 23.2/sqrt(3), 3, 3) # abundance y1
-mes(22.5, 17.3, 17.2/sqrt(3), 17.1/sqrt(3), 3, 3) # abundance y2
 
 ####################
 ## Bogusch et al. ##
@@ -1275,14 +1555,15 @@ mes(5, 2.75, 3.12, 1.5, 4, 15) # richness
 
 ## BUTTERFLIES ##
 
+##################
+## Carbone 2017 ##
+##################
+mes() # richness 
+
 #######################
 ## Welti et al. 2018 ##
 #######################
-mes(4, 3, 0, 1.4, 4, 2) #1y rich
-mes(10, 9.5, 8.5, 11, 4, 2) #1y abun
 
-mes(3.5, 3, 3.5, 1.4, 4, 2) #4y rich
-mes(6.5, 9.5, 7.8, 11, 4, 2) #4y abun
 
 ###################
 ## Nuland et al. ##
@@ -1292,31 +1573,79 @@ mes(0.03, 0, 0.18, 0, 30, 30)
 #########################
 ## Campbell et al 2007 ##
 #########################
+## Bees ##
+bAbun <- c(104.3, 4.7, 5.0)
+bAbunVar <- c(25.2, 2.7, 2.0)
+bAbunSD <- bAbunVar * sqrt(10)
+uAbun <- c(118, 4.0, 5.0)
+uAbunVar <- c(52.9, 2.0, 1.0)
+uAbunSD <- uAbunVar * sqrt(10)
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10) # year 1
 
-## Data in table 2
+bAbun <- c(152.3, 5.7, 2.0)
+bAbunVar <- c(73, 0.88, 1.0)
+bAbunSD <- bAbunVar * sqrt(10)
+uAbun <- c(106.7, 17.7, 3.0)
+uAbunVar <- c(44.2, 11.2, 1.0)
+uAbunSD <- uAbunVar * sqrt(10)
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10) # year 2
 
+## Mechanical Burn Table 2 ##
+bAbun <- c(238.7, 14.3, 16)
+bAbunVar <- c(37, 4.5, 1.2)
+bAbunSD <- bAbunVar * sqrt(10)
+uAbun <- c(118, 4.0, 5.0)
+uAbunVar <- c(52.9, 2.0, 1.0)
+uAbunSD <- uAbunVar * sqrt(10)
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10) # year 1
+
+bAbun <- c(341.7, 14.7, 13.3)
+bAbunVar <- c(96.4, 1.2, 4.5)
+bAbunSD <- bAbunVar * sqrt(10)
+uAbun <- c(106.7, 17.7, 3.0)
+uAbunVar <- c(44.2, 11.2, 1.0)
+uAbunSD <- uAbunVar * sqrt(10)
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10) # year 2
+
+## Butterflies ##
+## Data in table 2 ##
 bAbun <- c(13.7, 3.5)
 bAbunVar <- c(3.5, 0.5)
-bAbunSD <- sqrt(bAbunVar)
+bAbunSD <- bAbunVar * sqrt(10)
 uAbun <- c(11.3, 5.3)
 uAbunVar <- c(4.9, 1.5)
-uAbunSD <- sqrt(uAbunVar)
-
-mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10)
+uAbunSD <- uAbunVar * sqrt(10)
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10) # year 1
 
 bAbun <- c(20.7, 4.0)
 bAbunVar <- c(10.7, 2.5)
-bAbunSD <- sqrt(bAbunVar)
+bAbunSD <- bAbunVar * sqrt(10)
 uAbun <- c(11.3, 4.0)
 uAbunVar <- c(2.7, 0)
-uAbunSD <- sqrt(uAbunVar)
+uAbunSD <- uAbunVar * sqrt(10)
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10) # year 2
 
-mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10)
+## Mechanical Burn Table 2 ##
+bAbun <- c(25, 8.5)
+bAbunVar <- c(6.1, 6.5)
+bAbunSD <- bAbunVar * sqrt(10)
+uAbun <- c(11.3, 5.3)
+uAbunVar <- c(4.9, 1.5)
+uAbunSD <- uAbunVar * sqrt(10)
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10) # year 1
+
+bAbun <- c(20.7, 10.3)
+bAbunVar <- c(6.8, 3.0)
+bAbunSD <- bAbunVar * sqrt(10)
+uAbun <- c(11.3, 4.0)
+uAbunVar <- c(2.7, 0)
+uAbunSD <- uAbunVar * sqrt(10)
+mes(mean(bAbun), mean(uAbun), (sum(bAbunSD^2)/10), sum(uAbunSD^2)/10, 10, 10) # year 2
 
 #####################
 ## Fleishman et al ##
 #####################
-
+# butterflies #
 bRich <- c(18, 28, 28, 20, 15, 22, 16)
 uRich <- c(43, 47, 54, 38, 46)
 
@@ -1490,36 +1819,71 @@ mes(17, 35.8, 4.42, 7.5299, 5, 5) # 2008
 ## Cleary & Mooers 2004 & 2006 ##
 #################################
 
-mes(28.76, 53.91, sqrt(3200)*(8.22)/3.92, sqrt(2841)*(5.35)/3.92, 3200, 2841) # species abundance
-mes(64.47, 93.49, sqrt(3200)*(103.86-85.3)/3.92, sqrt(2841)*(75.67-60.48)/3.92, 3200, 2841) # species richness
+mes(28.76, 53.91, sqrt(3200)*(8.22)/3.92, sqrt(2841)*(5.35)/3.92, 3200, 2841) # species abundance from 2006
+esc_t(t=-1.567, grp1n=3, grp2n=3, es.type="g") # richness from 2006
+
+mes(64.47, 93.49, sqrt(3200)*(103.86-85.3)/3.92, sqrt(2841)*(75.67-60.48)/3.92, 3200, 2841) # species richness from 2004
 
 ############
 ## Powell ##
 ############
-
 mes(0.00872, .0322, 0.035, 0.035, 62, 19) # abundance
 
 
 #############
 ## Nowicki ##
 #############
-
 mes(2.20, 1.84, 1.98, 1.48, 14, 41) # abundance
 
 ############
 ## Dollar ##
 ############
-
-mes(7.73, 10.06, sqrt(6)*1.34, sqrt(6)*1.49, 6, 6) # abundance 2008
-mes(4.61, 5.66, sqrt(6)*1.65, sqrt(6)*131, 6, 6) # richness 2008
+mes(5.69, 6.41, sqrt(6)*(6.94-5.69), sqrt(6)*(7.66-6.41), 6, 6) # abundance 2008
+mes(17.0, 19.74, sqrt(6)*(18.97-17.0), sqrt(6)*(21.12-19.74), 6, 6) # richness 2008
+mes(9.32, 7.93, sqrt(6)*(10.87-9.32), sqrt(6)*(9.45-7.93), 6, 6) # abundance 2009
+mes(14.85, 12.29, sqrt(6)*(16.72-14.85), sqrt(6)*(14.17-12.29), 6, 6) # richness 2009
 
 #################
 # Bohls et al. ##
 #################
+# Butterflies #
+mes(5.27, 20.83, 4*1.35, 4*1.24, 16, 16) # abundance
+mes(3.00, 5.00, 4*0.58, 4*0.00, 16, 16) # richness
 
-mes(5.27, 20.83, 4*1.32, 4*1.21, 16, 16) # abundance
+###################
+## Beaumont 2012 ##
+###################
+# ants #
+# data in table 1
+mes(651.3, 291.2, 89.81*5, 48.13*5, 25, 25) # 2006 abundance
+mes(537.0, 165.5, 107.87*5, 28.22*5, 25, 25) # 2007 abundance
+mes(418.3, 187.5, 55.02*5, 37.4*5, 25, 25) # 2008 abundance
 
-## Ants / Formicidae ##
+mes(11.9, 13.1, 1.25*5, 0.9*5, 25, 25) # 2006 richness
+mes(11.1, 13.0, 0.57*5, 0.96*5, 25, 25) # 2007 richness
+mes(10.8, 12.6, 1.36*5, 1.36*5, 25, 25) # 2008 richness
+
+##############
+## Atchison ##
+##############
+esc_f(f=14.4, grp1n=30, grp2n=30, es.type="g")
+
+###########
+## Anjos ##
+###########
+esc_f(f=11.1, grp1n=144, grp2n=144, es.type="g") # abundance
+esc_f(f=0.6, grp1n=144, grp2n=144, es.type="g") # richness
+
+############
+## Andrew ##
+############
+esc_f(f=0.39, grp1n=36, grp2n=36, es.type="g") # richness
+esc_f(f=4.61, grp1n=36, grp2n=36, es.type="g") # abundance
+
+#############
+## Apigian ##
+#############
+mes(531.33, 756.44, 572.62, 1189, 20, 20) # abundance
 
 ###################
 ## Sackmann 2006 ##
@@ -1600,18 +1964,12 @@ mes(212.0952, 97.41667, 216.1018, 121.361, 24, 21) # abundance
 #######################
 ## Welti et al. 2018 ##
 #######################
-mes(3.5, 2, 5, 14, ) #y1 rich
-mes() #y1 abun
+mes(1.8, 2, 1, 0, 4, 2) #y1 rich
+mes(2.5, 13.5, 1.3, 7.78, 4, 2) #y1 abun
+mes(2, 2, 0.8, 0, 4, 2) #y4 rich
+mes(8, 13.5, 8.4, 7.78, 4, 2) #y4 abun
 
-mes() #y4 rich
-mes() #y4 abun
 
-#######################
-# Colby Dissertation ##
-#######################
-
-mes(14.19, 4.73, 25.52, 6.43, 19, 9) # Abundance
-mes(2.5, 3.5, 1, 2.12, 2, 4) # Richness
 
 ############
 ## Barrow ##
@@ -1628,12 +1986,6 @@ mes(3280.83, 894.83, sqrt(360)*324.19, sqrt(360)*235.76, 360, 360) # wet spin ab
 
 mes(736, 1166.33, sqrt(360)*189.28, sqrt(360)*310.14, 360, 360) # dry sand abundance
 mes(1927.83, 2066.06, sqrt(360)*465.41, sqrt(360)*290.34, 360, 360) # wet sand abundance
-
-###########
-## Short ##
-###########
-mes(142.4, 92.0, 80.3*sqrt(3), 42.1*sqrt(3), 3, 3) # 1y
-mes(81.8, 91.7, 14.8*sqrt(3), 24.7*sqrt(3), 3, 3) # 2y
 
 ######################
 ## Alves-Silva 2011 ##
